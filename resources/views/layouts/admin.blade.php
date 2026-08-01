@@ -27,12 +27,9 @@
 
             <!-- Page Content -->
             <main class="flex-1 overflow-y-auto bg-gray-50/50 p-6">
-                <!-- Breadcrumb placeholder -->
-                <div class="mb-6">
-                    {{ $breadcrumb ?? '' }}
-                </div>
+                @yield('breadcrumb')
                 
-                {{ $slot }}
+                @yield('content')
             </main>
         </div>
         

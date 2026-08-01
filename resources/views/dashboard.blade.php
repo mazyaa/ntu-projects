@@ -1,11 +1,13 @@
-<x-admin-layout>
-    <x-slot name="breadcrumb">
-        <h2 class="font-semibold text-2xl text-secondary leading-tight tracking-tight">
-            {{ __('Dashboard') }}
-        </h2>
-        <p class="text-sm text-gray-500 mt-1">Welcome back, {{ Auth::user()->name ?? 'Admin' }}. Here's what's happening.</p>
-    </x-slot>
+@extends('layouts.admin')
 
+@section('breadcrumb')
+    <h2 class="font-semibold text-2xl text-secondary leading-tight tracking-tight">
+        {{ __('Dashboard') }}
+    </h2>
+    <p class="text-sm text-gray-500 mt-1">Welcome back, {{ Auth::user()->name ?? 'Admin' }}. Here's what's happening.</p>
+@endsection
+
+@section('content')
     <!-- Statistics Placeholder -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         @for ($i = 0; $i < 4; $i++)
@@ -46,7 +48,7 @@
                 <div class="space-y-4">
                     @for ($i = 0; $i < 4; $i++)
                         <div class="flex items-start">
-                            <div class="w-8 h-8 rounded-full bg-accent/10 flex-shrink-0 flex items-center justify-center text-accent mt-0.5">
+                            <div class="w-8 h-8 rounded-full bg-accent/10 shrink-0 flex items-center justify-center text-accent mt-0.5">
                                 <i data-lucide="zap" class="w-4 h-4"></i>
                             </div>
                             <div class="ml-3">
@@ -59,4 +61,4 @@
             </x-card>
         </div>
     </div>
-</x-admin-layout>
+@endsection

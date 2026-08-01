@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0F766E;
-  --color-secondary: #0F172A;
-  --color-accent: #06B6D4;
+  --color-primary: #0736AA;
+  --color-secondary: #06205E;
+  --color-accent: #0B9918;
   --color-success: #22C55E;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
   --color-background: #FFFFFF;
 
-  --font-sans: "Plus Jakarta Sans", "Inter", sans-serif;
-  --font-heading: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -19,9 +19,82 @@
     color: var(--color-secondary);
     font-family: var(--font-sans);
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 700;
+  }
+}
+
+@layer components {
+  .nav-link {
+    position: relative;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4B5563;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+    font-weight: 600;
+  }
+
+  .nav-link.nav-light {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .nav-link.nav-light:hover {
+    color: #ffffff;
+  }
+
+  .nav-link.nav-light.active {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .nav-link.nav-light::after {
+    background: linear-gradient(90deg, #ffffff, #6ee7b7);
+  }
+
+  .glass-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px rgba(6, 32, 94, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-dark {
+    position: relative;
+    background: rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
 }
