@@ -13,8 +13,8 @@
     <body class="font-sans text-secondary bg-slate-50 antialiased selection:bg-primary selection:text-white relative min-h-screen flex items-center justify-center">
         <!-- Abstract Background -->
         <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <div class="absolute -top-[30%] -right-[10%] w-[70%] h-[70%] rounded-full bg-primary/5 blur-3xl"></div>
-            <div class="absolute -bottom-[20%] -left-[10%] w-[60%] h-[60%] rounded-full bg-accent/5 blur-3xl"></div>
+            <div class="absolute top-[-30%] right-[-10%] w-[70%] h-[70%] rounded-full bg-primary/5 blur-3xl"></div>
+            <div class="absolute bottom-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-accent/5 blur-3xl"></div>
         </div>
 
         <div class="relative z-10 w-full sm:max-w-md mt-6 px-8 py-10 bg-white/70 backdrop-blur-xl shadow-2xl shadow-gray-200/50 sm:rounded-2xl border border-white/50">
@@ -23,7 +23,7 @@
                     <x-application-logo class="w-20 h-20 fill-current text-primary drop-shadow-md" />
                 </a>
             </div>
-            
+
             {{ $slot }}
         </div>
     </body>
