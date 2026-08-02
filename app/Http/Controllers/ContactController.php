@@ -15,7 +15,7 @@ class ContactController extends Controller
     public function index()
     {
         return view('pages.contact', [
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 

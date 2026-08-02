@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Localizable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
@@ -13,12 +14,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-#[Fillable(['name', 'email', 'password', 'avatar', 'skills'])]
+#[Fillable(['name', 'email', 'password', 'avatar', 'skills', 'skills_en'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, HasRoles, HasUuids, Notifiable;
+    use HasFactory, HasRoles, HasUuids, Localizable, Notifiable;
 
     /**
      * Get the attributes that should be cast.

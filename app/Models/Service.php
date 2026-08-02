@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ServiceStatus;
+use App\Support\Localizable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,18 +12,24 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Service extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes;
+    use HasFactory, HasUuids, Localizable, SoftDeletes;
 
     protected $fillable = [
         'slug',
+        'slug_en',
         'title',
+        'title_en',
         'short_title',
+        'short_title_en',
         'image',
         'icon',
         'color',
         'tagline',
+        'tagline_en',
         'description',
+        'description_en',
         'service_items',
+        'service_items_en',
         'status',
         'sort_order',
     ];
@@ -31,6 +38,7 @@ class Service extends Model
     {
         return [
             'service_items' => 'array',
+            'service_items_en' => 'array',
             'sort_order' => 'integer',
             'status' => ServiceStatus::class,
         ];

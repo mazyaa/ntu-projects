@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', 'Beranda')
+@section('title', __('ui.page_titles.home'))
 
 @section('content')
     <x-landing.hero />

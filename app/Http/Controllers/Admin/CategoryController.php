@@ -22,13 +22,17 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:categories,name'],
+            'name_en' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:500'],
+            'description_en' => ['nullable', 'string', 'max:500'],
         ]);
 
         $category = Category::create([
             'name' => $validated['name'],
+            'name_en' => $validated['name_en'] ?? null,
             'slug' => Str::slug($validated['name']),
             'description' => $validated['description'] ?? null,
+            'description_en' => $validated['description_en'] ?? null,
         ]);
 
         return back()->with('success', 'Kategori berhasil ditambahkan.');
@@ -38,13 +42,17 @@ class CategoryController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:categories,name,'.$category->getKey()],
+            'name_en' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:500'],
+            'description_en' => ['nullable', 'string', 'max:500'],
         ]);
 
         $category->update([
             'name' => $validated['name'],
+            'name_en' => $validated['name_en'] ?? null,
             'slug' => Str::slug($validated['name']),
             'description' => $validated['description'] ?? null,
+            'description_en' => $validated['description_en'] ?? null,
         ]);
 
         return back()->with('success', 'Kategori berhasil diperbarui.');

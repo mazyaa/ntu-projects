@@ -28,7 +28,7 @@
                                 <h1 class="text-xl font-bold text-secondary mb-4">{{ $person['name'] }}</h1>
                                 <p class="text-sm text-gray-400 mb-4">{{ $person['academic'] }}</p>
                                 <div class="border-t border-gray-100 pt-4">
-                                    <h4 class="text-sm font-bold text-secondary mb-3">Keahlian</h4>
+                                    <h4 class="text-sm font-bold text-secondary mb-3">{{ __('ui.leadership_show_page.expertise_label') }}</h4>
                                     <div class="flex flex-wrap justify-center gap-2">
                                         @foreach($person['expertise'] as $exp)
                                         <span class="px-2 py-1 bg-white/70 text-gray-500 text-xs rounded-lg">{{ $exp }}</span>
@@ -38,15 +38,15 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('leadership') }}" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-primary bg-primary/5 rounded-xl hover:bg-primary/10 transition-all">
-                            <i data-lucide="arrow-left" class="w-4 h-4"></i> Semua Profil
+                        <a href="{{ lroute('leadership') }}" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-primary bg-primary/5 rounded-xl hover:bg-primary/10 transition-all">
+                            <i data-lucide="arrow-left" class="w-4 h-4"></i> {{ __('ui.leadership_show_page.back_all') }}
                         </a>
                     </div>
                 </div>
 
                 <div class="lg:col-span-2 space-y-12" data-aos="fade-left">
                     <div>
-                        <h2 class="text-2xl font-bold text-secondary mb-4">Profil</h2>
+                        <h2 class="text-2xl font-bold text-secondary mb-4">{{ __('ui.leadership_show_page.profile_label') }}</h2>
                         <p class="text-gray-600 leading-relaxed text-md text-justify">{{ $person['bio'] }}</p>
                     </div>
                 </div>

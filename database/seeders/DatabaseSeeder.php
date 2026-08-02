@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminUserSeeder::class);
         $this->call(SettingsSeeder::class);
         $this->call(ContentSeeder::class);
+        $this->call(EnglishContentSeeder::class);
     }
 }

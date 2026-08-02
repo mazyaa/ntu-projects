@@ -18,6 +18,33 @@ import ApexCharts from 'apexcharts';
 
 // Alpine JS Setup
 window.Alpine = Alpine;
+
+document.addEventListener('alpine:init', () => {
+    Alpine.data('languageSwitcher', (options = {}) => ({
+        open: false,
+        currentLocale: options.initial || 'id',
+        switchTo(locale) {
+            this.open = false;
+            if (locale === this.currentLocale) return;
+
+            const url = new URL(window.location.href);
+            const goEn = locale === 'en';
+
+            if (goEn) {
+                // ID -> EN: prepend /en
+                const path = url.pathname === '/' ? '/en' : '/en' + url.pathname;
+                url.pathname = path;
+            } else {
+                // EN -> ID: strip leading /en
+                const stripped = url.pathname.replace(/^\/en(?=\/|$)/, '');
+                url.pathname = stripped === '' ? '/' : stripped;
+            }
+
+            window.location.href = url.toString();
+        },
+    }));
+});
+
 Alpine.start();
 
 // Make libraries available globally

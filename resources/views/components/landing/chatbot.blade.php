@@ -1,24 +1,39 @@
 @php
-    $servicesList = collect(config('company-services.categories'))->map(fn($s) => $s['title'])->implode("\n• ");
-    $teamNames = collect(config('company-leadership.people'))->map(fn($p) => $p['name'])->implode(', ');
-    $experienceList = collect(config('company-experience.projects'))->map(fn($p) => "• {$p['title']} ({$p['institution']}, {$p['year']})")->implode("\n");
-    $faqList = collect(config('company-faq'))->map(fn($f) => $f['question'])->implode("\n• ");
+    $servicesList = collect(company('categories', 'company-services'))->map(fn($s) => $s['title'])->implode("\n• ");
+    $teamNames = collect(company('people', 'company-leadership'))->map(fn($p) => $p['name'])->implode(', ');
+    $experienceList = collect(company('projects', 'company-experience'))->map(fn($p) => "• {$p['title']} ({$p['institution']}, {$p['year']})")->implode("\n");
+    $faqList = collect(company(null, 'company-faq'))->map(fn($f) => $f['question'])->implode("\n• ");
 
-    $knowledge = [
-        ['keywords' => ['halo', 'hai', 'hi', 'hello', 'hallo', 'assalam', 'pagi', 'siang', 'sore', 'malam', 'selamat', 'bro', 'hai admin'], 'reply' => 'Halo! 👋 Selamat datang di Asisten NTU. Saya siap membantu seputar layanan, kontak, tim, dan profil PT Nusantara Techno Utama. Silakan pilih topik di bawah atau ketik pertanyaan Anda.'],
-        ['keywords' => ['layanan', 'jasa', 'service', 'bidang', 'pilar', 'kerja sama', 'penawaran', 'konsultansi'], 'reply' => "PT Nusantara Techno Utama (NTU) memiliki enam pilar layanan:\n\n• " . $servicesList . "\n\nKetik nama layanan untuk detail lebih lanjut, atau kunjungi halaman Layanan di menu atas."],
-        ['keywords' => ['kontak', 'hubungi', 'contact', 'email', 'e-mail', 'telepon', 'telp', 'phone', 'hp', 'whatsapp', 'wa', 'hubungi kami'], 'reply' => "Anda dapat menghubungi kami melalui:\n📧 Email: " . config('company.contact.email') . "\n📞 Telepon/WhatsApp: " . config('company.contact.phone') . "\n\nBalas dengan kata \"WhatsApp\" jika ingin chat langsung."],
-        ['keywords' => ['alamat', 'lokasi', 'kantor', 'di mana', 'address', 'kota', 'serang', 'banten', 'nuansa alam'], 'reply' => "Kantor pusat kami beralamat di:\n📍 " . config('company.contact.address') . "\n(" . config('company.contact.city') . ")"],
-        ['keywords' => ['tim', 'team', 'direksi', 'direktur', 'komisaris', 'orang', 'personil', 'pimpinan', 'siapa', 'profil orang'], 'reply' => "Tim inti NTU dipimpin oleh para ahli doktoral:\n\n" . $teamNames . "\n\nKunjungi halaman Tim Kami untuk profil lengkap setiap personil."],
-        ['keywords' => ['riset', 'research', 'kajian', 'proyek', 'penelitian', 'rekam jejak', 'pengalaman', 'mitra', 'klien', 'kemnaker', 'undp', 'unicef', 'usaid', 'oxfam', 'giz', 'world bank', 'aflatoun', 'swedish'], 'reply' => "Rekam jejak riset NTU mencakup kajian kebijakan, ketenagakerjaan, dan hubungan industrial untuk Kemnaker RI, serta kolaborasi dengan organisasi internasional seperti UNDP, UNICEF, USAID, OXFAM, GIZ, ICF, dan Swedish Institute.\n\nBeberapa contoh pekerjaan:\n\n" . $experienceList . "\n\nKetik \"FAQ\" untuk pertanyaan yang sering diajukan."],
-        ['keywords' => ['visi', 'misi', 'profil', 'tentang', 'sejarah', 'berdiri', 'didirikan', 'perusahaan', 'tahun', 'legal', 'kbl', 'badan hukum', 'modal', 'akta'], 'reply' => config('company.overview.intro') . "\n\nNTU didirikan pada " . config('company.legal')[2]['value'] . " di " . config('company.contact.city') . ", dan terus berkembang menjadi mitra riset & teknologi terpercaya."],
-        ['keywords' => ['nilai', 'value', 'integritas', 'profesional', 'etika', 'budaya'], 'reply' => "Nilai utama NTU: Integritas, Profesionalisme, dan komitmen terhadap solusi berbasis bukti (evidence-based). Kami menjunjung tinggi kejujuran, transparansi, dan tanggung jawab dalam setiap layanan."],
-        ['keywords' => ['harga', 'biaya', 'tarif', 'cost', 'fee', 'berapa', 'pembayaran', 'mahal'], 'reply' => "Biaya layanan NTU disesuaikan dengan lingkup, metodologi, dan kompleksitas pekerjaan. Silakan kirim kebutuhan Anda melalui email " . config('company.contact.email') . " atau WhatsApp " . config('company.contact.phone') . " — tim kami akan menyusun penawaran yang sesuai."],
-        ['keywords' => ['lamaran', 'karir', 'kerja', 'lowongan', 'loker', 'recruitment', 'magang', 'intern', 'cpns'], 'reply' => "Informasi lowongan kerja NTU akan kami umumkan melalui halaman ini dan kanal resmi kami. Untuk pengiriman lamaran terbuka, silakan kirim berkas ke " . config('company.contact.email') . " dengan subjek \"Lamaran — [Posisi]\". Kami akan meninjau dan merespons sesuai kebutuhan. 😊"],
-        ['keywords' => ['faq', 'pertanyaan', 'tanya', 'tanyakan', 'umum'], 'reply' => "Berikut beberapa pertanyaan yang sering diajukan:\n\n• " . $faqList . "\n\nKetik pertanyaan spesifik, atau hubungi kami langsung via email/WhatsApp."],
-        ['keywords' => ['terima kasih', 'makasih', 'makasi ya', 'thanks', 'thank', 'sip', 'oke', 'ok', 'mantap', 'good'], 'reply' => 'Sama-sama! 😊 Senang bisa membantu. Jika ada pertanyaan lain seputar NTU, jangan ragu untuk bertanya lagi ya.'],
-        ['keywords' => ['selamat tinggal', 'dadah', 'bye', 'sampai jumpa', 'met malam', 'nggih'], 'reply' => 'Terima kasih sudah menghubungi Asisten NTU! 🙌 Sampai jumpa lagi.'],
+    $contactInfo = company('contact');
+
+    $chatbotUi = __('ui.chatbot');
+
+    $chatReplacements = [
+        ':services' => $servicesList,
+        ':team' => $teamNames,
+        ':experience' => $experienceList,
+        ':faq' => $faqList,
+        ':intro' => company('overview.intro'),
+        ':founded' => company('legal')[2]['value'],
+        ':address' => $contactInfo['address'],
+        ':city' => $contactInfo['city'],
+        ':email' => $contactInfo['email'],
+        ':phone' => $contactInfo['phone'],
+        ':name' => company('short_name'),
     ];
+
+    $knowledge = array_map(fn($item) => [
+        'keywords' => $item['keywords'],
+        'reply' => strtr($item['reply'], $chatReplacements),
+    ], $chatbotUi['knowledge']);
+
+    $quickReplies = $chatbotUi['quick_replies'];
+    $greeting = strtr($chatbotUi['greeting'], $chatReplacements);
+    $fallback = strtr($chatbotUi['fallback'], $chatReplacements);
+    $chatName = $chatbotUi['name'];
+    $chatStatus = $chatbotUi['status'];
+    $chatPlaceholder = $chatbotUi['placeholder'];
+    $chatFooter = strtr($chatbotUi['footer'], [':name' => company('short_name')]);
 @endphp
 
 <div x-data="chatbot()" class="fixed bottom-6 right-6 z-60 flex flex-col items-end">
@@ -42,13 +57,13 @@
                     <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-accent border-2 border-white"></span>
                 </div>
                 <div class="relative">
-                    <p class="text-white font-bold text-sm leading-tight">Asisten NTU</p>
+                    <p class="text-white font-bold text-sm leading-tight">{{ $chatName }}</p>
                     <p class="text-white/70 text-xs flex items-center gap-1.5 mt-0.5">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3 h-3"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.5 21.5l4.5-.838A9.955 9.955 0 0 0 12 22z"></path><path d="m9 12 2 2 4-4"></path></svg>
-                        Online — siap membantu
+                        {{ $chatStatus }}
                     </p>
                 </div>
-                <button @click="open = false" class="absolute left-70 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors" aria-label="Tutup chat">
+                <button @click="open = false" class="absolute left-70 top-1/2 -translate-y-1/2 p-1.5 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-colors" aria-label="{{ __('ui.chatbot.close_aria') }}">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
                 </button>
             </div>
@@ -69,7 +84,7 @@
                                 <span class="w-5 h-5 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3 h-3"><rect width="18" height="10" x="3" y="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                                 </span>
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-primary/70">Asisten NTU</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-primary/70">{{ $chatName }}</span>
                             </div>
                         </template>
                         <span x-text="msg.text" style="white-space: pre-line"></span>
@@ -100,18 +115,18 @@
         <!-- Input -->
         <div class="p-3 pt-1 border-t border-gray-100 bg-white shrink-0">
             <div class="flex items-center gap-2 bg-slate-50 border border-gray-200 rounded-2xl px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/40 transition-all">
-                <input x-model="input" @keydown.enter="send()" type="text" placeholder="Tulis pesan..." class="flex-1 bg-transparent outline-none text-sm py-1.5 text-gray-700 placeholder-gray-400">
-                <button @click="send()" :disabled="!input.trim()" :class="input.trim() ? 'bg-primary hover:bg-primary/90 shadow-md shadow-primary/30' : 'bg-gray-200 text-gray-400 cursor-not-allowed'" class="w-9 h-9 rounded-xl flex items-center justify-center text-white transition-all duration-200 shrink-0" aria-label="Kirim">
+                <input x-model="input" @keydown.enter="send()" type="text" placeholder="{{ $chatPlaceholder }}" class="flex-1 bg-transparent outline-none text-sm py-1.5 text-gray-700 placeholder-gray-400">
+                <button @click="send()" :disabled="!input.trim()" :class="input.trim() ? 'bg-primary hover:bg-primary/90 shadow-md shadow-primary/30' : 'bg-gray-200 text-gray-400 cursor-not-allowed'" class="w-9 h-9 rounded-xl flex items-center justify-center text-white transition-all duration-200 shrink-0" aria-label="{{ __('ui.chatbot.send_aria') }}">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg>
                 </button>
             </div>
-            <p class="text-center text-[10px] text-gray-400 mt-1.5">Chatbot seputar {{ config('company.short_name') }} • Jawaban otomatis</p>
+            <p class="text-center text-[10px] text-gray-400 mt-1.5">{{ $chatFooter }}</p>
         </div>
     </div>
 
     <!-- Toggle Button -->
     <button @click="toggle()" class="relative w-14 h-14 rounded-full bg-white shadow-xl shadow-primary/25 ring-1 ring-primary/10 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center overflow-hidden group">
-        <img x-show="!open" src="{{ asset('images/chat-bot.gif') }}" alt="Asisten NTU" class="w-full h-full object-cover">
+        <img x-show="!open" src="{{ asset('images/chat-bot.gif') }}" alt="{{ $chatName }}" class="w-full h-full object-cover">
         <svg x-show="open" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
     </button>
 
@@ -121,17 +136,10 @@
                 open: false,
                 typing: false,
                 input: '',
-                quickReplies: [
-                    { label: '💼 Layanan', reply: 'layanan' },
-                    { label: '📞 Kontak', reply: 'kontak' },
-                    { label: '📍 Alamat', reply: 'alamat' },
-                    { label: '👥 Tim Kami', reply: 'tim' },
-                    { label: '🔬 Riset', reply: 'riset' },
-                    { label: '❓ FAQ', reply: 'faq' },
-                ],
+                quickReplies: {{ Js::from($quickReplies) }},
                 knowledge: {!! json_encode($knowledge) !!},
                 messages: [],
-                greeting: 'Halo! 👋 Saya Asisten NTU, asisten virtual seputar PT Nusantara Techno Utama. Silakan pilih topik di bawah ini atau ketik pertanyaan Anda.',
+                greeting: {{ Js::from($greeting) }},
                 init() {
                     this.messages.push({ role: 'bot', text: this.greeting, avatar: true });
                 },
@@ -168,7 +176,7 @@
                         const hit = item.keywords.some(k => t.includes(k));
                         if (hit) return item.reply;
                     }
-                    return "Maaf, saya belum memahami pertanyaan itu hehe, Silakan tanyakan hal seputar layanan, kontak, alamat, tim, riset, atau profil NTU. Anda juga bisa menghubungi kami langsung via email info@techno-inovation.com atau WhatsApp {{ config('company.contact.phone') }}.";
+                    return {!! json_encode($fallback) !!};
                 },
                 scrollDown() {
                     this.$nextTick(() => {

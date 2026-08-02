@@ -15,12 +15,12 @@
     <div class="hero-icons absolute inset-0 z-2 pointer-events-none will-change-transform">
         @php
             $chips = [
-                ['icon' => 'flask-conical', 'label' => 'Riset Terapan', 'pos' => 'left-[6%] top-[24%]', 'dur' => 4.5, 'delay' => 0, 'dist' => 12],
-                ['icon' => 'factory', 'label' => 'Rekayasa & Inovasi', 'pos' => 'right-[5%] top-[20%]', 'dur' => 5.2, 'delay' => 0.4, 'dist' => 10],
-                ['icon' => 'scroll-text', 'label' => 'Kajian Kebijakan', 'pos' => 'left-[8%] top-[60%]', 'dur' => 4.8, 'delay' => 0.8, 'dist' => 13],
-                ['icon' => 'leaf', 'label' => 'Teknologi Lingkungan', 'pos' => 'right-[7%] top-[56%]', 'dur' => 5.6, 'delay' => 0.2, 'dist' => 11],
-                ['icon' => 'shield-check', 'label' => 'TIC & Inspeksi', 'pos' => 'left-[15%] bottom-[22%]', 'dur' => 5.0, 'delay' => 0.6, 'dist' => 10],
-                ['icon' => 'bar-chart-3', 'label' => 'Analisis Data', 'pos' => 'right-[14%] bottom-[24%]', 'dur' => 4.4, 'delay' => 1.0, 'dist' => 14],
+                ['icon' => 'flask-conical', 'label' => __('ui.hero.chips.0'), 'pos' => 'left-[6%] top-[24%]', 'dur' => 4.5, 'delay' => 0, 'dist' => 12],
+                ['icon' => 'factory', 'label' => __('ui.hero.chips.1'), 'pos' => 'right-[5%] top-[20%]', 'dur' => 5.2, 'delay' => 0.4, 'dist' => 10],
+                ['icon' => 'scroll-text', 'label' => __('ui.hero.chips.2'), 'pos' => 'left-[8%] top-[60%]', 'dur' => 4.8, 'delay' => 0.8, 'dist' => 13],
+                ['icon' => 'leaf', 'label' => __('ui.hero.chips.3'), 'pos' => 'right-[7%] top-[56%]', 'dur' => 5.6, 'delay' => 0.2, 'dist' => 11],
+                ['icon' => 'shield-check', 'label' => __('ui.hero.chips.4'), 'pos' => 'left-[15%] bottom-[22%]', 'dur' => 5.0, 'delay' => 0.6, 'dist' => 10],
+                ['icon' => 'bar-chart-3', 'label' => __('ui.hero.chips.5'), 'pos' => 'right-[14%] bottom-[24%]', 'dur' => 4.4, 'delay' => 1.0, 'dist' => 14],
             ];
         @endphp
 
@@ -66,7 +66,7 @@
             </div>
 
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
-                Riset yang <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-300 via-white to-green-300">Menciptakan Dampak</span> untuk <span class="relative inline-block whitespace-nowrap">Indonesia
+                {{ __('ui.hero.h1_part1') }} <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-300 via-white to-green-300">{{ __('ui.hero.h1_highlight') }}</span> {{ __('ui.hero.h1_part2') }} <span class="relative inline-block whitespace-nowrap">{{ __('ui.hero.h1_underline') }}
                     <svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 220 16" preserveAspectRatio="none" aria-hidden="true">
                         <path d="M2,11 C30,2 60,14 90,8 C120,3 150,12 180,7 C196,4 210,8 218,6" fill="none" stroke="#22C55E" stroke-width="5" stroke-linecap="round"></path>
                     </svg>
@@ -74,16 +74,16 @@
             </h1>
 
             <p class="text-lg md:text-xl text-white mb-8 max-w-2xl mx-auto leading-relaxed">
-                Menggabungkan riset terapan, keahlian rekayasa, teknologi lingkungan, dan layanan Testing, Inspection &amp; Certification menjadi solusi terintegrasi yang berbasis bukti bagi pemerintah, industri, dan masyarakat.
+                {{ __('ui.hero.subtitle') }}
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-xl hover:bg-white/90 transition-all duration-300 shadow-xl shadow-black/20 group">
-                    Jelajahi Layanan
+                    {{ __('ui.hero.cta_primary') }}
                     <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="{{ route('about') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/30 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
-                    Tentang Kami
+                <a href="{{ lroute('about') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/30 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+                    {{ __('ui.hero.cta_secondary') }}
                 </a>
             </div>
         </div>

@@ -66,9 +66,13 @@ class ArticleController extends Controller
             $article = Article::create([
                 'author_id' => auth()->id(),
                 'title' => $request->input('title'),
+                'title_en' => $request->input('title_en'),
                 'slug' => $request->input('slug', Str::slug($request->input('title'))),
+                'slug_en' => $this->resolveSlugEn($request),
                 'excerpt' => $request->input('excerpt'),
+                'excerpt_en' => $request->input('excerpt_en'),
                 'content' => $request->input('content'),
+                'content_en' => $request->input('content_en'),
                 'thumbnail' => $request->input('thumbnail'),
                 'cover' => $request->input('cover'),
                 'category_id' => $request->input('category_id'),
@@ -104,9 +108,13 @@ class ArticleController extends Controller
         DB::transaction(function () use ($request, $article) {
             $article->update([
                 'title' => $request->input('title'),
+                'title_en' => $request->input('title_en'),
                 'slug' => $request->input('slug'),
+                'slug_en' => $this->resolveSlugEn($request),
                 'excerpt' => $request->input('excerpt'),
+                'excerpt_en' => $request->input('excerpt_en'),
                 'content' => $request->input('content'),
+                'content_en' => $request->input('content_en'),
                 'thumbnail' => $request->input('thumbnail'),
                 'cover' => $request->input('cover'),
                 'category_id' => $request->input('category_id'),
@@ -299,5 +307,17 @@ class ArticleController extends Controller
         $words = str_word_count(strip_tags((string) $content));
 
         return max(1, (int) ceil($words / 200));
+    }
+
+    /**
+     * Use the submitted English slug, or derive one from the English title.
+     */
+    private function resolveSlugEn(Request $request): ?string
+    {
+        if ($request->filled('slug_en')) {
+            return $request->input('slug_en');
+        }
+
+        return $request->filled('title_en') ? Str::slug($request->input('title_en')) : null;
     }
 }
