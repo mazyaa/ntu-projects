@@ -5,17 +5,17 @@
 
         <div class="text-center mb-20" data-aos="fade-up">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-                <i data-lucide="git-branch" class="w-4 h-4"></i> Metodologi Kami
+                <i data-lucide="git-branch" class="w-4 h-4"></i> {{ __('ui.workflow.badge') }}
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Alur Riset & Rekayasa</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto">Setiap proyek kami mengikuti metodologi terstruktur untuk menjamin akurasi, transparansi, dan dampak kebijakan yang berbasis bukti.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">{{ __('ui.workflow.h2') }}</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">{{ __('ui.workflow.subtitle') }}</p>
         </div>
 
         <div class="relative">
             <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary/20 via-primary to-primary/20 transform -translate-x-1/2"></div>
             <div class="lg:hidden absolute left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-primary/20 via-primary to-primary/20 transform -translate-x-1/2"></div>
 
-            @foreach(config('company.research_process') as $index => $step)
+            @foreach(company('research_process') as $index => $step)
             <div class="relative flex flex-col lg:flex-row items-center mb-16 lg:mb-24" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                 @if($index % 2 === 0)
                 <div class="hidden lg:block lg:w-1/2 lg:pr-16 lg:text-right order-2 lg:order-1">

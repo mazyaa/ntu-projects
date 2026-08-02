@@ -1,6 +1,6 @@
 <section class="py-12 bg-white border-y border-gray-100 overflow-hidden" id="trusted">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
-        <p class="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest" data-aos="fade-up">Dipercaya Oleh Berbagai Perusahaan & Instansi</p>
+        <p class="text-center text-sm font-semibold text-gray-400 uppercase tracking-widest" data-aos="fade-up">{{ __('ui.trusted_by.label') }}</p>
     </div>
 
     <!-- Swiper Marquee -->

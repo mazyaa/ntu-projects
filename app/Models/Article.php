@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ArticleStatus;
+use App\Support\Localizable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,15 +15,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use HasFactory, HasUuids, SoftDeletes;
+    use HasFactory, HasUuids, Localizable, SoftDeletes;
 
     protected $fillable = [
         'author_id',
         'category_id',
         'title',
+        'title_en',
         'slug',
+        'slug_en',
         'excerpt',
+        'excerpt_en',
         'content',
+        'content_en',
         'thumbnail',
         'cover',
         'status',

@@ -12,27 +12,27 @@ class SiteController extends Controller
     public function about()
     {
         return view('pages.about', [
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 
     public function leadership()
     {
         return view('pages.leadership.index', [
-            'people' => config('company-leadership.people'),
+            'people' => company('people', 'company-leadership'),
         ]);
     }
 
     public function leadershipShow(string $slug)
     {
-        $person = collect(config('company-leadership.people'))
+        $person = collect(company('people', 'company-leadership'))
             ->firstWhere('slug', $slug);
 
         abort_unless($person, 404);
 
         return view('pages.leadership.show', [
             'person' => $person,
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 
@@ -40,26 +40,28 @@ class SiteController extends Controller
     {
         return view('pages.services.index', [
             'services' => Service::active()->orderBy('sort_order')->get(),
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 
     public function serviceShow(string $slug)
     {
-        $service = Service::active()->where('slug', $slug)->firstOrFail();
+        $service = Service::active()
+            ->where(fn ($query) => $query->where('slug', $slug)->orWhere('slug_en', $slug))
+            ->firstOrFail();
 
         return view('pages.services.show', [
             'service' => $service,
             'services' => Service::active()->orderBy('sort_order')->get(),
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 
     public function research()
     {
         return view('pages.research.index', [
-            'personnel' => config('company-research.personnel'),
-            'company' => config('company'),
+            'personnel' => company('personnel', 'company-research'),
+            'company' => company(),
         ]);
     }
 
@@ -73,7 +75,7 @@ class SiteController extends Controller
                 ->with('category')
                 ->latest('published_at')
                 ->paginate(9),
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 
@@ -83,14 +85,14 @@ class SiteController extends Controller
 
         $article = Article::published()
             ->with('author')
-            ->where('slug', $slug)
+            ->where(fn ($query) => $query->where('slug', $slug)->orWhere('slug_en', $slug))
             ->firstOrFail();
 
         $views->track($article);
 
         $related = Article::published()
             ->with('category')
-            ->where('slug', '!=', $slug)
+            ->where('id', '!=', $article->id)
             ->latest('published_at')
             ->take(5)
             ->get();
@@ -103,7 +105,7 @@ class SiteController extends Controller
             'article' => $article,
             'related' => $related,
             'authorArticleCount' => $authorArticleCount,
-            'company' => config('company'),
+            'company' => company(),
         ]);
     }
 }

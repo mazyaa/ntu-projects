@@ -27,6 +27,7 @@ class ProfileController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'skills' => ['nullable', 'string', 'max:1000'],
+            'skills_en' => ['nullable', 'string', 'max:1000'],
             'avatar' => ['nullable', 'image', 'max:2048'],
         ]);
 
@@ -35,6 +36,7 @@ class ProfileController extends Controller
         $data = [
             'name' => $request->input('name'),
             'skills' => $request->input('skills'),
+            'skills_en' => $request->input('skills_en'),
         ];
 
         if ($request->hasFile('avatar')) {

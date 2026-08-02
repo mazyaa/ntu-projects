@@ -1,15 +1,15 @@
 @extends('layouts.landing')
 
-@section('title', $article->title)
+@section('title', $article->localized('title'))
 
 @section('content')
     <x-landing.page-hero
-        :title="$article->title"
-        :subtitle="($article->category?->name ?? '') . ' — ' . $article->published_at?->format('d M Y')"
+        :title="$article->localized('title')"
+        :subtitle="($article->category?->localized('name') ?? '') . ' — ' . $article->published_at?->format('d M Y')"
         :breadcrumb="[
-            ['label' => 'Beranda', 'url' => route('home')],
-            ['label' => 'Artikel', 'url' => route('articles')],
-            ['label' => $article->title],
+            ['label' => __('ui.article_page.breadcrumb_home'), 'url' => lroute('home')],
+            ['label' => __('ui.article_page.breadcrumb_articles'), 'url' => lroute('articles')],
+            ['label' => $article->localized('title')],
         ]"
     />
 
@@ -23,18 +23,18 @@
                 <div class="lg:col-span-2 min-w-0">
                     <article class="prose prose-lg max-w-none" data-aos="fade-up">
                         <div class="flex items-center gap-4 mb-8 flex-wrap">
-                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-bold rounded-full">{{ $article->category?->name }}</span>
+                            <span class="px-3 py-1 bg-primary/10 text-primary text-sm font-bold rounded-full">{{ $article->category?->localized('name') }}</span>
                             <span class="text-sm text-gray-400">{{ $article->published_at?->format('d M Y') }}</span>
                         </div>
 
                         @if($article->thumbnail)
-                        <img src="{{ $article->thumbnail }}" alt="{{ $article->title }}" class="w-full h-72 object-cover rounded-3xl mb-8" loading="lazy">
+                        <img src="{{ $article->thumbnail }}" alt="{{ $article->localized('title') }}" class="w-full h-72 object-cover rounded-3xl mb-8" loading="lazy">
                         @endif
 
-                        <h1 class="text-3xl md:text-4xl font-bold text-secondary mb-6 leading-tight">{{ $article->title }}</h1>
+                        <h1 class="text-3xl md:text-4xl font-bold text-secondary mb-6 leading-tight">{{ $article->localized('title') }}</h1>
 
                         <div class="text-gray-600 leading-relaxed text-lg">
-                            {!! $article->content !!}
+                            {!! $article->localized('content') !!}
                         </div>
                     </article>
 
@@ -56,13 +56,13 @@
 
                                 <div class="flex-1 min-w-0">
                                     <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full mb-2">
-                                        <i data-lucide="pen-tool" class="w-3 h-3"></i> Penulis
+                                        <i data-lucide="pen-tool" class="w-3 h-3"></i> {{ __('ui.article_page.author_label') }}
                                     </div>
                                     <h3 class="text-lg font-bold text-secondary leading-tight">{{ $article->author->name }}</h3>
 
                                     @if($article->author->skills)
                                     <div class="flex flex-wrap gap-2 mt-3">
-                                        @foreach(array_filter(array_map('trim', explode(',', $article->author->skills))) as $skill)
+                                        @foreach(array_filter(array_map('trim', explode(',', $article->author->localized('skills')))) as $skill)
                                         <span class="px-2.5 py-1 bg-white/70 border border-gray-100 text-gray-500 text-xs rounded-lg">{{ $skill }}</span>
                                         @endforeach
                                     </div>
@@ -73,7 +73,7 @@
                                     <i data-lucide="file-text" class="w-5 h-5 text-primary"></i>
                                     <div class="flex flex-col leading-tight">
                                         <span class="text-lg font-bold text-secondary">{{ number_format($authorArticleCount) }}</span>
-                                        <span class="text-[11px] text-gray-400">Artikel Diterbitkan</span>
+                                        <span class="text-[11px] text-gray-400">{{ __('ui.article_page.article_count') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -87,15 +87,15 @@
                     <div class="lg:sticky lg:top-28" data-aos="fade-left">
                         <div class="rounded-3xl bg-slate-50 border border-gray-100 p-6">
                             <h2 class="text-xl font-bold text-secondary mb-6 flex items-center gap-2">
-                                <i data-lucide="newspaper" class="w-5 h-5 text-primary"></i> Artikel Lainnya
+                                <i data-lucide="newspaper" class="w-5 h-5 text-primary"></i> {{ __('ui.article_page.other_articles_h2') }}
                             </h2>
 
                             <div class="space-y-5">
                                 @forelse($related as $rel)
-                                <a href="{{ route('articles.show', $rel->slug) }}" class="group flex gap-4">
+                                <a href="{{ lroute('articles.show', ['slug' => $rel->routeSlug()]) }}" class="group flex gap-4">
                                     <div class="w-24 h-20 shrink-0 overflow-hidden rounded-xl">
                                         @if($rel->thumbnail)
-                                        <img src="{{ $rel->thumbnail }}" alt="{{ $rel->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
+                                        <img src="{{ $rel->thumbnail }}" alt="{{ $rel->localized('title') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                         @else
                                         <div class="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                                             <i data-lucide="image" class="w-6 h-6 text-primary/40"></i>
@@ -103,18 +103,18 @@
                                         @endif
                                     </div>
                                     <div class="min-w-0 flex-1">
-                                        <span class="text-[11px] font-bold text-primary uppercase tracking-wide">{{ $rel->category?->name }}</span>
-                                        <h3 class="text-sm font-semibold text-secondary leading-snug mt-0.5 group-hover:text-primary transition-colors line-clamp-2">{{ $rel->title }}</h3>
+                                        <span class="text-[11px] font-bold text-primary uppercase tracking-wide">{{ $rel->category?->localized('name') }}</span>
+                                        <h3 class="text-sm font-semibold text-secondary leading-snug mt-0.5 group-hover:text-primary transition-colors line-clamp-2">{{ $rel->localized('title') }}</h3>
                                         <p class="text-xs text-gray-400 mt-1">{{ $rel->published_at?->format('d M Y') }}</p>
                                     </div>
                                 </a>
                                 @empty
-                                <p class="text-sm text-gray-400">Belum ada artikel lainnya.</p>
+                                <p class="text-sm text-gray-400">{{ __('ui.article_page.empty_related') }}</p>
                                 @endforelse
                             </div>
 
-                            <a href="{{ route('articles') }}" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-primary bg-primary/10 rounded-xl hover:bg-primary/20 transition-colors">
-                                Lihat Semua Artikel <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            <a href="{{ lroute('articles') }}" class="mt-6 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-primary bg-primary/10 rounded-xl hover:bg-primary/20 transition-colors">
+                                {{ __('ui.article_page.view_all_articles') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>

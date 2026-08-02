@@ -5,17 +5,17 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16" data-aos="fade-up">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-semibold mb-6">
-                <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Angka & Capaian
+                <i data-lucide="bar-chart-3" class="w-4 h-4"></i> {{ __('ui.statistics.badge') }}
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">NTU dalam Angka</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto">Komitmen dan dedikasi kami tercermin melalui capaian nyata yang telah kami raih sejak berdiri.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{{ __('ui.statistics.h2') }}</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">{{ __('ui.statistics.subtitle') }}</p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
             @php
                 $delays = [100, 200, 300, 400, 500];
             @endphp
-            @foreach(config('company.stats') as $index => $stat)
+            @foreach(company('stats') as $index => $stat)
             <div class="stat-item text-center" data-aos="fade-up" data-aos-delay="{{ $delays[$index] }}">
                 <div class="text-4xl md:text-5xl font-bold text-{{ $stat['color'] }} mb-2">
                     <span class="counter" data-target="{{ $stat['value'] }}">0</span><span class="text-{{ $stat['color'] }}">{{ $stat['suffix'] }}</span>

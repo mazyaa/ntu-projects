@@ -57,6 +57,13 @@
                                       class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">{{ old('skills', $user->skills) }}</textarea>
                             @error('skills') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
                         </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-secondary mb-2" for="skills_en">Keahlian (English)</label>
+                            <textarea id="skills_en" name="skills_en" rows="4" placeholder="Write your skills, separated by commas (e.g. Policy Research, OHS, Data Analysis)..."
+                                      class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">{{ old('skills_en', $user->skills_en) }}</textarea>
+                            @error('skills_en') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                        </div>
                     </div>
                 </x-card>
 

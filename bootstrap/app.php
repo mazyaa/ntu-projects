@@ -4,6 +4,7 @@ use App\Http\Middleware\CheckMaintenance;
 use App\Http\Middleware\EnsureAdminAuthenticated;
 use App\Http\Middleware\RedirectPanelByRole;
 use App\Http\Middleware\SecurityHeaders;
+use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -37,6 +38,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'panel.redirect' => RedirectPanelByRole::class,
             'permission' => PermissionMiddleware::class,
             'role' => RoleMiddleware::class,
+            'locale' => SetLocale::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -13,13 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="PT Nusantara Techno Utama (NTU) - Perusahaan riset terapan dan kebijakan, rekayasa teknologi, pengelolaan lingkungan, serta layanan Testing, Inspection & Certification (TIC) untuk Indonesia yang berkelanjutan.">
-    <meta name="keywords" content="NTU, Riset Terapan, Kajian Kebijakan, Engineering, Teknologi Lingkungan, TIC, Inspeksi Teknik, PT Nusantara Techno Utama">
-    <meta property="og:title" content="NTU - @yield('title', 'Beranda')">
-    <meta property="og:description" content="Mitra riset dan teknologi terpercaya untuk Indonesia yang berkelanjutan.">
+    <meta name="description" content="{{ __('ui.meta.description') }}">
+    <meta name="keywords" content="{{ __('ui.meta.keywords') }}">
+    <meta property="og:title" content="NTU - @yield('title', __('ui.home'))">
+    <meta property="og:description" content="{{ __('ui.meta.og_description') }}">
     <meta property="og:image" content="{{ asset('images/logo/hero-logo.png') }}">
 
-    <title>NTU - @yield('title', 'Beranda')</title>
+    <title>NTU - @yield('title', __('ui.home'))</title>
 
     <!-- Scripts and Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -29,8 +29,8 @@
     <!-- Preloader -->
     <div id="preloader" class="fixed inset-0 z-100 bg-white flex items-center justify-center transition-opacity duration-500">
         <div class="animate-pulse flex flex-col items-center">
-            <img src="{{ asset('images/logo/navbar-logo.png') }}" alt="{{ config('company.short_name') }} Logo" class="w-28 h-28 object-contain">
-            <div class="text-secondary font-bold tracking-widest text-sm uppercase mt-4">Memuat...</div>
+            <img src="{{ asset('images/logo/navbar-logo.png') }}" alt="{{ company('short_name') }} Logo" class="w-28 h-28 object-contain">
+            <div class="text-secondary font-bold tracking-widest text-sm uppercase mt-4">{{ __('ui.loading') }}</div>
         </div>
     </div>
 

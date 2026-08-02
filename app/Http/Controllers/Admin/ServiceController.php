@@ -36,14 +36,20 @@ class ServiceController extends Controller
 
         $service = Service::create([
             'slug' => Str::slug($request->input('title')),
+            'slug_en' => $this->resolveSlugEn($request),
             'title' => $validated['title'],
+            'title_en' => $validated['title_en'] ?? null,
             'short_title' => $validated['short_title'] ?? null,
+            'short_title_en' => $validated['short_title_en'] ?? null,
             'image' => $validated['image'] ?? null,
             'icon' => $validated['icon'] ?? null,
             'color' => $validated['color'] ?? 'primary',
             'tagline' => $validated['tagline'] ?? null,
+            'tagline_en' => $validated['tagline_en'] ?? null,
             'description' => $validated['description'] ?? null,
+            'description_en' => $validated['description_en'] ?? null,
             'service_items' => $this->normalizeServiceItems($validated['service_items'] ?? []),
+            'service_items_en' => $this->normalizeServiceItems($validated['service_items_en'] ?? []),
             'status' => $validated['status'] ?? 'active',
             'sort_order' => (int) ($validated['sort_order'] ?? 0),
         ]);
@@ -62,14 +68,20 @@ class ServiceController extends Controller
 
         $service->update([
             'title' => $validated['title'],
+            'title_en' => $validated['title_en'] ?? null,
             'slug' => Str::slug($request->input('title')),
+            'slug_en' => $this->resolveSlugEn($request),
             'short_title' => $validated['short_title'] ?? null,
+            'short_title_en' => $validated['short_title_en'] ?? null,
             'image' => $validated['image'] ?? null,
             'icon' => $validated['icon'] ?? null,
             'color' => $validated['color'] ?? 'primary',
             'tagline' => $validated['tagline'] ?? null,
+            'tagline_en' => $validated['tagline_en'] ?? null,
             'description' => $validated['description'] ?? null,
+            'description_en' => $validated['description_en'] ?? null,
             'service_items' => $this->normalizeServiceItems($validated['service_items'] ?? []),
+            'service_items_en' => $this->normalizeServiceItems($validated['service_items_en'] ?? []),
             'status' => $validated['status'] ?? 'active',
             'sort_order' => (int) ($validated['sort_order'] ?? 0),
         ]);
@@ -88,17 +100,36 @@ class ServiceController extends Controller
     {
         return $request->validate([
             'title' => ['required', 'string', 'max:255'],
+            'title_en' => ['nullable', 'string', 'max:255'],
             'short_title' => ['nullable', 'string', 'max:255'],
+            'short_title_en' => ['nullable', 'string', 'max:255'],
             'image' => ['nullable', 'string', 'max:500'],
             'icon' => ['nullable', 'string', 'max:50'],
             'color' => ['nullable', 'string', 'in:primary,secondary,accent,success,warning,danger'],
             'tagline' => ['nullable', 'string', 'max:500'],
+            'tagline_en' => ['nullable', 'string', 'max:500'],
             'description' => ['nullable', 'string'],
+            'description_en' => ['nullable', 'string'],
             'service_items' => ['nullable', 'array'],
             'service_items.*' => ['string', 'max:1000'],
+            'service_items_en' => ['nullable', 'array'],
+            'service_items_en.*' => ['string', 'max:1000'],
+            'slug_en' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/', 'unique:services,slug_en,'.$request->route('service')?->getKey()],
             'status' => ['required', 'in:active,draft,archived'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ]);
+    }
+
+    /**
+     * Use the submitted English slug, or derive one from the English title.
+     */
+    private function resolveSlugEn(Request $request): ?string
+    {
+        if ($request->filled('slug_en')) {
+            return $request->input('slug_en');
+        }
+
+        return $request->filled('title_en') ? Str::slug($request->input('title_en')) : null;
     }
 
     private function normalizeServiceItems(array $items): array

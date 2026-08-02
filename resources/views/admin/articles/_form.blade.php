@@ -2,40 +2,87 @@
     <div class="lg:col-span-2 space-y-6">
         <!-- Main -->
         <x-card>
-            <div class="p-6 space-y-5">
-                <div>
-                    <label class="block text-sm font-medium text-secondary mb-2" for="title">Judul Artikel</label>
-                    <input type="text" id="title" name="title" value="{{ old('title', $article->title ?? '') }}" required
-                           class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" placeholder="Judul artikel...">
-                    @error('title') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+            <div class="p-6 space-y-5" x-data="{ lang: 'id' }">
+                <div class="inline-flex rounded-xl bg-gray-100 p-1">
+                    <button type="button" @click="lang = 'id'" :class="lang === 'id' ? 'bg-white shadow text-secondary font-semibold' : 'text-gray-500 hover:text-secondary'"
+                            class="px-4 py-1.5 text-sm rounded-lg transition-colors">Indonesia</button>
+                    <button type="button" @click="lang = 'en'" :class="lang === 'en' ? 'bg-white shadow text-secondary font-semibold' : 'text-gray-500 hover:text-secondary'"
+                            class="px-4 py-1.5 text-sm rounded-lg transition-colors">English</button>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-secondary mb-2" for="slug">Slug</label>
-                    <div class="flex items-center gap-2">
-                        <span class="text-sm text-gray-400">/</span>
-                        <input type="text" id="slug" name="slug" value="{{ old('slug', $article->slug ?? '') }}" required
-                               class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700 font-mono" placeholder="judul-artikel">
+                <div x-show="lang === 'id'">
+                    <div>
+                        <label class="block text-sm font-medium text-secondary mb-2" for="title">Judul Artikel</label>
+                        <input type="text" id="title" name="title" value="{{ old('title', $article->title ?? '') }}" required
+                               class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" placeholder="Judul artikel...">
+                        @error('title') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
                     </div>
-                    @error('slug') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-secondary mb-2" for="slug">Slug</label>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-gray-400">/</span>
+                            <input type="text" id="slug" name="slug" value="{{ old('slug', $article->slug ?? '') }}" required
+                                   class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700 font-mono" placeholder="judul-artikel">
+                        </div>
+                        @error('slug') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-secondary mb-2" for="excerpt">Ringkasan (Excerpt)</label>
+                        <textarea id="excerpt" name="excerpt" rows="3"
+                                  class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" placeholder="Ringkasan singkat artikel...">{{ old('excerpt', $article->excerpt ?? '') }}</textarea>
+                        @error('excerpt') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-secondary mb-2" for="content">Konten</label>
+                        <x-admin.rich-editor
+                            name="content"
+                            id="content"
+                            :value="old('content', $article->content ?? '')"
+                            upload-url="{{ panel_route('articles.upload-image') }}"
+                        />
+                        @error('content') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-secondary mb-2" for="excerpt">Ringkasan (Excerpt)</label>
-                    <textarea id="excerpt" name="excerpt" rows="3"
-                              class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" placeholder="Ringkasan singkat artikel...">{{ old('excerpt', $article->excerpt ?? '') }}</textarea>
-                    @error('excerpt') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
-                </div>
+                <div x-show="lang === 'en'" style="display: none;">
+                    <div>
+                        <label class="block text-sm font-medium text-secondary mb-2" for="title_en">English Title</label>
+                        <input type="text" id="title_en" name="title_en" value="{{ old('title_en', $article->title_en ?? '') }}"
+                               class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" placeholder="Article title...">
+                        @error('title_en') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-secondary mb-2" for="content">Konten</label>
-                    <x-admin.rich-editor
-                        name="content"
-                        id="content"
-                        :value="old('content', $article->content ?? '')"
-                        upload-url="{{ panel_route('articles.upload-image') }}"
-                    />
-                    @error('content') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-secondary mb-2" for="slug_en">English Slug</label>
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-gray-400">/en/artikel/</span>
+                            <input type="text" id="slug_en" name="slug_en" value="{{ old('slug_en', $article->slug_en ?? '') }}"
+                                   class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700 font-mono" placeholder="article-title">
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1">Kosongkan untuk membuat otomatis dari judul Inggris.</p>
+                        @error('slug_en') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-secondary mb-2" for="excerpt_en">English Excerpt</label>
+                        <textarea id="excerpt_en" name="excerpt_en" rows="3"
+                                  class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" placeholder="Short article summary...">{{ old('excerpt_en', $article->excerpt_en ?? '') }}</textarea>
+                        @error('excerpt_en') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
+
+                    <div class="mt-5">
+                        <label class="block text-sm font-medium text-secondary mb-2" for="content_en">English Content</label>
+                        <x-admin.rich-editor
+                            name="content_en"
+                            id="content_en"
+                            :value="old('content_en', $article->content_en ?? '')"
+                            upload-url="{{ panel_route('articles.upload-image') }}"
+                        />
+                        @error('content_en') <p class="text-xs text-danger mt-1">{{ $message }}</p> @enderror
+                    </div>
                 </div>
             </div>
         </x-card>

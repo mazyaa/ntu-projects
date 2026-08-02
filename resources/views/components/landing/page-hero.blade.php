@@ -5,7 +5,7 @@
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
 
     <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <nav class="flex items-center gap-2 text-sm text-white/50 mb-8" aria-label="Breadcrumb">
+        <nav class="flex items-center gap-2 text-sm text-white/50 mb-8" aria-label="{{ __('ui.page_hero.breadcrumb') }}">
             @if($breadcrumb)
                 @foreach($breadcrumb as $crumb)
                     @if(!empty($crumb['url']))
@@ -16,7 +16,7 @@
                     @endif
                 @endforeach
             @else
-                <a href="{{ url('/') }}" class="hover:text-white transition-colors">Beranda</a>
+                <a href="{{ lroute('home') }}" class="hover:text-white transition-colors">{{ __('ui.page_hero.home') }}</a>
                 <i data-lucide="chevron-right" class="w-3 h-3"></i>
                 <span class="text-white/80">{{ $title ?? '' }}</span>
             @endif

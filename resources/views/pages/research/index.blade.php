@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', 'Riset')
+@section('title', __('ui.page_titles.research'))
 
 @section('content')
     @php
@@ -14,8 +14,8 @@
     @endphp
 
     <x-landing.page-hero
-        :title="'Rekam Jejak Riset & Kajian'"
-        :subtitle="'Riset terapan dan kajian kebijakan berbasis bukti yang telah dikerjakan personil kunci NTU untuk pemerintah, industri, dan organisasi internasional.'"
+        :title="__('ui.research_page.hero_title')"
+        :subtitle="__('ui.research_page.hero_subtitle')"
     />
 
     <section class="py-24 bg-white relative overflow-hidden"
@@ -45,24 +45,24 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14" data-aos="fade-up">
                 <div class="glass-card rounded-3xl p-6 text-center">
                     <div class="text-4xl font-bold text-primary mb-1">{{ count($allProjects) }}</div>
-                    <p class="text-sm text-gray-500 font-medium">Total Kajian & Proyek</p>
+                    <p class="text-sm text-gray-500 font-medium">{{ __('ui.research_page.stat_total') }}</p>
                 </div>
                 <div class="glass-card rounded-3xl p-6 text-center">
                     <div class="text-4xl font-bold text-accent mb-1">{{ $uniqueClients }}</div>
-                    <p class="text-sm text-gray-500 font-medium">Mitra & Pemberi Kerja</p>
+                    <p class="text-sm text-gray-500 font-medium">{{ __('ui.research_page.stat_partners') }}</p>
                 </div>
                 <div class="glass-card rounded-3xl p-6 text-center">
                     <div class="text-4xl font-bold text-secondary mb-1">{{ count($personnel) }}</div>
-                    <p class="text-sm text-gray-500 font-medium">Personil Kunci</p>
+                    <p class="text-sm text-gray-500 font-medium">{{ __('ui.research_page.stat_personnel') }}</p>
                 </div>
             </div>
 
             <div class="relative max-w-xl mx-auto mb-16" data-aos="fade-up">
                 <i data-lucide="search" class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"></i>
-                <input type="text" x-model="search" placeholder="Cari kajian, mitra, tahun, atau peran..."
+                <input type="text" x-model="search" placeholder="{{ __('ui.research_page.search_placeholder') }}"
                     class="w-full pl-12 pr-12 py-4 rounded-2xl border border-gray-200 bg-white shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all text-sm outline-none">
                 <button type="button" x-show="search !== ''" @click="search = ''" style="display: none;"
-                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors" aria-label="Bersihkan pencarian">
+                    class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors" aria-label="{{ __('ui.research_page.search_clear_aria') }}">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -79,7 +79,7 @@
                             <p class="text-sm text-gray-500 mt-1">{{ $person['role'] }}</p>
                         </div>
                         <span class="hidden sm:inline-flex shrink-0 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold whitespace-nowrap">
-                            {{ count($person['projects']) }} Proyek
+                            {{ __('ui.research_page.projects_count', ['count' => count($person['projects'])]) }}
                         </span>
                         <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" :class="open === {{ $index }} ? 'rotate-180' : ''"></i>
                     </button>
@@ -93,11 +93,11 @@
                                 <table class="w-full text-sm min-w-[720px]">
                                     <thead>
                                         <tr class="text-left text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-100">
-                                            <th class="py-3 pr-4 w-10">No</th>
-                                            <th class="py-3 pr-4">Uraian Kajian / Proyek</th>
-                                            <th class="py-3 pr-4 w-52">Pemberi Kerja / Pendana</th>
-                                            <th class="py-3 pr-4 w-24">Tahun</th>
-                                            <th class="py-3 w-44">Peran</th>
+                                            <th class="py-3 pr-4 w-10">{{ __('ui.research_page.table_no') }}</th>
+                                            <th class="py-3 pr-4">{{ __('ui.research_page.table_title') }}</th>
+                                            <th class="py-3 pr-4 w-52">{{ __('ui.research_page.table_client') }}</th>
+                                            <th class="py-3 pr-4 w-24">{{ __('ui.research_page.table_year') }}</th>
+                                            <th class="py-3 w-44">{{ __('ui.research_page.table_role') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -122,18 +122,18 @@
                                 @foreach($person['projects'] as $pIndex => $project)
                                 <div class="glass-card rounded-2xl p-5" x-show='matchProject({{ json_encode($project) }})'>
                                     <div class="flex items-start justify-between gap-3 mb-2">
-                                        <span class="text-xs font-bold text-gray-400">No. {{ $pIndex + 1 }}</span>
+                                        <span class="text-xs font-bold text-gray-400">{{ __('ui.research_page.card_no') }} {{ $pIndex + 1 }}</span>
                                         <span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-bold whitespace-nowrap">{{ $project['year'] }}</span>
                                     </div>
                                     <p class="text-sm font-semibold text-secondary leading-relaxed mb-3">{{ $project['title'] }}</p>
-                                    <p class="text-xs text-gray-500 mb-2"><span class="font-bold text-gray-600">Pemberi Kerja:</span> {{ $project['client'] }}</p>
-                                    <p class="text-xs text-gray-500"><span class="font-bold text-gray-600">Peran:</span> <span class="font-semibold text-{{ $person['color'] }}">{{ $project['role'] }}</span></p>
+                                    <p class="text-xs text-gray-500 mb-2"><span class="font-bold text-gray-600">{{ __('ui.research_page.card_client') }}</span> {{ $project['client'] }}</p>
+                                    <p class="text-xs text-gray-500"><span class="font-bold text-gray-600">{{ __('ui.research_page.card_role') }}</span> <span class="font-semibold text-{{ $person['color'] }}">{{ $project['role'] }}</span></p>
                                 </div>
                                 @endforeach
                             </div>
 
                             <p class="text-sm text-gray-400 text-center pt-4" x-show='!personMatch({{ json_encode($person['projects']) }})'>
-                                Tidak ada kajian yang cocok dengan pencarian ini.
+                                {{ __('ui.research_page.no_match') }}
                             </p>
                         </div>
                         </div>
@@ -146,10 +146,10 @@
                 <div class="w-16 h-16 mx-auto rounded-2xl bg-gray-100 flex items-center justify-center text-gray-400 mb-4">
                     <i data-lucide="search-x" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-lg font-bold text-secondary mb-1">Tidak ada hasil</h3>
-                <p class="text-gray-500 text-sm mb-5">Coba kata kunci lain atau bersihkan pencarian.</p>
+                <h3 class="text-lg font-bold text-secondary mb-1">{{ __('ui.research_page.no_results_h3') }}</h3>
+                <p class="text-gray-500 text-sm mb-5">{{ __('ui.research_page.no_results_p') }}</p>
                 <button type="button" @click="search = ''" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors">
-                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Bersihkan Pencarian
+                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> {{ __('ui.research_page.clear_search') }}
                 </button>
             </div>
         </div>
