@@ -1,58 +1,176 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://ui-avatars.com/api/?name=NTU&background=0736AA&color=fff&rounded=true&size=120" alt="NTU Logo" width="120">
 </p>
 
-## About Laravel
+<h1 align="center">PT Nusantara Techno Utama — Company Website</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Situs web perusahaan resmi PT Nusantara Techno Utama (NTU): company profile, pilar layanan, riset &amp; kajian kebijakan, kepemimpinan, artikel, serta kontak — dengan dukungan <strong>dua bahasa (Indonesia &amp; Inggris)</strong> dan <strong>panel admin berbasis peran</strong>.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur
 
-## Learning Laravel
+- **Situs publik bilingual** — konten statis via file `lang/{id,en}/company*.php`, konten dinamis (artikel, layanan, kategori, keahlian penulis) via kolom `*_en` di database.
+- **URL dua bahasa** — situs Indonesia tanpa prefiks (kanonikal), versi Inggris di `/en/...` dengan `slug_en` terpisah dan fallback ke slug Indonesia.
+- **Panel admin** — `/admin` untuk Super Admin/Admin dan `/editor` untuk Editor, dengan otorisasi berbasis peran &amp; izin (Spatie Laravel Permission).
+- **Manajemen konten** — artikel (penjadwalan, draft/published, featured, kategori, tag, rich editor), layanan, kategori, tag, dan media.
+- **Kotak masuk kontak** — formulir publik tersimpan ke inbox yang dikelola dari admin.
+- **Pengaturan &amp; SEO** — pengaturan situs dan metadata SEO.
+- **Keamanan** — header keamanan (HSTS, frame options), deteksi secret di pre-commit, dan validasi role/permission di tiap route admin.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Teknologi
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Lapisan | Teknologi |
+| --- | --- |
+| Backend | Laravel 13 (PHP 8.4) |
+| Frontend | Blade, Tailwind CSS 4, Alpine.js |
+| Aset | Vite (laravel-vite-plugin) |
+| Animasi & UI | AOS, GSAP, Lenis, Swiper, ApexCharts, CountUp, Typed.js, Lucide, Notyf, SweetAlert2 |
+| Database | MySQL (default) / SQLite |
+| Cache & Analytics | Redis |
+| Autentikasi | Laravel Breeze |
+| Otorisasi | spatie/laravel-permission |
+| Kualitas | Laravel Pint, Pest, husky + lint-staged |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Persyaratan
 
-## Agentic Development
+- PHP ^8.4
+- Composer
+- Node.js 22.x
+- MySQL atau SQLite
+- Redis (opsional, untuk cache/analytics)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Instalasi
 
 ```bash
-composer require laravel/boost --dev
+# 1. Install dependensi & setup lingkungan (membuat .env, key, migrate, build aset)
+composer setup
 
-php artisan boost:install
+# atau manual:
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+npm install
+npm run build
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Atur kredensial database pada file `.env`:
 
-## Contributing
+```env
+DB_CONNECTION=mysql
+DB_DATABASE=ntu_project
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Menjalankan Aplikasi
 
-## Code of Conduct
+Mode pengembangan (server, queue, log, dan Vite sekaligus):
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer dev
+```
 
-## Security Vulnerabilities
+Secara terpisah:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan serve        # http://localhost:8000
+npm run dev              # Vite hot-reload
+```
 
-## License
+## Seeder & Akun Admin
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Jalankan seeder untuk membuat role/izin, akun admin, pengaturan, konten, dan konten berbahasa Inggris:
+
+```bash
+php artisan db:seed
+```
+
+Akun default Super Admin diambil dari variabel env (seeder tidak pernah meng-hardcode secret):
+
+```env
+ADMIN_NAME="Super Admin"
+ADMIN_EMAIL="admin@test.com"
+ADMIN_PASSWORD="change-me"
+```
+
+> Ganti `ADMIN_PASSWORD` sebelum deployment.
+
+### Role bawaan
+
+- **Super Admin** — seluruh izin.
+- **Admin** — layanan, media, kategori, tag, kontak, SEO, analytics, log aktivitas, pengaturan.
+- **Editor** — artikel (buat/ubah/publish/arsip), media, lihat kategori & tag.
+
+## Sistem Bilingual
+
+- Situs publik Indonesia adalah kanonikal (tanpa prefiks). Versi Inggris tersedia di `/en/...` melalui middleware `locale` dan helper `lroute()`.
+- Konten statis dikelola lewat `lang/{id,en}/company*.php`, `lang/{id,en}/ui.php`.
+- Konten dinamis (artikel, layanan, kategori, keahlian penulis) menyimpan terjemahan pada kolom `*_en` (mis. `title_en`, `content_en`, `slug_en`).
+- Trait `App\Support\Localizable` menyediakan `localized($field)` dan `routeSlug()`: menampilkan nilai Inggris bila ada, dan jatuh kembali (fallback) ke nilai Indonesia bila belum diterjemahkan.
+- Backfill terjemahan Inggris dari `lang/en/company-*.php` dilakukan oleh `EnglishContentSeeder` (idempotent, aman dijalankan ulang).
+
+## Struktur Folder
+
+```
+app/
+  Http/Controllers/       # SiteController (publik), ContactController, Auth, Admin/*
+  Http/Middleware/        # SetLocale, SecurityHeaders, CheckMaintenance, EnsureAdminAuthenticated, ...
+  Http/Requests/          # FormRequest termasuk Admin/ArticleRequest
+  Models/                 # Article, Category, Tag, Service, Media, User, ...
+  Support/Localizable.php # Trait bantuan terjemahan
+bootstrap/app.php         # Registrasi middleware, alias, & group route admin
+config/company*.php       # Data profil perusahaan (default)
+database/
+  migrations/             # Skema database
+  seeders/                # Role/permission, admin, pengaturan, konten, konten EN
+lang/{id,en}/             # Terjemahan statis
+resources/views/
+  pages/                  # Halaman publik (tentang, layanan, riset, artikel, kontak)
+  components/landing/     # Komponen landing page
+  admin/                  # Panel admin
+  layouts/                # layout landing & admin
+routes/
+  web.php                 # Route publik (ID + EN)
+  admin.php               # Route panel (/admin & /editor)
+  auth.php                # Route autentikasi
+scripts/                  # check-secrets.mjs, check-tailwind.mjs
+```
+
+## Lint & Kualitas
+
+```bash
+npm run lint              # secret check + Pint + Tailwind check
+php vendor/bin/pint       # perbaiki gaya kode secara otomatis
+php artisan test          # jalankan test (Pest)
+```
+
+Pre-commit otomatis menjalankan `check-secrets` dan `lint-staged` (Pint) melalui husky.
+
+## Testing
+
+```bash
+composer test
+```
+
+## Deployment
+
+### Docker
+
+```bash
+docker build -t ntu-project .
+docker run -p 8000:8000 --env-file .env ntu-project
+```
+
+`Dockerfile` multi-stage membangun aset frontend (Node 22) dan dependensi backend (PHP 8.4), lalu menjalankan entrypoint `docker-entrypoint.sh`. Health check tersedia di `/up`.
+
+### Railway
+
+Konfigurasi build & deploy Dockerfile sudah disiapkan pada `railway.json`.
+
+## Lisensi
+
+Proyek ini dikembangkan untuk keperluan internal PT Nusantara Techno Utama.
