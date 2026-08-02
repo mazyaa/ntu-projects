@@ -1,11 +1,11 @@
 @extends('layouts.landing')
 
-@section('title', $category['title'])
+@section('title', $service->title)
 
 @section('content')
     <x-landing.page-hero
-        :title="$category['title']"
-        :subtitle="$category['tagline']"
+        :title="$service->title"
+        :subtitle="$service->tagline"
     />
 
     <section class="py-24 bg-white relative overflow-hidden">
@@ -15,25 +15,25 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <div class="lg:col-span-2" data-aos="fade-right">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-14 h-14 bg-{{ $category['color'] }}/10 rounded-2xl flex items-center justify-center text-{{ $category['color'] }}">
-                            <i data-lucide="{{ $category['icon'] }}" class="w-7 h-7"></i>
+                        <div class="w-14 h-14 bg-{{ $service->color }}/10 rounded-2xl flex items-center justify-center text-{{ $service->color }}">
+                            <i data-lucide="{{ $service->icon }}" class="w-7 h-7"></i>
                         </div>
                         <div>
-                            <h1 class="text-2xl font-bold text-secondary">{{ $category['title'] }}</h1>
-                            <span class="text-sm text-gray-400">{{ $category['short_title'] }}</span>
+                            <h1 class="text-2xl font-bold text-secondary">{{ $service->title }}</h1>
+                            <span class="text-sm text-gray-400">{{ $service->short_title }}</span>
                         </div>
                     </div>
 
-                    <p class="text-gray-600 leading-relaxed text-lg mb-8">{{ $category['page_description'] }}</p>
+                    <p class="text-gray-600 leading-relaxed text-lg mb-8">{{ $service->description }}</p>
 
                     <h3 class="text-xl font-bold text-secondary mb-6">Lingkup Layanan</h3>
                     <div class="space-y-4">
-                        @foreach($category['services'] as $service)
+                        @foreach($service->service_items ?? [] as $item)
                         <div class="flex items-start gap-4 p-4 glass-card rounded-xl">
-                            <div class="w-8 h-8 bg-{{ $category['color'] }}/10 rounded-lg flex items-center justify-center text-{{ $category['color'] }} shrink-0 mt-0.5">
+                            <div class="w-8 h-8 bg-{{ $service->color }}/10 rounded-lg flex items-center justify-center text-{{ $service->color }} shrink-0 mt-0.5">
                                 <i data-lucide="check" class="w-4 h-4"></i>
                             </div>
-                            <p class="text-sm text-gray-600 leading-relaxed">{{ $service }}</p>
+                            <p class="text-sm text-gray-600 leading-relaxed">{{ $item }}</p>
                         </div>
                         @endforeach
                     </div>
@@ -44,11 +44,11 @@
                         <div class="glass-card rounded-3xl p-6">
                             <h3 class="text-lg font-bold text-secondary mb-4">Pilar Lainnya</h3>
                             <div class="space-y-2">
-                                @foreach($categories as $other)
-                                @if($other['slug'] !== $category['slug'])
-                                <a href="{{ route('services.show', $other['slug']) }}" class="flex items-center gap-3 p-3 bg-white/70 rounded-xl border border-white/60 hover:border-primary/20 hover:shadow-sm transition-all text-sm text-gray-600 hover:text-primary">
-                                    <i data-lucide="{{ $other['icon'] }}" class="w-4 h-4 shrink-0"></i>
-                                    <span class="font-medium">{{ $other['short_title'] }}</span>
+                                @foreach($services as $other)
+                                @if($other->slug !== $service->slug)
+                                <a href="{{ route('services.show', $other->slug) }}" class="flex items-center gap-3 p-3 bg-white/70 rounded-xl border border-white/60 hover:border-primary/20 hover:shadow-sm transition-all text-sm text-gray-600 hover:text-primary">
+                                    <i data-lucide="{{ $other->icon }}" class="w-4 h-4 shrink-0"></i>
+                                    <span class="font-medium">{{ $other->short_title }}</span>
                                 </a>
                                 @endif
                                 @endforeach

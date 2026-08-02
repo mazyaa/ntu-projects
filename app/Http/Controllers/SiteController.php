@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Article;
+use App\Models\Service;
+use App\Services\ArticleSchedulerService;
+use App\Services\ArticleViewService;
 
 class SiteController extends Controller
 {
@@ -36,21 +39,18 @@ class SiteController extends Controller
     public function services()
     {
         return view('pages.services.index', [
-            'categories' => config('company-services.categories'),
+            'services' => Service::active()->orderBy('sort_order')->get(),
             'company' => config('company'),
         ]);
     }
 
     public function serviceShow(string $slug)
     {
-        $category = collect(config('company-services.categories'))
-            ->firstWhere('slug', $slug);
-
-        abort_unless($category, 404);
+        $service = Service::active()->where('slug', $slug)->firstOrFail();
 
         return view('pages.services.show', [
-            'category' => $category,
-            'categories' => config('company-services.categories'),
+            'service' => $service,
+            'services' => Service::active()->orderBy('sort_order')->get(),
             'company' => config('company'),
         ]);
     }
@@ -63,29 +63,46 @@ class SiteController extends Controller
         ]);
     }
 
-    public function articles()
+    public function articles(ArticleSchedulerService $scheduler)
     {
+        // Lazy-publish due scheduled articles even when the scheduler is idle.
+        $scheduler->publishDue();
+
         return view('pages.articles.index', [
-            'articles' => config('company-insights.articles'),
+            'articles' => Article::published()
+                ->with('category')
+                ->latest('published_at')
+                ->paginate(9),
             'company' => config('company'),
         ]);
     }
 
-    public function articleShow(string $slug)
+    public function articleShow(string $slug, ArticleViewService $views)
     {
-        $article = collect(config('company-insights.articles'))
-            ->firstWhere('slug', $slug);
+        app(ArticleSchedulerService::class)->publishDue();
 
-        abort_unless($article, 404);
+        $article = Article::published()
+            ->with('author')
+            ->where('slug', $slug)
+            ->firstOrFail();
 
-        $related = collect(config('company-insights.articles'))
+        $views->track($article);
+
+        $related = Article::published()
+            ->with('category')
             ->where('slug', '!=', $slug)
-            ->take(3)
-            ->values();
+            ->latest('published_at')
+            ->take(5)
+            ->get();
+
+        $authorArticleCount = $article->author
+            ? Article::published()->where('author_id', $article->author_id)->count()
+            : 0;
 
         return view('pages.articles.show', [
             'article' => $article,
             'related' => $related,
+            'authorArticleCount' => $authorArticleCount,
             'company' => config('company'),
         ]);
     }

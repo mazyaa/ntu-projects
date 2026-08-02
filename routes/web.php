@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -17,8 +18,11 @@ Route::get('/riset', [SiteController::class, 'research'])->name('research');
 Route::get('/artikel', [SiteController::class, 'articles'])->name('articles');
 Route::get('/artikel/{slug}', [SiteController::class, 'articleShow'])->name('articles.show');
 
+Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
+Route::post('/kontak', [ContactController::class, 'store'])->name('contact.store');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect(panel_route('dashboard'));
 })->middleware(['auth'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
