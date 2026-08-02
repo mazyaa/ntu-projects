@@ -59,6 +59,16 @@
                 }, 500);
             }
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!window.Notyf) return;
+
+            const success = @json(session('success'));
+            const error = @json(session('error'));
+
+            if (success) window.Notyf.success(success);
+            if (error) window.Notyf.error(error);
+        });
     </script>
 </body>
 </html>

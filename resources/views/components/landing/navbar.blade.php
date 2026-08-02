@@ -39,7 +39,7 @@
                     </a>
                 @endforeach
 
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ config('company.contact.email') }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5">
+                <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5">
                     Hubungi Kami
                 </a>
             </div>
@@ -68,7 +68,7 @@
                 </a>
             @endforeach
             <hr class="border-gray-100">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ config('company.contact.email') }}" target="_blank" rel="noopener" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
+            <a href="{{ route('contact') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
                 Hubungi Kami
             </a>
         </div>

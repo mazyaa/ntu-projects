@@ -14,6 +14,7 @@ import Typed from 'typed.js';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 import Swal from 'sweetalert2';
+import ApexCharts from 'apexcharts';
 
 // Alpine JS Setup
 window.Alpine = Alpine;
@@ -27,6 +28,7 @@ window.Swiper = Swiper;
 window.CountUp = CountUp;
 window.Typed = Typed;
 window.Swal = Swal;
+window.ApexCharts = ApexCharts;
 window.Notyf = new Notyf({
     duration: 4000,
     position: { x: 'right', y: 'top' },
@@ -36,6 +38,13 @@ window.Notyf = new Notyf({
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide Icons
     createIcons({ icons });
+
+    // Skip public-site smooth scrolling on the admin shell
+    const isAdmin = document.body.dataset.admin === 'true';
+
+    if (isAdmin) {
+        return;
+    }
 
     // Initialize AOS
     AOS.init({
