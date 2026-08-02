@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="https://ui-avatars.com/api/?name=NTU&background=0736AA&color=fff&rounded=true&size=120" alt="NTU Logo" width="120">
-</p>
-
 <h1 align="center">PT Nusantara Techno Utama — Company Website</h1>
 
 <p align="center">
