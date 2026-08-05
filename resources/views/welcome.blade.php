@@ -4,7 +4,7 @@
 
 @section('content')
     <x-landing.hero />
-    <x-landing.trusted-by />
+    {{-- <x-landing.trusted-by /> --}}
     <x-landing.about />
     <x-landing.values />
     <x-landing.services />
