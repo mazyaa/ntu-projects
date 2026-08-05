@@ -1,15 +1,27 @@
-name: Test Workflow
+name: SSH Test
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - feat/devops
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Test
-        run: |
-          echo "Hello NTU 🚀"
+      - name: Test SSH
+        uses: appleboy/ssh-action@v1
+
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+
+          script: |
+            pwd
+            whoami
+            php -v
