@@ -114,8 +114,8 @@
 
         <!-- Input -->
         <div class="p-3 pt-1 border-t border-gray-100 bg-white shrink-0">
-            <div class="flex items-center gap-2 bg-slate-50 border border-gray-200 rounded-2xl px-3 py-1.5 focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/40 transition-all">
-                <input x-model="input" @keydown.enter="send()" type="text" placeholder="{{ $chatPlaceholder }}" class="flex-1 bg-transparent outline-none text-sm py-1.5 text-gray-700 placeholder-gray-400">
+            <div class="flex items-center gap-2 bg-slate-50 border border-gray-300 rounded-2xl px-3 py-1.5">
+                <input x-model="input" @keydown.enter="send()" type="text" placeholder="{{ $chatPlaceholder }}" class="flex-1 bg-transparent rounded-xl border border-gray-300 focus:bg-white focus:ring-4 focus:ring-primary/15 focus:border-primary outline-none transition-all text-sm">
                 <button @click="send()" :disabled="!input.trim()" :class="input.trim() ? 'bg-primary hover:bg-primary/90 shadow-md shadow-primary/30' : 'bg-gray-200 text-gray-400 cursor-not-allowed'" class="w-9 h-9 rounded-xl flex items-center justify-center text-white transition-all duration-200 shrink-0" aria-label="{{ __('ui.chatbot.send_aria') }}">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4.5 h-4.5"><path d="m22 2-7 20-4-9-9-4z"></path><path d="M22 2 11 13"></path></svg>
                 </button>

@@ -1,18 +1,26 @@
-name: SSH Test
+name: 🚀 Production Deployment
 
 on:
   push:
     branches:
-      - feat/devops
+      - main
+
+  workflow_dispatch:
+
+concurrency:
+  group: production
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    name: Deploy to Production
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - name: Test SSH
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
 
         with:
@@ -20,8 +28,40 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
+          script_stop: true
 
           script: |
-            pwd
-            whoami
-            php -v
+            set -e
+
+            echo "=================================="
+            echo "🚀 NTU Production Deployment"
+            echo "=================================="
+
+            cd /home/u862475871/domains/techno-inovation.com/laravel
+
+            echo "📥 Updating Repository..."
+            git fetch origin
+            git reset --hard origin/main
+
+            echo "📦 Installing Composer..."
+            composer install \
+              --no-dev \
+              --prefer-dist \
+              --optimize-autoloader \
+              --no-interaction
+
+            echo "🔐 Generating Optimized Autoload..."
+            composer dump-autoload -o
+
+            echo "🗄 Running Migration..."
+            php artisan migrate --force
+
+            echo "🧹 Clearing Cache..."
+            php artisan optimize:clear
+
+            echo "⚡ Building Cache..."
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            echo "✅ Deployment Success"
