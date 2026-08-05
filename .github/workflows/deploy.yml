@@ -12,67 +12,61 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   deploy:
-
+    name: Deploy Laravel Application
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/checkout@v4
-
-      ###################################
-      # Build Frontend
-      ###################################
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Install Node Modules
-        run: npm ci
-
-      - name: Build Assets
-        run: npm run build
-
-      ###################################
-      # SSH
-      ###################################
-
-      - name: Deploy
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
 
         with:
-
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
 
           script: |
-
             set -e
+
+            echo "======================================"
+            echo "🚀 NTU Production Deployment Started"
+            echo "======================================"
 
             cd /home/u862475871/domains/techno-inovation.com/laravel
 
+            echo ""
+            echo "📥 Updating Repository..."
             git fetch origin
-
             git reset --hard origin/main
 
+            echo ""
+            echo "📦 Installing Composer Dependencies..."
             composer install \
-            --no-dev \
-            --prefer-dist \
-            --optimize-autoloader \
-            --no-interaction
+              --no-dev \
+              --no-interaction \
+              --prefer-dist \
+              --optimize-autoloader \
+              --no-scripts
 
+            echo ""
+            echo "🔍 Discovering Laravel Packages..."
+            php artisan package:discover
+
+            echo ""
+            echo "🗄 Running Database Migration..."
             php artisan migrate --force
 
+            echo ""
+            echo "🧹 Clearing Cache..."
             php artisan optimize:clear
 
-            php artisan config:cache
+            echo ""
+            echo "⚡ Optimizing Laravel..."
+            php artisan optimize
 
-            php artisan route:cache
-
-            php artisan view:cache
+            echo ""
+            echo "🎉 Deployment Finished Successfully!"
