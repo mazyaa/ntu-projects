@@ -53,15 +53,6 @@ npm install
 npm run build
 ```
 
-Atur kredensial database pada file `.env`:
-
-```env
-DB_CONNECTION=mysql
-DB_DATABASE=ntu_project
-DB_USERNAME=root
-DB_PASSWORD=
-```
-
 ## Menjalankan Aplikasi
 
 Mode pengembangan (server, queue, log, dan Vite sekaligus):
