@@ -99,7 +99,7 @@ return [
             'short_position' => 'Commissioner',
             'degree' => 'M.Si.',
             'color' => 'success',
-            'image' => 'images/team/005fitriyah.webp',
+            'image' => 'images/team/005bupipit.webp',
             'intro' => 'Commissioner of NTU and majority shareholder of the company, with competencies in scientific analysis, corporate governance, and institutional development.',
             'bio' => 'Commissioner of PT Nusantara Techno Utama and majority shareholder of the company. With a Master of Science (M.Si.) educational background, has competencies in scientific analysis, corporate governance, institutional development, and the strengthening of organizational management systems. Plays a role in carrying out supervisory functions over the policies and performance of the Board of Directors to ensure that all company activities run in accordance with the principles of Good Corporate Governance, regulatory compliance, and applicable professional standards. In addition to providing strategic direction in risk management, compliance, and business sustainability, also supports organizational capacity development, the strengthening of internal governance, and the formulation of corporate policy direction so the company can adapt to the dynamics of the needs of government, industry, and development partners. Through the supervisory and advisory functions carried out, is committed to ensuring PT Nusantara Techno Utama continues to grow as a professional, accountable, and integrity-driven company oriented toward creating sustainable added value for all stakeholders.',
             'academic' => 'Master of Science (M.Si.) — Scientific Analysis & Governance',

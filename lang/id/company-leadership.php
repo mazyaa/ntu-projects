@@ -99,7 +99,7 @@ return [
             'short_position' => 'Komisaris',
             'degree' => 'M.Si.',
             'color' => 'success',
-            'image' => 'images/team/005fitriyah.webp',
+            'image' => 'images/team/005bupipit.webp',
             'intro' => 'Komisaris NTU dan pemegang saham mayoritas perseroan dengan kompetensi di bidang analisis ilmiah, tata kelola perusahaan, pengembangan kelembagaan.',
             'bio' => 'Komisaris PT Nusantara Techno Utama sekaligus pemegang saham mayoritas perseroan. Berlatar belakang pendidikan Magister Sains (M.Si.), memiliki kompetensi di bidang analisis ilmiah, tata kelola perusahaan (corporate governance), pengembangan kelembagaan, serta penguatan sistem manajemen organisasi. Berperan dalam menjalankan fungsi pengawasan terhadap kebijakan dan kinerja Direksi guna memastikan seluruh aktivitas perusahaan berjalan sesuai dengan prinsip tata kelola perusahaan yang baik (Good Corporate Governance), kepatuhan terhadap regulasi, serta standar profesional yang berlaku. Selain memberikan arahan strategis dalam pengelolaan risiko, kepatuhan, dan keberlanjutan usaha, turut mendukung pengembangan kapasitas organisasi, penguatan tata kelola internal, serta penyusunan arah kebijakan perusahaan agar mampu beradaptasi dengan dinamika kebutuhan pemerintah, industri, dan mitra pembangunan. Melalui fungsi pengawasan dan pembinaan yang dijalankan, berkomitmen memastikan PT Nusantara Techno Utama terus berkembang sebagai perusahaan yang profesional, akuntabel, berintegritas, dan berorientasi pada penciptaan nilai tambah yang berkelanjutan bagi seluruh pemangku kepentingan.',
             'academic' => 'Magister Sains (M.Si.) — Analisis Ilmiah & Tata Kelola',
