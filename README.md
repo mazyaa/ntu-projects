@@ -100,6 +100,16 @@ ADMIN_PASSWORD="change-me"
 - Trait `App\Support\Localizable` menyediakan `localized($field)` dan `routeSlug()`: menampilkan nilai Inggris bila ada, dan jatuh kembali (fallback) ke nilai Indonesia bila belum diterjemahkan.
 - Backfill terjemahan Inggris dari `lang/en/company-*.php` dilakukan oleh `EnglishContentSeeder` (idempotent, aman dijalankan ulang).
 
+## Optimasi Gambar
+
+Lag saat scroll (khususnya section services) umumnya berasal dari **jumlah piksel gambar saat di-decode**, bukan ukuran file. Solusi memakai `intervention/image` (driver GD + WebP):
+
+- **Resize statis** — `php artisan images:optimize` men-downscale & re-encode gambar ke ukuran tampilan ×2 (services 800×450, hero 1920×1080, about 1200×1500, media 1600px). Idempotent; ada opsi `--path=` dan `--dry-run`.
+- **Auto-resize saat upload** — upload gambar dari admin (media library, gambar/thumbnail artikel) otomatis dikonversi ke WebP dan dibatasi lebar maksimal 1600px oleh `App\Services\ImageOptimizerService`.
+- **HTML** — tag `<img>` service/hero/about diberi `width`/`height` (anti layout shift), `decoding="async"`, dan `fetchpriority="high"` pada hero.
+- **CSS** — `backdrop-filter` di `.glass-card` diperingan + utilitas `.cv-auto` (`content-visibility: auto`) pada section services agar konten di luar layar tidak di-render saat scroll.
+- Docker image produksi menyertakan extension `gd` dengan dukungan WebP.
+
 ## Struktur Folder
 
 ```

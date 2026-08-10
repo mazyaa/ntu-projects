@@ -8,7 +8,7 @@
         :subtitle="__('ui.services_page.hero_subtitle')"
     />
 
-    <section class="py-24 bg-white relative overflow-hidden">
+    <section class="py-24 bg-white relative overflow-hidden cv-auto">
         <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -17,7 +17,7 @@
                 @php $brandColors = ['primary' => '#0736AA', 'secondary' => '#06205E', 'accent' => '#0B9918', 'success' => '#22C55E']; @endphp
                 <a href="{{ lroute('services.show', ['slug' => $service->routeSlug()]) }}" class="group glass-card rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 flex flex-col" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                     <div class="relative h-52 overflow-hidden">
-                        <img src="{{ asset($service->image) }}" alt="{{ $service->localized('short_title') }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                        <img src="{{ asset($service->image) }}" alt="{{ $service->localized('short_title') }}" width="800" height="450" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                         <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
                         <div class="absolute top-4 left-4 w-11 h-11 rounded-xl shadow-lg flex items-center justify-center text-white border border-white/30" style="background-color: {{ $brandColors[$service->color] }}">
                             <i data-lucide="{{ $service->icon }}" class="w-5 h-5"></i>

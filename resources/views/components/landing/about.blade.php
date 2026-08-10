@@ -6,7 +6,7 @@
 
             <div class="relative" data-aos="fade-right">
                 <div class="aspect-4/5 rounded-3xl overflow-hidden relative shadow-2xl shadow-gray-200/50">
-                    <img src="/images/general/about-image.webp" alt="{{ __('ui.about.alt') }}" class="w-full h-full object-cover">
+                    <img src="/images/general/about-image.webp" alt="{{ __('ui.about.alt') }}" width="1200" height="1500" loading="lazy" decoding="async" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-secondary/10"></div>
                 </div>
 

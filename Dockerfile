@@ -16,7 +16,9 @@ COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-scripts --prefer-dist --optimize-autoloader --no-interaction
 
 FROM php:8.4-cli-alpine
-RUN docker-php-ext-install pdo_mysql
+RUN apk add --no-cache libpng libjpeg-turbo libwebp freetype \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
+    && docker-php-ext-install gd pdo_mysql
 WORKDIR /app
 COPY . .
 COPY --from=composer-build /app/vendor /app/vendor
