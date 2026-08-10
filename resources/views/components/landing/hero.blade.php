@@ -1,7 +1,7 @@
 <section class="relative min-h-screen flex items-center overflow-x-clip bg-secondary" id="home">
     <!-- Background image -->
     <div class="absolute inset-0 z-0">
-        <img src="{{ asset('images/hero-image.webp') }}" alt="" class="w-full h-full object-cover">
+        <img src="{{ asset('images/hero-image.webp') }}" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
     </div>
     <!-- Overlay biru -->
     <div class="absolute inset-0 z-1 bg-linear-to-br from-secondary/95 via-secondary/85 to-primary/75"></div>

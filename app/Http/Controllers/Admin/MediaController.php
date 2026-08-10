@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Media;
+use App\Services\ImageOptimizerService;
 use App\Services\UploadSecurityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,6 +13,7 @@ class MediaController extends Controller
 {
     public function __construct(
         private readonly UploadSecurityService $uploadSecurity,
+        private readonly ImageOptimizerService $imageOptimizer,
     ) {}
 
     public function store(Request $request)
@@ -33,14 +35,17 @@ class MediaController extends Controller
 
             $path = $file->store('media', 'public');
 
+            $optimized = $this->imageOptimizer->optimizeStored('public', $path);
+            $storedPath = $optimized['path'] ?? $path;
+
             Media::create([
                 'uploaded_by' => auth()->id(),
-                'name' => $this->uploadSecurity->secureFilename($file),
+                'name' => basename($storedPath),
                 'original_name' => $file->getClientOriginalName(),
-                'path' => $path,
-                'mime_type' => $file->getMimeType(),
-                'size' => $file->getSize(),
-                'type' => $this->uploadSecurity->categorize($file->getMimeType()),
+                'path' => $storedPath,
+                'mime_type' => $optimized['mime'] ?? $file->getMimeType(),
+                'size' => $optimized['size'] ?? $file->getSize(),
+                'type' => $this->uploadSecurity->categorize($optimized['mime'] ?? $file->getMimeType()),
                 'disk' => 'public',
             ]);
 
