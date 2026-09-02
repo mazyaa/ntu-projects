@@ -68,7 +68,7 @@ php artisan serve        # http://localhost:8000
 npm run dev              # Vite hot-reload
 ```
 
-## Seeder & Akun Admin
+## Seeder & Akun Admin...
 
 Jalankan seeder untuk membuat role/izin, akun admin, pengaturan, konten, dan konten berbahasa Inggris:
 
