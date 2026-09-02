@@ -89,8 +89,6 @@
         </div>
     </section>
 
-    <x-landing.values />
-
     <section class="py-24 bg-white relative overflow-hidden">
         <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none"></div>
@@ -106,7 +104,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                 <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mx-auto mb-6">
-                        <i data-lucide="search" class="w-7 h-7"></i>
+                        <i data-lucide="shield-check" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-lg font-bold text-secondary mb-3">{{ __('ui.about_page.approach_evidence_title') }}</h3>
                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('ui.about_page.approach_evidence_text') }}</p>
@@ -114,7 +112,7 @@
 
                 <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent mx-auto mb-6">
-                        <i data-lucide="cog" class="w-7 h-7"></i>
+                        <i data-lucide="heart-pulse" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-lg font-bold text-secondary mb-3">{{ __('ui.about_page.approach_engineering_title') }}</h3>
                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('ui.about_page.approach_engineering_text') }}</p>
@@ -122,7 +120,7 @@
 
                 <div class="text-center p-8 glass-card rounded-3xl" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-16 h-16 bg-success/10 rounded-2xl flex items-center justify-center text-success mx-auto mb-6">
-                        <i data-lucide="leaf" class="w-7 h-7"></i>
+                        <i data-lucide="cog" class="w-7 h-7"></i>
                     </div>
                     <h3 class="text-lg font-bold text-secondary mb-3">{{ __('ui.about_page.approach_sustainability_title') }}</h3>
                     <p class="text-sm text-gray-500 leading-relaxed">{{ __('ui.about_page.approach_sustainability_text') }}</p>
@@ -144,7 +142,7 @@
                 @foreach(company('timeline') as $index => $milestone)
                 <div class="relative flex gap-8 pb-12 last:pb-0" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                     <div class="shrink-0 flex flex-col items-center">
-                        <div class="w-12 h-12 bg-{{ $index === count(company('timeline')) - 0 ? 'success' : 'primary' }} rounded-xl flex items-center justify-center text-white shadow-lg">
+                        <div class="w-12 h-12 bg-{{ $index === count(company('timeline')) - 1 ? 'success' : 'primary' }} rounded-xl flex items-center justify-center text-white shadow-lg">
                             <i data-lucide="{{ $milestone['icon'] }}" class="w-5 h-5"></i>
                         </div>
                         @if($index < count(company('timeline')) - 1)

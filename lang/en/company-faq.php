@@ -2,33 +2,53 @@
 
 return [
     [
-        'question' => 'What are the main service areas offered by NTU?',
-        'answer' => 'PT Nusantara Techno Utama provides six strategic service pillars: (1) Applied Research, Survey & Socio-Economic Policy, (2) Engineering, Architecture & Construction, (3) Environmental Technology & Circular Economy, (4) Testing, Inspection, Certification, Verification & Validation (TIC-VV), (5) Information Technology & Telecommunication, and (6) Trading & Support Services.',
-        'icon' => 'briefcase',
+        'question' => 'What is Riksa Uji?',
+        'answer' => 'Riksa Uji is a process of technical inspection and testing of industrial equipment to ensure safe and operational conditions. This process includes visual inspection, technical testing, evaluation against standards, report preparation, and provision of action recommendations.',
+        'icon' => 'help-circle',
     ],
     [
-        'question' => 'How does NTU conduct applied research and policy studies?',
-        'answer' => 'The NTU research team is led by researchers with doctoral degrees and international experience. We design quantitative-qualitative survey methodologies, collect large-scale primary data, perform statistical analysis, and formulate evidence-based policy recommendations for government agencies and development partners. Our process follows applicable academic standards and regulations.',
-        'icon' => 'flask-conical',
+        'question' => 'What equipment requires Riksa Uji?',
+        'answer' => 'Riksa Uji is required for various types of industrial equipment including: lifting equipment (cranes, hoists, jacks, forklifts), transporting equipment (trucks, trailers, rail vehicles), pressure vessels, boilers, electrical installations, lightning protection installations, and fire protection systems.',
+        'icon' => 'wrench',
     ],
     [
-        'question' => 'Who are the clients and partners that have worked with NTU?',
-        'answer' => 'NTU has been entrusted by various ministries and government agencies, including the Ministry of Manpower of the Republic of Indonesia (Center for Labor Policy Development and DG PHIJSK). In addition, we have been a research partner for international organizations such as UNDP, UNICEF, USAID, SNV, OXFAM, ICF International, GIZ, Swedish Institute, and various other institutions.',
-        'icon' => 'building',
+        'question' => 'When should Riksa Uji be performed?',
+        'answer' => 'Riksa Uji must be performed periodically in accordance with applicable K3 regulations, before equipment is used for the first time, after significant repairs or modifications, and when equipment damage or work accidents occur.',
+        'icon' => 'clock',
     ],
     [
-        'question' => 'Does NTU provide engineering and architecture consultancy?',
-        'answer' => 'Yes. NTU provides architecture consultancy and design services (KBLI 71101), plant technical design (KBLI 71102), as well as engineering activities and technical consultancy (KBLI 71109) for civil, mechanical-electrical, industrial, and security systems, including construction works execution and project management.',
-        'icon' => 'cog',
+        'question' => 'Why is Riksa Uji important for companies?',
+        'answer' => 'Riksa Uji is important to ensure worker safety, comply with K3 regulations, prevent work accidents and equipment damage, extend asset life, and maintain company operational continuity.',
+        'icon' => 'shield-check',
     ],
     [
-        'question' => 'How do I start working with NTU?',
-        'answer' => 'You can contact us by email at info@techno-inovation.com to schedule an initial discussion session. Our team will respond promptly to understand your needs and prepare a tailored service proposal — whether for research, engineering, environmental technology, or TIC services.',
+        'question' => 'What documents need to be prepared for Riksa Uji?',
+        'answer' => 'Required documents include: equipment certificates, maintenance history, technical equipment data, owner/user documents, and other relevant supporting documents.',
+        'icon' => 'file-text',
+    ],
+    [
+        'question' => 'How does the Riksa Uji process work?',
+        'answer' => 'The Riksa Uji process includes: (1) Consultation and needs identification, (2) Document verification, (3) Planning and scheduling, (4) Visual inspection, (5) Technical testing, (6) Results evaluation, and (7) Report preparation and recommendations.',
+        'icon' => 'list-checks',
+    ],
+    [
+        'question' => 'How long does the Riksa Uji process take?',
+        'answer' => 'The duration of the Riksa Uji process varies depending on the type of equipment, number of units, and complexity of the work. Our team will provide an accurate time estimate after initial consultation and document verification.',
+        'icon' => 'calendar',
+    ],
+    [
+        'question' => 'What is the output of the inspection and testing?',
+        'answer' => 'The output of Riksa Uji is a comprehensive technical report containing visual inspection results, technical testing results, evaluation against standards, and corrective action and maintenance recommendations.',
+        'icon' => 'file-check',
+    ],
+    [
+        'question' => 'Does NTU provide Riksa Uji services outside Banten?',
+        'answer' => 'NTU is headquartered in Serang City, Banten, and provides consultation and technical coordination for Riksa Uji needs across various regions in Indonesia in accordance with its service scope.',
+        'icon' => 'map-pin',
+    ],
+    [
+        'question' => 'How to request a quotation?',
+        'answer' => 'You can request a quotation by contacting us via email nusantaratechnoutamapt@gmail.com or WhatsApp 081532061799. Include information about the type of equipment, number of units, and inspection location.',
         'icon' => 'mail',
-    ],
-    [
-        'question' => 'Does NTU serve government and international organization projects?',
-        'answer' => 'Yes. NTU\'s track record includes policy studies for Indonesian ministries as well as research for international organizations including UNDP, UNICEF, USAID, SNV, OXFAM, ICF, GIZ, Swedish Institute, and Raoul Wallenberg Institute. We have experience in cross-country research projects across Southeast Asia, Asia Pacific, and Europe.',
-        'icon' => 'globe',
     ],
 ];

@@ -4,12 +4,12 @@ return [
     'name' => 'PT Nusantara Techno Utama',
     'short_name' => 'NTU',
     'slug' => 'pt-nusantara-techno-utama',
-    'tagline' => 'Trusted Research and Technology Partner for a Sustainable Indonesia',
+    'tagline' => 'Compliance | Reliability | Engineering Solution',
 
     'overview' => [
-        'intro' => 'PT Nusantara Techno Utama ("NTU") is a national private company operating in the professional, scientific, and technical services sector, with a focus on applied research and socio-economic policy, engineering technology, environmental management, as well as Testing, Inspection, and Certification (TIC) services.',
-        'founded' => 'NTU was established on 22 October 2020 in Serang City, Banten Province, as a forum for collaboration among professionals and academics across engineering, economics, and social sciences to deliver evidence-based solutions for government, industry, and society.',
-        'evolution' => 'Through the amendment of its Articles of Association on 12 February 2025, NTU strengthened its business lines, including management consultancy and applied research (KBLI 70209) as well as research and development (KBLI 72102), as the legal basis for its socio-economic study and public policy survey unit. This unit is supported by a team of researchers with doctoral academic backgrounds and field experience in labor, worker welfare, and housing issues, enabling NTU to bridge quantitative-qualitative analysis with applicable policy recommendations.',
+        'intro' => 'PT Nusantara Techno Utama (NTU) is a national private company operating in the professional, scientific, and technical services sector. NTU delivers integrated solutions uniting three strategic domains: Compliance, Reliability, and Environmental Process Technology to support industries that are compliant, reliable, and sustainable.',
+        'founded' => 'Established on 22 October 2020 in Serang City, Banten Province, NTU was founded as a collaborative forum for professionals and academics across engineering, sciences, and socio-economic disciplines.',
+        'evolution' => 'Through the amendment of its Articles of Association in February 2025, NTU strengthened its business lines in technical inspection & testing (riksa uji), engineering, environmental technology, applied research, and information technology.',
     ],
 
     'legal' => [
@@ -24,15 +24,13 @@ return [
         ['label' => 'Head Office', 'value' => 'Komp. Nuansa Alam Banjar Estate Blok A7 No.2, RT 003/RW 004, Kel. Banjar Agung, Kec. Cipocok Jaya, Kota Serang, Provinsi Banten'],
     ],
 
-    'vision' => 'To become a leading national applied technology and research company that delivers engineering solutions, socio-economic studies, and internationally-standard technical services to support the sustainable and equitable development of Indonesia.',
+    'vision' => 'To become a leading national technology partner that delivers compliance, reliability, and international-standard environmental technology to support Indonesia\'s sustainable development.',
 
     'mission' => [
-        'To provide innovative and accurate engineering, architecture, and technology consultancy services that are oriented to client needs and compliant with national and international standards.',
-        'To develop environmentally friendly water, wastewater, waste, and material recovery management solutions that support the circular economy and the Sustainable Development Goals (SDGs).',
-        'To provide independent, credible, and accredited testing, inspection, certification, verification, and technical validation services that ensure the quality of products, processes, and systems.',
-        'To conduct applied research, socio-economic surveys, and public policy studies — including labor, worker welfare, and housing issues — as the basis for evidence-based policy formulation.',
-        'To promote the use of information technology and applied research as drivers of digital transformation in industry, agriculture, health, and the public sector.',
-        'To build a collaborative partnership ecosystem with government, industry, academia, and communities to create economic, social, and environmental value for the people of Indonesia.',
+        'To conduct testing, inspection, certification, verification, and technical validation services that are independent, credible, and accredited to ensure compliance.',
+        'To develop and provide condition monitoring and predictive maintenance services to ensure asset reliability and operational continuity for clients.',
+        'To deliver environmental process technology solutions for water, wastewater, waste, and material recovery management to support the circular economy and sustainability targets.',
+        'To build a collaborative partnership ecosystem with government, industry, academia, and communities to create economic, social, and environmental value.',
     ],
 
     'values' => [
@@ -76,9 +74,9 @@ return [
     'contact' => [
         'address' => 'Komp. Nuansa Alam Banjar Estate Blok A7 No.2, RT 003/RW 004, Kel. Banjar Agung, Kec. Cipocok Jaya, Kota Serang, Provinsi Banten',
         'city' => 'Serang City, Banten',
-        'email' => 'info@techno-inovation.com',
-        'phone' => '+62 8180 7138 156',
-        'whatsapp' => '6281807138156',
+        'email' => 'nusantaratechnoutamapt@gmail.com',
+        'phone' => '+62 8153 2061 799',
+        'whatsapp' => '6281532061799',
         'website' => 'https://techno-inovation.com',
     ],
 
@@ -86,72 +84,77 @@ return [
         [
             'year' => '2020',
             'title' => 'Company Establishment',
-            'description' => 'PT Nusantara Techno Utama was established on 22 October 2020 in Serang City, Banten, as a forum for collaboration among professionals and academics across disciplines.',
+            'description' => 'PT Nusantara Techno Utama was established on 22 October 2020 in Serang City, Banten, as a collaborative forum for professionals and academics across disciplines.',
             'icon' => 'rocket',
         ],
         [
-            'year' => '2020–2023',
-            'title' => 'Research Capability Development',
-            'description' => 'Conducted socio-economic impact studies of COVID-19 (European Union), SDGs analysis (UNDP/Bappenas), sustainable urban development (CSEAS Kyoto), and various evidence-based public policy research projects.',
+            'year' => '2020–2024',
+            'title' => 'Capability Development',
+            'description' => 'Development of environmental consulting, engineering, and applied research & public policy services for government and industry.',
             'icon' => 'search',
-        ],
-        [
-            'year' => '2022–2024',
-            'title' => 'International Research Expansion',
-            'description' => 'Became a research partner for international organizations including OXFAM, ICF International, ISEAL, Swedish Institute, Raoul Wallenberg Institute, and Aflatoun International.',
-            'icon' => 'globe',
         ],
         [
             'year' => '12 Feb 2025',
             'title' => 'Articles of Association Amendment',
-            'description' => 'Strengthened business lines through KBLI 70209 (management consultancy & applied research) and KBLI 72102 (research & development) as the legal basis for the socio-economic study unit.',
+            'description' => 'Strengthened business lines in technical inspection & testing (riksa uji), engineering, environmental technology, applied research, and information technology.',
             'icon' => 'file-check',
         ],
         [
             'year' => '2025',
-            'title' => 'National Strategic Policy Studies',
-            'description' => 'Entrusted by the Ministry of Manpower of the Republic of Indonesia with four strategic policy studies: the Work Safety Law Revision, Wage Dynamics, Strikes & PHI, and Pension Insurance Evaluation.',
+            'title' => 'Riksa Uji Service Expansion',
+            'description' => 'Expansion of PJK3 Riksa Uji services for lifting equipment, transporting equipment, and various industrial K3 objects.',
             'icon' => 'award',
         ],
     ],
 
     'stats' => [
         ['value' => 5, 'suffix' => '+', 'label' => 'Years of Experience', 'color' => 'white'],
-        ['value' => 6, 'suffix' => '', 'label' => 'Strategic Service Pillars', 'color' => 'accent'],
-        ['value' => 4, 'suffix' => '+', 'label' => 'National Policy Studies', 'color' => 'white'],
-        ['value' => 5, 'suffix' => '', 'label' => 'Key Personnel', 'color' => 'accent'],
-        ['value' => 56, 'suffix' => '+', 'label' => 'Scopus Publications', 'color' => 'white'],
+        ['value' => 8, 'suffix' => '+', 'label' => 'Years K3 Expert Experience', 'color' => 'accent'],
+        ['value' => 10, 'suffix' => '+', 'label' => 'Riksa Uji Categories', 'color' => 'white'],
+        ['value' => 4, 'suffix' => '', 'label' => 'Core Services', 'color' => 'accent'],
     ],
 
-    'research_process' => [
+    'riksa_uji_process' => [
         [
             'step' => '01',
-            'title' => 'Consultation & Identification',
-            'description' => 'The client or institution conveys its research, policy study, or technical testing needs. Our team conducts an initial analysis to formulate the scope of work.',
+            'title' => 'Consultation',
+            'description' => 'The client conveys riksa uji needs. Our team conducts an initial analysis to formulate the scope of work.',
             'icon' => 'headphones',
         ],
         [
             'step' => '02',
-            'title' => 'Methodology Design',
-            'description' => 'The team prepares the research design, survey instruments, analytical framework, and implementation schedule in accordance with academic standards and applicable regulations.',
+            'title' => 'Document Verification',
+            'description' => 'Verification of technical documents, equipment certificates, maintenance history, and required administrative completeness.',
             'icon' => 'clipboard-check',
         ],
         [
             'step' => '03',
-            'title' => 'Data Collection & Fieldwork',
-            'description' => 'Implementation of quantitative and qualitative surveys, interviews, stakeholder coordination, and data verification in the field.',
-            'icon' => 'search-check',
+            'title' => 'Planning & Scheduling',
+            'description' => 'Preparation of inspection plans, field visit scheduling, and preparation of required testing equipment.',
+            'icon' => 'calendar-check',
         ],
         [
             'step' => '04',
-            'title' => 'Analysis & Study',
-            'description' => 'Data cleaning, verification, consolidation, statistical analysis, and qualitative interpretation to produce scientifically accountable findings.',
-            'icon' => 'bar-chart-3',
+            'title' => 'Inspection',
+            'description' => 'Visual examination and documentation of the physical condition of equipment, structures, and supporting components.',
+            'icon' => 'scan-eye',
         ],
         [
             'step' => '05',
+            'title' => 'Testing',
+            'description' => 'Implementation of technical testing using calibrated equipment in accordance with applicable standards and regulations.',
+            'icon' => 'flask-conical',
+        ],
+        [
+            'step' => '06',
+            'title' => 'Evaluation',
+            'description' => 'Analysis of inspection and testing results against applicable technical requirements and K3 regulations.',
+            'icon' => 'bar-chart-3',
+        ],
+        [
+            'step' => '07',
             'title' => 'Reporting & Recommendations',
-            'description' => 'Preparation of technical reports, evidence-based policy recommendations, and dissemination of results to stakeholders.',
+            'description' => 'Preparation of comprehensive technical reports along with corrective action and maintenance recommendations.',
             'icon' => 'badge-check',
         ],
     ],

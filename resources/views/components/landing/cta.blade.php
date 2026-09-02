@@ -5,7 +5,7 @@
 
     <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center" data-aos="fade-up">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-semibold mb-6 backdrop-blur-sm">
-            <i data-lucide="sparkles" class="w-4 h-4"></i> {{ __('ui.cta.badge') }}
+            <i data-lucide="headphones" class="w-4 h-4"></i> {{ __('ui.cta.badge') }}
         </div>
 
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
@@ -18,9 +18,9 @@
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to={{ company('contact.email') }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-xl hover:bg-gray-50 transition-all duration-300 shadow-xl shadow-black/10 group">
+            <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-xl hover:bg-gray-50 transition-all duration-300 shadow-xl shadow-black/10 group">
                 {{ __('ui.cta.primary') }}
-                <i data-lucide="mail" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
             </a>
             <a href="{{ lroute('services.index') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl hover:bg-white/20 transition-all duration-300 group">
                 {{ __('ui.cta.secondary') }}

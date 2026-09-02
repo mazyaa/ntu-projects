@@ -4,12 +4,12 @@ return [
     'name' => 'PT Nusantara Techno Utama',
     'short_name' => 'NTU',
     'slug' => 'pt-nusantara-techno-utama',
-    'tagline' => 'Mitra Riset dan Teknologi Terpercaya untuk Indonesia yang Berkelanjutan',
+    'tagline' => 'Compliance | Reliability | Engineering Solution',
 
     'overview' => [
-        'intro' => 'PT Nusantara Techno Utama ("NTU") adalah perusahaan swasta nasional yang bergerak di bidang jasa profesional, ilmiah, dan teknis, dengan fokus pada riset terapan dan kebijakan sosial-ekonomi, rekayasa teknologi, pengelolaan lingkungan, serta layanan pengujian, inspeksi, dan sertifikasi (Testing, Inspection, and Certification/TIC).',
-        'founded' => 'NTU didirikan pada 22 Oktober 2020 di Kota Serang, Provinsi Banten, sebagai wadah kolaborasi profesional dan akademisi lintas disiplin keteknikan, ekonomi, dan ilmu sosial untuk menghadirkan solusi berbasis bukti (evidence-based) bagi pemerintah, industri, dan masyarakat.',
-        'evolution' => 'Melalui pembaruan Anggaran Dasar pada 12 Februari 2025, NTU memperkuat lini bisnisnya, termasuk konsultansi manajemen dan riset terapan (KBLI 70209) serta penelitian dan pengembangan (KBLI 72102), sebagai basis legal bagi unit kajian sosial-ekonomi dan survei kebijakan publik. Unit ini didukung oleh tim peneliti dengan latar belakang akademik doktoral dan pengalaman lapangan pada isu ketenagakerjaan, kesejahteraan pekerja, dan perumahan, sehingga NTU dapat menjembatani analisis kuantitatif-kualitatif dengan rekomendasi kebijakan yang aplikatif.',
+        'intro' => 'PT Nusantara Techno Utama (NTU) adalah perusahaan swasta nasional yang bergerak di bidang jasa profesional, ilmiah, dan teknis. NTU menghadirkan solusi terintegrasi yang menyatukan tiga domain keahlian strategis: Compliance (kepatuhan regulasi), Reliability (keandalan aset), dan Teknologi Proses Lingkungan untuk mendukung industri yang patuh, andal, dan berkelanjutan.',
+        'founded' => 'Didirikan pada 22 Oktober 2020 di Kota Serang, Provinsi Banten, NTU lahir sebagai wadah kolaborasi para profesional dan akademisi lintas disiplin keteknikan, sains, dan ilmu sosial-ekonomi.',
+        'evolution' => 'Melalui pembaruan Anggaran Dasar pada Februari 2025, NTU memperkuat lini bisnisnya di bidang pengujian & inspeksi teknik K3 (riksa uji), rekayasa, teknologi lingkungan, riset terapan, serta teknologi informasi.',
     ],
 
     'legal' => [
@@ -24,15 +24,13 @@ return [
         ['label' => 'Kantor Pusat', 'value' => 'Komp. Nuansa Alam Banjar Estate Blok A7 No.2, RT 003/RW 004, Kel. Banjar Agung, Kec. Cipocok Jaya, Kota Serang, Provinsi Banten'],
     ],
 
-    'vision' => 'Menjadi perusahaan teknologi dan riset terapan nasional terkemuka yang menghadirkan solusi rekayasa, kajian sosial-ekonomi, dan layanan teknis berstandar internasional untuk mendukung pembangunan Indonesia yang berkelanjutan dan berkeadilan.',
+    'vision' => 'Menjadi mitra teknologi nasional terkemuka yang menghadirkan kepatuhan, keandalan, dan teknologi lingkungan berstandar internasional untuk mendukung pembangunan Indonesia yang berkelanjutan.',
 
     'mission' => [
-        'Menyediakan layanan konsultansi enjinering, arsitektur, dan teknologi yang inovatif, akurat, dan berorientasi pada kebutuhan klien serta kepatuhan terhadap standar nasional dan internasional.',
-        'Mengembangkan solusi pengelolaan air, air limbah, sampah, dan pemulihan material yang ramah lingkungan guna mendukung ekonomi sirkular dan target keberlanjutan (SDGs).',
-        'Menyelenggarakan jasa pengujian, inspeksi, sertifikasi, verifikasi, dan validasi teknis yang independen, kredibel, dan terakreditasi untuk menjamin mutu produk, proses, dan sistem.',
-        'Melaksanakan riset terapan, survei sosial-ekonomi, dan kajian kebijakan publik termasuk isu ketenagakerjaan, kesejahteraan pekerja, dan perumahan sebagai dasar penyusunan kebijakan berbasis bukti (evidence-based policy).',
-        'Mendorong pemanfaatan teknologi informasi dan penelitian terapan sebagai penggerak transformasi digital industri, pertanian, kesehatan, dan sektor publik.',
-        'Membangun ekosistem kemitraan yang kolaboratif dengan pemerintah, industri, akademisi, dan komunitas untuk menciptakan nilai tambah ekonomi, sosial, dan lingkungan bagi masyarakat Indonesia.',
+        'Menyelenggarakan jasa pengujian, inspeksi, sertifikasi, verifikasi, dan validasi teknis yang independen, kredibel, dan terakreditasi untuk menjamin kepatuhan.',
+        'Mengembangkan dan memberikan layanan pemantauan kondisi dan predictive maintenance untuk menjamin keandalan aset dan kontinuitas operasi pelanggan.',
+        'Menghadirkan solusi teknologi proses lingkungan pengelolaan air, air limbah, sampah, dan pemulihan material untuk mendukung ekonomi sirkular dan target keberlanjutan.',
+        'Membangun ekosistem kemitraan kolaboratif dengan pemerintah, industri, akademisi, dan masyarakat untuk menciptakan nilai tambah ekonomi, sosial, dan lingkungan.',
     ],
 
     'values' => [
@@ -76,9 +74,9 @@ return [
     'contact' => [
         'address' => 'Komp. Nuansa Alam Banjar Estate Blok A7 No.2, RT 003/RW 004, Kel. Banjar Agung, Kec. Cipocok Jaya, Kota Serang, Provinsi Banten',
         'city' => 'Kota Serang, Banten',
-        'email' => 'info@techno-inovation.com',
-        'phone' => '+62 8180 7138 156',
-        'whatsapp' => '6281807138156',
+        'email' => 'nusantaratechnoutamapt@gmail.com',
+        'phone' => '+62 8153 2061 799',
+        'whatsapp' => '6281532061799',
         'website' => 'https://techno-inovation.com',
     ],
 
@@ -90,68 +88,73 @@ return [
             'icon' => 'rocket',
         ],
         [
-            'year' => '2020–2023',
-            'title' => 'Pengembangan Kapabilitas Riset',
-            'description' => 'Melakukan kajian dampak sosial COVID-19 (Uni Eropa), analisis SDGs (UNDP/Bappenas), sustainable urban development (CSEAS Kyoto), dan berbagai proyek riset berbasis kebijakan publik.',
+            'year' => '2020–2024',
+            'title' => 'Pengembangan Kapabilitas',
+            'description' => 'Pengembangan layanan konsultasi lingkungan, rekayasa teknik, serta riset terapan dan kebijakan publik untuk pemerintah dan industri.',
             'icon' => 'search',
-        ],
-        [
-            'year' => '2022–2024',
-            'title' => 'Ekspansi Riset Internasional',
-            'description' => 'Menjadi mitra riset bagi organisasi internasional termasuk OXFAM, ICF International, ISEAL, Swedish Institute, Raoul Wallenberg Institute, dan Aflatoun International.',
-            'icon' => 'globe',
         ],
         [
             'year' => '12 Feb 2025',
             'title' => 'Pembaruan Anggaran Dasar',
-            'description' => 'Penguatan lini bisnis melalui KBLI 70209 (konsultansi manajemen & riset terapan) dan KBLI 72102 (penelitian & pengembangan) sebagai basis legal unit kajian sosial-ekonomi.',
+            'description' => 'Penguatan lini bisnis di bidang pengujian & inspeksi teknik K3 (riksa uji), rekayasa, teknologi lingkungan, riset terapan, serta teknologi informasi.',
             'icon' => 'file-check',
         ],
         [
             'year' => '2025',
-            'title' => 'Kajian Kebijakan Strategis Nasional',
-            'description' => 'Dipercaya Kementerian Ketenagakerjaan RI untuk empat kajian kebijakan strategis: Revisi UU Keselamatan Kerja, Dinamika Pengupahan, Mogok Kerja & PHI, serta Evaluasi Jaminan Pensiun.',
+            'title' => 'Ekspansi Layanan Riksa Uji',
+            'description' => 'Perluasan layanan PJK3 Riksa Uji untuk pesawat angkat, pesawat angkut, dan berbagai objek K3 industri.',
             'icon' => 'award',
         ],
     ],
 
     'stats' => [
         ['value' => 5, 'suffix' => '+', 'label' => 'Tahun Pengalaman', 'color' => 'white'],
-        ['value' => 6, 'suffix' => '', 'label' => 'Pilar Layanan Strategis', 'color' => 'accent'],
-        ['value' => 4, 'suffix' => '+', 'label' => 'Kajian Kebijakan Nasional', 'color' => 'white'],
-        ['value' => 5, 'suffix' => '', 'label' => 'Personil Kunci', 'color' => 'accent'],
-        ['value' => 56, 'suffix' => '+', 'label' => 'Publikasi Scopus', 'color' => 'white'],
+        ['value' => 8, 'suffix' => '+', 'label' => 'Tahun Pengalaman Ahli K3', 'color' => 'accent'],
+        ['value' => 10, 'suffix' => '+', 'label' => 'Kategori Riksa Uji', 'color' => 'white'],
+        ['value' => 4, 'suffix' => '', 'label' => 'Layanan Utama', 'color' => 'accent'],
     ],
 
-    'research_process' => [
+    'riksa_uji_process' => [
         [
             'step' => '01',
-            'title' => 'Konsultasi & Identifikasi',
-            'description' => 'Klien atau instansi menyampaikan kebutuhan riset, kajian kebijakan, atau pengujian teknis. Tim kami melakukan analisis awal untuk merumuskan ruang lingkup pekerjaan.',
+            'title' => 'Konsultasi',
+            'description' => 'Klien menyampaikan kebutuhan riksa uji. Tim kami melakukan analisis awal untuk merumuskan ruang lingkup pekerjaan.',
             'icon' => 'headphones',
         ],
         [
             'step' => '02',
-            'title' => 'Perancangan Metodologi',
-            'description' => 'Tim menyiapkan desain riset, instrumen survei, kerangka analisis, dan jadwal pelaksanaan sesuai standar akademis dan regulasi yang berlaku.',
+            'title' => 'Verifikasi Dokumen',
+            'description' => 'Verifikasi dokumen teknis, sertifikat peralatan, riwayat pemeliharaan, dan kelengkapan administrasi yang diperlukan.',
             'icon' => 'clipboard-check',
         ],
         [
             'step' => '03',
-            'title' => 'Pengumpulan Data & Lapangan',
-            'description' => 'Pelaksanaan survei kuantitatif dan kualitatif, wawancara, koordinasi dengan pemangku kepentingan, serta verifikasi data di lapangan.',
-            'icon' => 'search-check',
+            'title' => 'Perencanaan & Penjadwalan',
+            'description' => 'Penyusunan rencana inspeksi, penjadwalan kunjungan lapangan, dan persiapan peralatan pengujian yang diperlukan.',
+            'icon' => 'calendar-check',
         ],
         [
             'step' => '04',
-            'title' => 'Analisis & Kajian',
-            'description' => 'Data cleaning, verifikasi, konsolidasi, analisis statistik, dan penafsiran kualitatif untuk menghasilkan temuan yang dapat dipertanggungjawabkan secara ilmiah.',
-            'icon' => 'bar-chart-3',
+            'title' => 'Inspeksi',
+            'description' => 'Pemeriksaan visual dan dokumentasi terhadap kondisi fisik peralatan, struktur, dan komponen pendukung.',
+            'icon' => 'scan-eye',
         ],
         [
             'step' => '05',
-            'title' => 'Pelaporan & Rekomendasi',
-            'description' => 'Penyusunan laporan teknis, rekomendasi kebijakan berbasis bukti (evidence-based policy), dan disseminasi hasil kepada pemangku kepentingan.',
+            'title' => 'Pengujian',
+            'description' => 'Pelaksanaan pengujian teknis menggunakan peralatan terkalibrasi sesuai standar dan regulasi yang berlaku.',
+            'icon' => 'flask-conical',
+        ],
+        [
+            'step' => '06',
+            'title' => 'Evaluasi',
+            'description' => 'Analisis hasil inspeksi dan pengujian terhadap persyaratan standar teknis dan regulasi K3 yang berlaku.',
+            'icon' => 'bar-chart-3',
+        ],
+        [
+            'step' => '07',
+            'title' => 'Laporan & Rekomendasi',
+            'description' => 'Penyusunan laporan teknis komprehensif beserta rekomendasi tindakan perbaikan dan pemeliharaan.',
             'icon' => 'badge-check',
         ],
     ],

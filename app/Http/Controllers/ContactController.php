@@ -14,8 +14,14 @@ class ContactController extends Controller
 {
     public function index()
     {
+        $seo = [
+            'title' => __('ui.page_titles.contact'),
+            'description' => 'Hubungi PT Nusantara Techno Utama untuk konsultasi Riksa Uji K3, inspeksi, dan pengujian teknis.',
+        ];
+
         return view('pages.contact', [
             'company' => company(),
+            'seo' => $seo,
         ]);
     }
 

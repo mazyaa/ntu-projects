@@ -3,7 +3,7 @@
     <div class="absolute inset-0 z-0">
         <img src="{{ asset('images/hero-image.webp') }}" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" class="w-full h-full object-cover">
     </div>
-    <!-- Overlay biru -->
+    <!-- Overlay -->
     <div class="absolute inset-0 z-1 bg-linear-to-br from-secondary/95 via-secondary/85 to-primary/75"></div>
     <!-- Grid background -->
     <div class="absolute inset-0 z-2 pointer-events-none bg-[linear-gradient(to_right,#ffffff0A_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0A_1px,transparent_1px)] bg-size-[24px_24px]"></div>
@@ -11,40 +11,18 @@
     <div class="absolute bottom-0 right-0 w-[45%] h-[50%] rounded-full bg-accent/20 blur-3xl pointer-events-none z-2"></div>
     <div class="absolute top-16 right-10 w-72 h-72 rounded-full bg-accent/15 blur-3xl pointer-events-none z-2"></div>
 
-    <!-- Flying icons -->
+    <!-- Trust items as flying chips — visible on xl+ only -->
     <div class="hero-icons absolute inset-0 z-2 pointer-events-none will-change-transform">
         @php
             $chips = [
-                ['icon' => 'flask-conical', 'label' => __('ui.hero.chips.0'), 'pos' => 'left-[6%] top-[24%]', 'dur' => 4.5, 'delay' => 0, 'dist' => 12],
-                ['icon' => 'factory', 'label' => __('ui.hero.chips.1'), 'pos' => 'right-[5%] top-[20%]', 'dur' => 5.2, 'delay' => 0.4, 'dist' => 10],
-                ['icon' => 'scroll-text', 'label' => __('ui.hero.chips.2'), 'pos' => 'left-[8%] top-[60%]', 'dur' => 4.8, 'delay' => 0.8, 'dist' => 13],
-                ['icon' => 'leaf', 'label' => __('ui.hero.chips.3'), 'pos' => 'right-[7%] top-[56%]', 'dur' => 5.6, 'delay' => 0.2, 'dist' => 11],
-                ['icon' => 'shield-check', 'label' => __('ui.hero.chips.4'), 'pos' => 'left-[15%] bottom-[22%]', 'dur' => 5.0, 'delay' => 0.6, 'dist' => 10],
-                ['icon' => 'bar-chart-3', 'label' => __('ui.hero.chips.5'), 'pos' => 'right-[14%] bottom-[24%]', 'dur' => 4.4, 'delay' => 1.0, 'dist' => 14],
+                ['icon' => 'award', 'label' => __('ui.trust_strip.items.0.title'), 'pos' => 'left-[6%] top-[24%]', 'dur' => 4.5, 'delay' => 0, 'dist' => 12],
+                ['icon' => 'shield-check', 'label' => __('ui.trust_strip.items.1.title'), 'pos' => 'right-[5%] top-[20%]', 'dur' => 5.2, 'delay' => 0.4, 'dist' => 10],
+                ['icon' => 'wrench', 'label' => __('ui.trust_strip.items.2.title'), 'pos' => 'left-[8%] top-[60%]', 'dur' => 4.8, 'delay' => 0.8, 'dist' => 13],
+                ['icon' => 'file-text', 'label' => __('ui.trust_strip.items.3.title'), 'pos' => 'right-[7%] top-[56%]', 'dur' => 5.6, 'delay' => 0.2, 'dist' => 11],
             ];
         @endphp
 
-        <!-- Flying chips: 2 baris rapi di tablet (md-lg), sembunyi di mobile -->
-        <div class="hidden md:flex xl:hidden absolute inset-x-0 top-28 flex-wrap justify-center gap-2 px-4">
-            @foreach(array_slice($chips, 0, 3) as $chip)
-                <div class="fly-chip flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-white text-xs font-medium shadow-lg shadow-black/10"
-                     data-float-dur="{{ $chip['dur'] }}" data-float-delay="{{ $chip['delay'] }}" data-float-dist="6">
-                    <i data-lucide="{{ $chip['icon'] }}" class="w-4 h-4 text-accent"></i>
-                    <span>{{ $chip['label'] }}</span>
-                </div>
-            @endforeach
-        </div>
-        <div class="hidden md:flex xl:hidden absolute inset-x-0 bottom-8 flex-wrap justify-center gap-2 px-4">
-            @foreach(array_slice($chips, 3) as $chip)
-                <div class="fly-chip flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-white text-xs font-medium shadow-lg shadow-black/10"
-                     data-float-dur="{{ $chip['dur'] }}" data-float-delay="{{ $chip['delay'] }}" data-float-dist="6">
-                    <i data-lucide="{{ $chip['icon'] }}" class="w-4 h-4 text-accent"></i>
-                    <span>{{ $chip['label'] }}</span>
-                </div>
-            @endforeach
-        </div>
-
-        <!-- Flying chips: posisi floating di xl+ -->
+        <!-- Flying chips: only on xl+ (>=1280px) -->
         @foreach($chips as $chip)
             <div class="fly-chip hidden xl:flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-white text-sm font-medium shadow-lg shadow-black/10 absolute {{ $chip['pos'] }}"
                  data-float-dur="{{ $chip['dur'] }}" data-float-delay="{{ $chip['delay'] }}" data-float-dist="{{ $chip['dist'] }}">
@@ -54,7 +32,7 @@
         @endforeach
     </div>
 
-    <!-- Teks -->
+    <!-- Text -->
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
         <div class="hero-content text-center max-w-3xl mx-auto">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-semibold backdrop-blur-sm border border-white/20 mb-6">
@@ -62,7 +40,7 @@
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
                 </span>
-                Applied Research &amp; Policy Advisory | Engineering | TIC
+                {{ __('ui.hero.badge') }}
             </div>
 
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
@@ -78,18 +56,28 @@
             </p>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#services" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-xl hover:bg-white/90 transition-all duration-300 shadow-xl shadow-black/20 group">
+                <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-xl hover:bg-white/90 transition-all duration-300 shadow-xl shadow-black/20 group">
                     {{ __('ui.hero.cta_primary') }}
                     <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="{{ lroute('about') }}" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/30 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+                <a href="#riksa-uji" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/30 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
                     {{ __('ui.hero.cta_secondary') }}
                 </a>
+            </div>
+
+            <!-- Trust items below CTA — visible on <xl -->
+            <div class="mt-12 flex flex-wrap justify-center gap-6 xl:hidden">
+                @foreach($chips as $chip)
+                <div class="flex items-center gap-2 text-white/70 text-sm">
+                    <i data-lucide="{{ $chip['icon'] }}" class="w-4 h-4 text-accent"></i>
+                    <span>{{ $chip['label'] }}</span>
+                </div>
+                @endforeach
             </div>
         </div>
     </div>
 
-    <!-- Wave putih -->
+    <!-- Wave -->
     <x-landing.wave fill="#FFFFFF" />
 
     <script>
@@ -99,7 +87,6 @@
 
             const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-            // Entrance animasi teks hero
             if (!prefersReduced) {
                 gsap.fromTo('.hero-content > *',
                     { y: 30, opacity: 0 },
@@ -111,7 +98,6 @@
 
             if (prefersReduced || !chips.length) return;
 
-            // Floating: naik-turun + rotasi tipis
             chips.forEach((el) => {
                 const dur = parseFloat(el.dataset.floatDur || 5);
                 const delay = parseFloat(el.dataset.floatDelay || 0);
@@ -127,7 +113,6 @@
                 });
             });
 
-            // Parallax mengikuti kursor (sumbu x)
             const xTos = chips.map((el, i) => {
                 const depth = 18 + (i % 4) * 10;
                 return { to: gsap.quickTo(el, 'x', { duration: 0.9, ease: 'power3.out' }), depth };
@@ -141,7 +126,6 @@
                 xTos.forEach(({ to }) => to(0));
             });
 
-            // Parallax saat scroll (kelompok ikon)
             const iconsWrap = document.querySelector('.hero-icons');
             if (iconsWrap && gsap.ScrollTrigger) {
                 gsap.fromTo(iconsWrap, { y: -30 }, {

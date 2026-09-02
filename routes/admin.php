@@ -5,11 +5,16 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\MediaController;
+use App\Http\Controllers\Admin\EquipmentController;
+use App\Http\Controllers\Admin\MediaLibraryController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\RiksaUjiCategoryController;
+use App\Http\Controllers\Admin\RiksaUjiTypeController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\TeamMemberController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -51,11 +56,11 @@ $panelRoutes = function (): void {
     Route::put('users/{user}', [UserController::class, 'update'])->middleware('permission:users.edit')->name('users.update');
     Route::delete('users/{user}', [UserController::class, 'destroy'])->middleware('permission:users.delete')->name('users.destroy');
 
-    // Media (upload endpoint only — Media Library page removed)
-    Route::post('media', [MediaController::class, 'store'])->middleware('permission:media.upload')->name('media.store');
-    Route::delete('media/{media}', [MediaController::class, 'destroy'])->middleware('permission:media.delete')->name('media.destroy');
+    // Media (upload & delete only — no standalone library page)
+    Route::post('media', [MediaLibraryController::class, 'store'])->middleware('permission:media.upload')->name('media.store');
+    Route::delete('media/{media}', [MediaLibraryController::class, 'destroy'])->middleware('permission:media.delete')->name('media.destroy');
 
-    // Articles (Editor-only management; no admin approval workflow)
+    // Articles
     Route::get('articles', [ArticleController::class, 'index'])->middleware('permission:articles.view')->name('articles.index');
     Route::get('articles/create', [ArticleController::class, 'create'])->middleware('permission:articles.create')->name('articles.create');
     Route::post('articles', [ArticleController::class, 'store'])->middleware('permission:articles.create')->name('articles.store');
@@ -75,6 +80,49 @@ $panelRoutes = function (): void {
     Route::get('services/{service}/edit', [ServiceController::class, 'edit'])->middleware('permission:services.edit')->name('services.edit');
     Route::put('services/{service}', [ServiceController::class, 'update'])->middleware('permission:services.edit')->name('services.update');
     Route::delete('services/{service}', [ServiceController::class, 'destroy'])->middleware('permission:services.delete')->name('services.destroy');
+
+    // Riksa Uji Categories
+    Route::get('riksa-uji-categories', [RiksaUjiCategoryController::class, 'index'])->middleware('permission:riksa_uji.view')->name('riksa-uji-categories.index');
+    Route::get('riksa-uji-categories/create', [RiksaUjiCategoryController::class, 'create'])->middleware('permission:riksa_uji.create')->name('riksa-uji-categories.create');
+    Route::post('riksa-uji-categories', [RiksaUjiCategoryController::class, 'store'])->middleware('permission:riksa_uji.create')->name('riksa-uji-categories.store');
+    Route::get('riksa-uji-categories/{riksaUjiCategory}/edit', [RiksaUjiCategoryController::class, 'edit'])->middleware('permission:riksa_uji.edit')->name('riksa-uji-categories.edit');
+    Route::put('riksa-uji-categories/{riksaUjiCategory}', [RiksaUjiCategoryController::class, 'update'])->middleware('permission:riksa_uji.edit')->name('riksa-uji-categories.update');
+    Route::delete('riksa-uji-categories/{riksaUjiCategory}', [RiksaUjiCategoryController::class, 'destroy'])->middleware('permission:riksa_uji.delete')->name('riksa-uji-categories.destroy');
+
+    // Riksa Uji Types
+    Route::get('riksa-uji-types', [RiksaUjiTypeController::class, 'index'])->middleware('permission:riksa_uji.view')->name('riksa-uji-types.index');
+    Route::get('riksa-uji-types/create', [RiksaUjiTypeController::class, 'create'])->middleware('permission:riksa_uji.create')->name('riksa-uji-types.create');
+    Route::post('riksa-uji-types', [RiksaUjiTypeController::class, 'store'])->middleware('permission:riksa_uji.create')->name('riksa-uji-types.store');
+    Route::get('riksa-uji-types/{riksaUjiType}/edit', [RiksaUjiTypeController::class, 'edit'])->middleware('permission:riksa_uji.edit')->name('riksa-uji-types.edit');
+    Route::put('riksa-uji-types/{riksaUjiType}', [RiksaUjiTypeController::class, 'update'])->middleware('permission:riksa_uji.edit')->name('riksa-uji-types.update');
+    Route::delete('riksa-uji-types/{riksaUjiType}', [RiksaUjiTypeController::class, 'destroy'])->middleware('permission:riksa_uji.delete')->name('riksa-uji-types.destroy');
+
+    // Equipment
+    Route::get('equipment', [EquipmentController::class, 'index'])->middleware('permission:equipment.view')->name('equipment.index');
+    Route::get('equipment/create', [EquipmentController::class, 'create'])->middleware('permission:equipment.create')->name('equipment.create');
+    Route::post('equipment', [EquipmentController::class, 'store'])->middleware('permission:equipment.create')->name('equipment.store');
+    Route::get('equipment/{equipment}/edit', [EquipmentController::class, 'edit'])->middleware('permission:equipment.edit')->name('equipment.edit');
+    Route::put('equipment/{equipment}', [EquipmentController::class, 'update'])->middleware('permission:equipment.edit')->name('equipment.update');
+    Route::delete('equipment/{equipment}', [EquipmentController::class, 'destroy'])->middleware('permission:equipment.delete')->name('equipment.destroy');
+    Route::post('equipment/upload-image', [EquipmentController::class, 'uploadImage'])->middleware('permission:equipment.edit')->name('equipment.upload-image');
+
+    // Projects
+    Route::get('projects', [ProjectController::class, 'index'])->middleware('permission:projects.view')->name('projects.index');
+    Route::get('projects/create', [ProjectController::class, 'create'])->middleware('permission:projects.create')->name('projects.create');
+    Route::post('projects', [ProjectController::class, 'store'])->middleware('permission:projects.create')->name('projects.store');
+    Route::get('projects/{project}/edit', [ProjectController::class, 'edit'])->middleware('permission:projects.edit')->name('projects.edit');
+    Route::put('projects/{project}', [ProjectController::class, 'update'])->middleware('permission:projects.edit')->name('projects.update');
+    Route::delete('projects/{project}', [ProjectController::class, 'destroy'])->middleware('permission:projects.delete')->name('projects.destroy');
+    Route::post('projects/upload-image', [ProjectController::class, 'uploadImage'])->middleware('permission:projects.edit')->name('projects.upload-image');
+
+    // Team Members
+    Route::get('team', [TeamMemberController::class, 'index'])->middleware('permission:team.view')->name('team.index');
+    Route::get('team/create', [TeamMemberController::class, 'create'])->middleware('permission:team.create')->name('team.create');
+    Route::post('team', [TeamMemberController::class, 'store'])->middleware('permission:team.create')->name('team.store');
+    Route::get('team/{teamMember}/edit', [TeamMemberController::class, 'edit'])->middleware('permission:team.edit')->name('team.edit');
+    Route::put('team/{teamMember}', [TeamMemberController::class, 'update'])->middleware('permission:team.edit')->name('team.update');
+    Route::delete('team/{teamMember}', [TeamMemberController::class, 'destroy'])->middleware('permission:team.delete')->name('team.destroy');
+    Route::post('team/upload-photo', [TeamMemberController::class, 'uploadPhoto'])->middleware('permission:team.edit')->name('team.upload-photo');
 
     // Categories
     Route::get('categories', [CategoryController::class, 'index'])->middleware('permission:categories.view')->name('categories.index');

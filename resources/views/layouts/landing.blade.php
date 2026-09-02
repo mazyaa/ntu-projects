@@ -13,13 +13,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{{ __('ui.meta.description') }}">
-    <meta name="keywords" content="{{ __('ui.meta.keywords') }}">
-    <meta property="og:title" content="NTU - @yield('title', __('ui.home'))">
-    <meta property="og:description" content="{{ __('ui.meta.og_description') }}">
-    <meta property="og:image" content="{{ asset('images/logo/hero-logo.png') }}">
+    <x-seo
+        :title="$seo['title'] ?? null"
+        :description="$seo['description'] ?? null"
+        :keywords="$seo['keywords'] ?? null"
+        :image="$seo['image'] ?? null"
+        :type="$seo['type'] ?? 'website'"
+        :author="$seo['author'] ?? null"
+        :published-time="$seo['published_time'] ?? null"
+        :modified-time="$seo['modified_time'] ?? null"
+        :noindex="$seo['noindex'] ?? false"
+    />
 
-    <title>NTU - @yield('title', __('ui.home'))</title>
+    <!-- Structured Data -->
+    @yield('jsonld')
 
     <!-- Scripts and Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
