@@ -2,6 +2,10 @@
 
 @section('title', $article->localized('title'))
 
+@section('jsonld')
+    <x-seo.article :article="$article" />
+@endsection
+
 @section('content')
     <x-landing.page-hero
         :title="$article->localized('title')"

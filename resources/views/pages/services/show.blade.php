@@ -2,6 +2,10 @@
 
 @section('title', $service->localized('title'))
 
+@section('jsonld')
+    <x-seo.service :service="$service" />
+@endsection
+
 @section('content')
     <x-landing.page-hero
         :title="$service->localized('title')"

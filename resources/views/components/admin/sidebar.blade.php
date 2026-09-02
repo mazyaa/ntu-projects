@@ -1,4 +1,4 @@
-<aside class="fixed inset-y-0 left-0 z-30 w-64 bg-gradient-to-b from-secondary via-secondary to-primary text-white shadow-xl lg:static lg:inset-0 transition-transform duration-300 ease-in-out transform"
+<aside class="fixed inset-y-0 left-0 z-30 w-64 bg-gradient-to-b from-secondary via-secondary to-primary text-white shadow-xl lg:static lg:inset-0 transition-transform duration-300 ease-in-out transform flex flex-col"
        :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen, 'lg:translate-x-0': true}">
 
     <!-- Logo Area -->
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Navigation -->
-    <div class="overflow-y-auto overflow-x-hidden flex-grow p-4">
+    <div class="overflow-y-auto overflow-x-hidden flex-grow min-h-0 p-4 scrollbar-hidden">
         <ul class="flex flex-col py-2 space-y-1">
             <li class="px-3">
                 <div class="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Menu Utama</div>
@@ -65,6 +65,28 @@
             </li>
             @endcan
 
+            @can('team.view')
+            <li>
+                <a href="{{ panel_route('team.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.team*', 'editor.team*') ? 'bg-white/10 text-white border-white' : '' }}">
+                    <span class="inline-flex justify-center items-center ml-4">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                    </span>
+                    <span class="ml-2 text-sm font-medium tracking-wide truncate">Tim & Kepemimpinan</span>
+                </a>
+            </li>
+            @endcan
+
+            @can('projects.view')
+            <li>
+                <a href="{{ panel_route('projects.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.projects*', 'editor.projects*') ? 'bg-white/10 text-white border-white' : '' }}">
+                    <span class="inline-flex justify-center items-center ml-4">
+                        <i data-lucide="folder-open" class="w-5 h-5"></i>
+                    </span>
+                    <span class="ml-2 text-sm font-medium tracking-wide truncate">Proyek</span>
+                </a>
+            </li>
+            @endcan
+
             @can('categories.view')
             <li>
                 <a href="{{ panel_route('categories.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.categories*', 'editor.categories*') ? 'bg-white/10 text-white border-white' : '' }}">
@@ -83,6 +105,36 @@
                         <i data-lucide="tag" class="w-5 h-5"></i>
                     </span>
                     <span class="ml-2 text-sm font-medium tracking-wide truncate">Tag</span>
+                </a>
+            </li>
+            @endcan
+
+            @can('riksa_uji.view')
+            <li class="px-3 mt-6">
+                <div class="text-xs font-semibold text-white/40 uppercase tracking-wider mb-2">Riksa Uji</div>
+            </li>
+            <li>
+                <a href="{{ panel_route('riksa-uji-categories.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.riksa-uji-categories*', 'editor.riksa-uji-categories*') ? 'bg-white/10 text-white border-white' : '' }}">
+                    <span class="inline-flex justify-center items-center ml-4">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </span>
+                    <span class="ml-2 text-sm font-medium tracking-wide truncate">Kategori Riksa Uji</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ panel_route('riksa-uji-types.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.riksa-uji-types*', 'editor.riksa-uji-types*') ? 'bg-white/10 text-white border-white' : '' }}">
+                    <span class="inline-flex justify-center items-center ml-4">
+                        <i data-lucide="list-checks" class="w-5 h-5"></i>
+                    </span>
+                    <span class="ml-2 text-sm font-medium tracking-wide truncate">Tipe Riksa Uji</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ panel_route('equipment.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.equipment*', 'editor.equipment*') ? 'bg-white/10 text-white border-white' : '' }}">
+                    <span class="inline-flex justify-center items-center ml-4">
+                        <i data-lucide="crane" class="w-5 h-5"></i>
+                    </span>
+                    <span class="ml-2 text-sm font-medium tracking-wide truncate">Equipment</span>
                 </a>
             </li>
             @endcan

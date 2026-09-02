@@ -1,4 +1,4 @@
-<section class="py-24 bg-white relative overflow-hidden" id="experience">
+<section class="py-24 bg-white relative overflow-hidden" id="pengalaman">
     <div class="absolute -top-24 right-0 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-0 -left-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none"></div>
     <div class="max-w-7xl mx-auto px-6 lg:px-8">

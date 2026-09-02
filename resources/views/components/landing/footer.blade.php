@@ -4,7 +4,7 @@
             <div class="lg:col-span-1">
                 <img src="{{ asset('images/logo/footer-logo.png') }}" alt="NTU Logo White" class="h-12 w-auto mb-6 brightness-0 invert opacity-90" onerror="this.src='https://ui-avatars.com/api/?name=NTU&background=0736AA&color=fff&rounded=true'">
                 <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                    {{ company('tagline') }}
+                    {{ __('ui.footer.description') }}
                 </p>
                 <div class="flex space-x-4">
                     <a href="https://www.linkedin.com/company/{{ company('slug') }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300">
@@ -23,9 +23,9 @@
                 <h3 class="text-lg font-bold text-white mb-6">{{ __('ui.footer.quick_links') }}</h3>
                 <ul class="space-y-3">
                     <li><a href="{{ lroute('about') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.about') }}</a></li>
+                    <li><a href="{{ lroute('leadership') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.tim_kami') }}</a></li>
+                    <li><a href="{{ lroute('riksa_uji') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.riksa_uji') }}</a></li>
                     <li><a href="{{ lroute('services.index') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.services') }}</a></li>
-                    <li><a href="{{ lroute('leadership') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.team') }}</a></li>
-                    <li><a href="{{ lroute('research') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.research') }}</a></li>
                     <li><a href="{{ lroute('articles') }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ __('ui.nav.articles') }}</a></li>
                 </ul>
             </div>
@@ -33,9 +33,11 @@
             <div>
                 <h3 class="text-lg font-bold text-white mb-6">{{ __('ui.footer.service_pillars') }}</h3>
                 <ul class="space-y-3">
-                    @foreach(\App\Models\Service::active()->orderBy('sort_order')->get() as $pillar)
-                    <li><a href="{{ lroute('services.show', ['slug' => $pillar->routeSlug()]) }}" class="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> {{ $pillar->localized('short_title') }}</a></li>
-                    @endforeach
+                    <li class="text-gray-400 text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-primary"></i> Riksa Uji Pesawat Angkat</li>
+                    <li class="text-gray-400 text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-primary"></i> Riksa Uji Pesawat Angkut</li>
+                    <li class="text-gray-400 text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-primary"></i> Inspeksi Teknis K3</li>
+                    <li class="text-gray-400 text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-primary"></i> Konsultasi Lingkungan</li>
+                    <li class="text-gray-400 text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3 text-primary"></i> Rekayasa Teknik</li>
                 </ul>
             </div>
 
@@ -48,11 +50,15 @@
                     </li>
                     <li class="flex items-center gap-3 text-gray-400 text-sm">
                         <i data-lucide="phone" class="w-5 h-5 text-primary shrink-0"></i>
-                        <a href="tel:+6281807138156" class="hover:text-primary transition-colors">{{ company('contact.phone') }}</a>
+                        <a href="tel:{{ company('contact.phone') }}" class="hover:text-primary transition-colors">{{ company('contact.phone') }}</a>
                     </li>
                     <li class="flex items-center gap-3 text-gray-400 text-sm">
                         <i data-lucide="mail" class="w-5 h-5 text-primary shrink-0"></i>
                         <a href="mailto:{{ company('contact.email') }}" class="hover:text-primary transition-colors">{{ company('contact.email') }}</a>
+                    </li>
+                    <li class="flex items-center gap-3 text-gray-400 text-sm">
+                        <i data-lucide="message-circle" class="w-5 h-5 text-accent shrink-0"></i>
+                        <a href="{{ lroute('contact') }}" class="hover:text-accent transition-colors">Kontak Kami</a>
                     </li>
                 </ul>
             </div>

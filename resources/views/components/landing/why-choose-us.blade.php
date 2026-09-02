@@ -1,63 +1,48 @@
-<section class="py-24 bg-white relative">
+<section class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-accent/5 blur-3xl pointer-events-none"></div>
+
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <!-- Header -->
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Mengapa Memilih Kami?</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto">Kami berdedikasi untuk memberikan layanan inspeksi terbaik dengan memprioritaskan keamanan, akurasi, dan kepatuhan terhadap regulasi.</p>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
+                <i data-lucide="award" class="w-4 h-4"></i> {{ __('ui.why_ntu.badge') }}
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">{{ __('ui.why_ntu.h2') }}</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto">{{ __('ui.why_ntu.subtitle') }}</p>
         </div>
 
+        <!-- Reason Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Reason 1 -->
-            <div class="bg-slate-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm border border-gray-100 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="award" class="w-7 h-7"></i>
-                </div>
-                <h3 class="text-xl font-bold text-secondary mb-3">Resmi & Terakreditasi</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Ditunjuk resmi oleh Kemnaker RI sebagai PJK3 (Perusahaan Jasa Keselamatan dan Kesehatan Kerja) yang sah dan terpercaya.</p>
-            </div>
+            @foreach(__('ui.why_ntu.reasons') as $index => $reason)
+            <div class="group relative bg-slate-50 p-8 rounded-3xl border border-gray-100 hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-3" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                <!-- Gradient overlay on hover -->
+                <div class="absolute inset-0 rounded-3xl bg-linear-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-            <!-- Reason 2 -->
-            <div class="bg-slate-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm border border-gray-100 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="users" class="w-7 h-7"></i>
+                <div class="relative">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm border border-gray-100 mb-6 group-hover:bg-primary group-hover:text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                        <i data-lucide="{{ ['users', 'book-open', 'scan-eye', 'clipboard-check', 'file-text'][$index] }}" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition-colors duration-300">{{ $reason['title'] }}</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">{{ $reason['text'] }}</p>
                 </div>
-                <h3 class="text-xl font-bold text-secondary mb-3">Ahli K3 Profesional</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Didukung oleh tenaga ahli K3 spesialis yang berpengalaman, kompeten, dan memegang lisensi resmi untuk setiap bidang pengujian.</p>
             </div>
+            @endforeach
 
-            <!-- Reason 3 -->
-            <div class="bg-slate-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm border border-gray-100 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="zap" class="w-7 h-7"></i>
+            <!-- CTA Card -->
+            <div class="relative bg-primary p-8 rounded-3xl shadow-xl shadow-primary/20 flex flex-col justify-center items-center text-center overflow-hidden group hover:scale-105 transition-transform duration-500" data-aos="fade-up" data-aos-delay="600">
+                <div class="absolute inset-0 bg-linear-to-br from-primary to-secondary opacity-90"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="phone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">{{ __('ui.cta.h2_line1') }}?</h3>
+                    <p class="text-white/80 text-sm mb-6">{{ __('ui.cta.subtitle') }}</p>
+                    <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-primary bg-white rounded-xl hover:bg-gray-50 transition-all duration-300 group-hover:shadow-lg">
+                        {{ __('ui.cta.primary') }}
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
-                <h3 class="text-xl font-bold text-secondary mb-3">Teknologi Terkini</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Menggunakan peralatan inspeksi modern yang dikalibrasi secara berkala untuk menjamin hasil pemeriksaan yang presisi dan akurat.</p>
-            </div>
-
-            <!-- Reason 4 -->
-            <div class="bg-slate-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
-                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm border border-gray-100 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="clock" class="w-7 h-7"></i>
-                </div>
-                <h3 class="text-xl font-bold text-secondary mb-3">Efisiensi Waktu</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Proses inspeksi dan penerbitan sertifikasi dilakukan secara profesional, sistematis, dan tepat waktu untuk mencegah downtime.</p>
-            </div>
-
-            <!-- Reason 5 -->
-            <div class="bg-slate-50 p-8 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="500">
-                <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-primary shadow-sm border border-gray-100 mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <i data-lucide="shield" class="w-7 h-7"></i>
-                </div>
-                <h3 class="text-xl font-bold text-secondary mb-3">Keamanan Terjamin</h3>
-                <p class="text-gray-500 text-sm leading-relaxed">Komitmen mutlak terhadap keselamatan. Kami tidak berkompromi pada kualitas dalam memastikan aset Anda bebas risiko.</p>
-            </div>
-            
-            <!-- Reason CTA -->
-            <div class="bg-primary p-8 rounded-3xl shadow-xl shadow-primary/20 flex flex-col justify-center items-center text-center md:col-span-2 lg:col-span-1" data-aos="fade-up" data-aos-delay="600">
-                <h3 class="text-2xl font-bold text-white mb-4">Butuh Bantuan Segera?</h3>
-                <p class="text-white/80 text-sm mb-6">Tim ahli kami siap memberikan solusi keselamatan terbaik untuk perusahaan Anda.</p>
-                <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-primary bg-white rounded-xl hover:bg-gray-50 transition-all">
-                    Hubungi Konsultan
-                </a>
             </div>
         </div>
     </div>

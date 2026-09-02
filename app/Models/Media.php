@@ -24,12 +24,17 @@ class Media extends Model
         'type',
         'disk',
         'alt_text',
+        'width',
+        'height',
+        'caption',
     ];
 
     protected function casts(): array
     {
         return [
             'size' => 'integer',
+            'width' => 'integer',
+            'height' => 'integer',
             'type' => MediaType::class,
         ];
     }

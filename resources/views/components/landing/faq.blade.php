@@ -1,4 +1,4 @@
-<section class="pt-24 pb-40 bg-slate-50 relative overflow-x-clip" id="faq">
+<section class="py-24 bg-slate-50 relative overflow-x-clip" id="faq">
     <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-32 -left-24 w-96 h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none"></div>
     <div class="max-w-3xl mx-auto px-6 lg:px-8">

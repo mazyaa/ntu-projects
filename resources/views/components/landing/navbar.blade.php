@@ -2,9 +2,9 @@
     $navItems = [
         ['label' => __('ui.nav.home'), 'route' => 'home', 'active' => request()->routeIs('home', 'en.home')],
         ['label' => __('ui.nav.about'), 'route' => 'about', 'active' => request()->routeIs('about', 'en.about')],
+        ['label' => __('ui.nav.tim_kami'), 'route' => 'leadership', 'active' => request()->routeIs('leadership*', 'en.leadership*')],
+        ['label' => __('ui.nav.riksa_uji'), 'route' => 'riksa_uji', 'active' => request()->routeIs('riksa_uji', 'en.riksa_uji')],
         ['label' => __('ui.nav.services'), 'route' => 'services.index', 'active' => request()->routeIs('services.*', 'en.services.*')],
-        ['label' => __('ui.nav.team'), 'route' => 'leadership', 'active' => request()->routeIs('leadership*', 'en.leadership*')],
-        ['label' => __('ui.nav.research'), 'route' => 'research', 'active' => request()->routeIs('research', 'en.research')],
         ['label' => __('ui.nav.articles'), 'route' => 'articles', 'active' => request()->routeIs('articles*', 'en.articles*')],
     ];
 @endphp
@@ -42,7 +42,7 @@
                 <div class="flex items-center gap-3">
                     <x-landing.language-switcher />
                     <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5">
-                        {{ __('ui.nav.contact') }}
+                        {{ __('ui.nav.consult') }}
                     </a>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             @endforeach
             <hr class="border-gray-100">
             <a href="{{ lroute('contact') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
-                {{ __('ui.nav.contact') }}
+                {{ __('ui.nav.consult') }}
             </a>
         </div>
     </div>

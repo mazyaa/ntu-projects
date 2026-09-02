@@ -17,6 +17,11 @@ class RolesAndPermissionsSeeder extends Seeder
         'dashboard' => ['view'],
         'articles' => ['view', 'view_all', 'create', 'edit', 'delete', 'publish', 'archive'],
         'services' => ['view', 'create', 'edit', 'delete'],
+        'riksa_uji' => ['view', 'create', 'edit', 'delete'],
+        'equipment' => ['view', 'create', 'edit', 'delete'],
+        'projects' => ['view', 'create', 'edit', 'delete'],
+        'team' => ['view', 'create', 'edit', 'delete'],
+        'pages' => ['view', 'create', 'edit', 'delete'],
         'media' => ['view', 'upload', 'delete'],
         'categories' => ['view', 'create', 'edit', 'delete'],
         'tags' => ['view', 'create', 'edit', 'delete'],
@@ -37,7 +42,13 @@ class RolesAndPermissionsSeeder extends Seeder
         'Super Admin' => '*',
         'Admin' => [
             'dashboard.view',
+            'articles.view', 'articles.create', 'articles.edit', 'articles.delete', 'articles.publish', 'articles.archive',
             'services.view', 'services.create', 'services.edit', 'services.delete',
+            'riksa_uji.view', 'riksa_uji.create', 'riksa_uji.edit', 'riksa_uji.delete',
+            'equipment.view', 'equipment.create', 'equipment.edit', 'equipment.delete',
+            'projects.view', 'projects.create', 'projects.edit', 'projects.delete',
+            'team.view', 'team.create', 'team.edit', 'team.delete',
+            'pages.view', 'pages.create', 'pages.edit', 'pages.delete',
             'media.view', 'media.upload', 'media.delete',
             'categories.view', 'categories.create', 'categories.edit', 'categories.delete',
             'tags.view', 'tags.create', 'tags.edit', 'tags.delete',
@@ -48,9 +59,10 @@ class RolesAndPermissionsSeeder extends Seeder
         ],
         'Editor' => [
             'dashboard.view',
-            'articles.view', 'articles.create', 'articles.edit', 'articles.delete', 'articles.publish', 'articles.archive',
+            'articles.view', 'articles.create', 'articles.edit',
             'media.view', 'media.upload',
-            'categories.view', 'tags.view',
+            'categories.view', 'categories.create', 'categories.edit',
+            'tags.view', 'tags.create', 'tags.delete',
         ],
     ];
 

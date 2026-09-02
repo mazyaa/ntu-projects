@@ -51,6 +51,13 @@
                             </div>
 
                             <div class="mt-5">
+                                <label class="block text-sm font-medium text-secondary mb-2">Deskripsi Singkat</label>
+                                <textarea name="short_description" rows="2" placeholder="Ringkasan singkat layanan untuk listing..."
+                                          class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">{{ old('short_description', $service->short_description ?? '') }}</textarea>
+                                <p class="text-xs text-gray-400 mt-1">Digunakan di halaman listing layanan.</p>
+                            </div>
+
+                            <div class="mt-5">
                                 <label class="block text-sm font-medium text-secondary mb-2">Deskripsi</label>
                                 <textarea name="description" rows="4"
                                           class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">{{ old('description', $service->description ?? '') }}</textarea>
@@ -58,29 +65,62 @@
 
                             <div class="mt-5">
                                 <label class="block text-sm font-medium text-secondary mb-3">Lingkup Layanan</label>
-                                <div id="service-items-container" class="space-y-3">
-                                    @php
-                                        $items = old('service_items', $service->service_items ?? []);
-                                    @endphp
+                                @php
+                                    $scopeOptions = [
+                                        'Riksa Uji Berkala',
+                                        'Riksa Uji Awal',
+                                        'Riksa Uji Modifikasi',
+                                        'Riksa Uji Setelah Perbaikan',
+                                        'Sertifikasi',
+                                        'Inspeksi Teknis',
+                                        'Pengujian Non-Destruktif',
+                                        'Konsultasi Teknis',
+                                        'Rekayasa & Desain',
+                                        'Pelatihan & Edukasi',
+                                    ];
+                                    $items = old('service_items', $service->service_items ?? []);
+                                @endphp
+                                <div id="service-items-container" class="space-y-2">
                                     @forelse ($items as $item)
                                         <div class="flex items-center gap-2">
-                                            <input type="text" name="service_items[]" value="{{ $item }}" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                            @if(in_array($item, $scopeOptions))
+                                                <select name="service_items[]" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                                    @foreach($scopeOptions as $opt)
+                                                        <option value="{{ $opt }}" @selected($item === $opt)>{{ $opt }}</option>
+                                                    @endforeach
+                                                    <option value="__custom__" data-custom="{{ $item }}">Lainnya...</option>
+                                                </select>
+                                            @else
+                                                <input type="text" name="service_items[]" value="{{ $item }}" placeholder="Ketik item custom..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                            @endif
                                             <button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors">
                                                 <i data-lucide="x" class="w-4 h-4"></i>
                                             </button>
                                         </div>
                                     @empty
                                         <div class="flex items-center gap-2">
-                                            <input type="text" name="service_items[]" placeholder="Item lingkup layanan..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                            <select name="service_items[]" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                                <option value="">-- Pilih Lingkup Layanan --</option>
+                                                @foreach($scopeOptions as $opt)
+                                                    <option value="{{ $opt }}">{{ $opt }}</option>
+                                                @endforeach
+                                                <option value="__custom__">Lainnya (Custom)...</option>
+                                            </select>
                                             <button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors">
                                                 <i data-lucide="x" class="w-4 h-4"></i>
                                             </button>
                                         </div>
                                     @endforelse
                                 </div>
-                                <button type="button" onclick="addServiceItem()" class="mt-3 inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-                                    <i data-lucide="plus" class="w-4 h-4"></i> Tambah Item
-                                </button>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <button type="button" onclick="addServiceItem()" class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+                                        <i data-lucide="plus" class="w-4 h-4"></i> Tambah Pilihan
+                                    </button>
+                                    <span class="text-gray-300">|</span>
+                                    <button type="button" onclick="addCustomServiceItem()" class="inline-flex items-center gap-1 text-sm text-gray-500 font-medium hover:underline">
+                                        <i data-lucide="pencil" class="w-4 h-4"></i> Tambah Custom
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
@@ -106,6 +146,12 @@
                             </div>
 
                             <div class="mt-5">
+                                <label class="block text-sm font-medium text-secondary mb-2">English Short Description</label>
+                                <textarea name="short_description_en" rows="2" placeholder="Brief summary for listing page..."
+                                          class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">{{ old('short_description_en', $service->short_description_en ?? '') }}</textarea>
+                            </div>
+
+                            <div class="mt-5">
                                 <label class="block text-sm font-medium text-secondary mb-2">English Description</label>
                                 <textarea name="description_en" rows="4"
                                           class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">{{ old('description_en', $service->description_en ?? '') }}</textarea>
@@ -121,38 +167,66 @@
 
                             <div class="mt-5">
                                 <label class="block text-sm font-medium text-secondary mb-3">English Scope of Services</label>
-                                <div id="service-items-en-container" class="space-y-3">
-                                    @php
-                                        $enItems = old('service_items_en', $service->service_items_en ?? []);
-                                    @endphp
+                                @php
+                                    $enScopeOptions = [
+                                        'Periodic Inspection & Testing',
+                                        'Initial Inspection & Testing',
+                                        'Post-Modification Inspection',
+                                        'Post-Repair Inspection',
+                                        'Certification',
+                                        'Technical Inspection',
+                                        'Non-Destructive Testing',
+                                        'Technical Consultation',
+                                        'Engineering & Design',
+                                        'Training & Education',
+                                    ];
+                                    $enItems = old('service_items_en', $service->service_items_en ?? []);
+                                @endphp
+                                <div id="service-items-en-container" class="space-y-2">
                                     @forelse ($enItems as $item)
                                         <div class="flex items-center gap-2">
-                                            <input type="text" name="service_items_en[]" value="{{ $item }}" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                            @if(in_array($item, $enScopeOptions))
+                                                <select name="service_items_en[]" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                                    @foreach($enScopeOptions as $opt)
+                                                        <option value="{{ $opt }}" @selected($item === $opt)>{{ $opt }}</option>
+                                                    @endforeach
+                                                    <option value="__custom__">Other (Custom)...</option>
+                                                </select>
+                                            @else
+                                                <input type="text" name="service_items_en[]" value="{{ $item }}" placeholder="Type custom item..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                            @endif
                                             <button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors">
                                                 <i data-lucide="x" class="w-4 h-4"></i>
                                             </button>
                                         </div>
                                     @empty
                                         <div class="flex items-center gap-2">
-                                            <input type="text" name="service_items_en[]" placeholder="Service scope item..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                            <select name="service_items_en[]" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                                <option value="">-- Select Scope of Service --</option>
+                                                @foreach($enScopeOptions as $opt)
+                                                    <option value="{{ $opt }}">{{ $opt }}</option>
+                                                @endforeach
+                                                <option value="__custom__">Other (Custom)...</option>
+                                            </select>
                                             <button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors">
                                                 <i data-lucide="x" class="w-4 h-4"></i>
                                             </button>
                                         </div>
                                     @endforelse
                                 </div>
-                                <button type="button" onclick="addServiceItemEn()" class="mt-3 inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
-                                    <i data-lucide="plus" class="w-4 h-4"></i> Tambah Item
-                                </button>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <button type="button" onclick="addServiceItemEn()" class="inline-flex items-center gap-1 text-sm text-primary font-medium hover:underline">
+                                        <i data-lucide="plus" class="w-4 h-4"></i> Add Option
+                                    </button>
+                                    <span class="text-gray-300">|</span>
+                                    <button type="button" onclick="addCustomServiceItemEn()" class="inline-flex items-center gap-1 text-sm text-gray-500 font-medium hover:underline">
+                                        <i data-lucide="pencil" class="w-4 h-4"></i> Add Custom
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-medium text-secondary mb-2">Gambar URL</label>
-                            <input type="text" name="image" value="{{ old('image', $service->image ?? '') }}" placeholder="/images/services-images/....webp"
-                                   class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
-                            <p class="text-xs text-gray-400 mt-1">Gunakan path aset publik atau URL lengkap.</p>
-                        </div>
+                        <x-admin.media-picker name="image" :value="$service->image ?? null" label="Gambar Layanan" />
                     </div>
                 </x-card>
             </div>
@@ -161,6 +235,15 @@
                 <x-card>
                     <div class="p-6 space-y-5">
                         <h3 class="text-base font-bold text-secondary">Pengaturan</h3>
+
+                        <div>
+                            <label class="block text-sm font-medium text-secondary mb-2">Kategori</label>
+                            <select name="category" class="w-full py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
+                                <option value="riksa_uji" @selected(old('category', $service->category ?? '') === 'riksa_uji')">PJK3 Riksa Uji</option>
+                                <option value="konsultasi" @selected(old('category', $service->category ?? '') === 'konsultasi')">Konsultasi</option>
+                                <option value="perizinan" @selected(old('category', $service->category ?? '') === 'perizinan')">Perizinan</option>
+                            </select>
+                        </div>
 
                         <div>
                             <label class="block text-sm font-medium text-secondary mb-2">Ikon (Lucide)</label>
@@ -194,6 +277,13 @@
                             </select>
                         </div>
 
+                        <div class="flex items-center justify-between">
+                            <label class="text-sm font-medium text-secondary">Aktif</label>
+                            <input type="hidden" name="is_active" value="0">
+                            <input type="checkbox" name="is_active" value="1" {{ old('is_active', $service->is_active ?? 1) ? 'checked' : '' }}
+                                   class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary/20 cursor-pointer">
+                        </div>
+
                         <div>
                             <label class="block text-sm font-medium text-secondary mb-2">Urutan</label>
                             <input type="number" name="sort_order" value="{{ old('sort_order', $service->sort_order ?? 0) }}" min="0"
@@ -213,12 +303,47 @@
 
 @push('scripts')
 <script>
+    const scopeOptions = @json($scopeOptions);
+    const enScopeOptions = @json($enScopeOptions);
+
+    function buildSelect(name, options, placeholder, chooseText, customText) {
+        let html = `<select name="${name}" class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700" onchange="handleScopeSelect(this)">
+            <option value="">${chooseText}</option>`;
+        options.forEach(opt => { html += `<option value="${opt}">${opt}</option>`; });
+        html += `<option value="__custom__">${customText}</option></select>`;
+        return html;
+    }
+
+    function buildRemoveBtn() {
+        return `<button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>`;
+    }
+
+    function handleScopeSelect(sel) {
+        if (sel.value === '__custom__') {
+            const parent = sel.parentElement;
+            const name = sel.name;
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = name;
+            input.placeholder = 'Ketik item custom...';
+            input.className = sel.className;
+            parent.replaceChild(input, sel);
+        }
+    }
+
     function addServiceItem() {
         const container = document.getElementById('service-items-container');
         const div = document.createElement('div');
         div.className = 'flex items-center gap-2';
-        div.innerHTML = `<input type="text" name="service_items[]" placeholder="Item lingkup layanan..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
-            <button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>`;
+        div.innerHTML = buildSelect('service_items[]', scopeOptions, '-- Pilih Lingkup Layanan --', '-- Pilih Lingkup Layanan --', 'Lainnya (Custom)...') + buildRemoveBtn();
+        container.appendChild(div);
+    }
+
+    function addCustomServiceItem() {
+        const container = document.getElementById('service-items-container');
+        const div = document.createElement('div');
+        div.className = 'flex items-center gap-2';
+        div.innerHTML = `<input type="text" name="service_items[]" placeholder="Ketik item custom..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">` + buildRemoveBtn();
         container.appendChild(div);
     }
 
@@ -226,9 +351,22 @@
         const container = document.getElementById('service-items-en-container');
         const div = document.createElement('div');
         div.className = 'flex items-center gap-2';
-        div.innerHTML = `<input type="text" name="service_items_en[]" placeholder="Service scope item..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">
-            <button type="button" onclick="this.parentElement.remove()" class="p-2 rounded-lg text-gray-400 hover:text-danger hover:bg-red-50 transition-colors"><i data-lucide="x" class="w-4 h-4"></i></button>`;
+        div.innerHTML = buildSelect('service_items_en[]', enScopeOptions, '-- Select Scope of Service --', '-- Select Scope of Service --', 'Other (Custom)...') + buildRemoveBtn();
         container.appendChild(div);
     }
+
+    function addCustomServiceItemEn() {
+        const container = document.getElementById('service-items-en-container');
+        const div = document.createElement('div');
+        div.className = 'flex items-center gap-2';
+        div.innerHTML = `<input type="text" name="service_items_en[]" placeholder="Type custom item..." class="flex-1 py-2.5 px-4 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 text-gray-700">` + buildRemoveBtn();
+        container.appendChild(div);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('#service-items-container select, #service-items-en-container select').forEach(sel => {
+            sel.addEventListener('change', function() { handleScopeSelect(this); });
+        });
+    });
 </script>
 @endpush

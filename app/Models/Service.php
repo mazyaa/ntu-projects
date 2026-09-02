@@ -15,22 +15,17 @@ class Service extends Model
     use HasFactory, HasUuids, Localizable, SoftDeletes;
 
     protected $fillable = [
-        'slug',
-        'slug_en',
-        'title',
-        'title_en',
-        'short_title',
-        'short_title_en',
-        'image',
-        'icon',
-        'color',
-        'tagline',
-        'tagline_en',
-        'description',
-        'description_en',
-        'service_items',
-        'service_items_en',
+        'slug', 'slug_en',
+        'title', 'title_en',
+        'short_title', 'short_title_en',
+        'category',
+        'image', 'icon', 'color',
+        'tagline', 'tagline_en',
+        'short_description', 'short_description_en',
+        'description', 'description_en',
+        'service_items', 'service_items_en',
         'status',
+        'is_active',
         'sort_order',
     ];
 
@@ -41,6 +36,7 @@ class Service extends Model
             'service_items_en' => 'array',
             'sort_order' => 'integer',
             'status' => ServiceStatus::class,
+            'is_active' => 'boolean',
         ];
     }
 
@@ -51,6 +47,12 @@ class Service extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', ServiceStatus::Active->value);
+        return $query->where('status', ServiceStatus::Active->value)
+            ->where('is_active', true);
+    }
+
+    public function scopeOrdered($query)
+    {
+        return $query->orderBy('sort_order')->orderBy('title');
     }
 }

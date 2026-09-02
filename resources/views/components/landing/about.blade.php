@@ -12,7 +12,7 @@
 
                 <div class="absolute -bottom-8 -right-8 md:bottom-8 md:-right-12 glass-card p-6 rounded-2xl max-w-xs" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
-                        <i data-lucide="flask-conical" class="w-6 h-6"></i>
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
                     </div>
                     <h4 class="text-lg font-bold text-secondary mb-1">{{ __('ui.about.glass_title') }}</h4>
                     <p class="text-sm text-gray-500">{{ __('ui.about.glass_text') }}</p>
