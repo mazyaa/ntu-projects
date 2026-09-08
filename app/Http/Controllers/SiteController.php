@@ -84,7 +84,7 @@ class SiteController extends Controller
             ->firstOrFail();
 
         $seo = [
-            'title' => $service->name,
+            'title' => $service->localized('title'),
             'description' => $service->short_description ?? $service->description,
             'type' => 'article',
         ];

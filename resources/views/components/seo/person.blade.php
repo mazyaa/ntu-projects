@@ -11,7 +11,7 @@
             'name' => company('name'),
         ],
     ];
-@endendphp
+@endphp
 
 <script type="application/ld+json">
 {!! json_encode($personJsonLd, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}

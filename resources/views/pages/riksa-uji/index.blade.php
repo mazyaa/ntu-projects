@@ -38,11 +38,11 @@
                 </div>
 
                 <div data-aos="fade-left" x-data="{ active: 1 }">
-                    <div class="space-y-3">
+                    <div class="space-y-4">
                         @foreach (__('ui.riksa_uji_page.definition.faq_items') as $index => $item)
-                            <div class="glass-card rounded-2xl overflow-hidden transition-all duration-300 {{ $index + 1 === 1 ? 'ring-2 ring-primary/20' : '' }}">
+                            <div class="glass-card rounded-3xl overflow-hidden transition-all duration-300 {{ $index + 1 === 1 ? 'ring-2 ring-primary/20' : '' }}">
                                 <button @click="active = active === {{ $index + 1 }} ? null : {{ $index + 1 }}"
-                                    class="w-full flex items-center gap-4 p-5 text-left font-bold text-secondary hover:text-primary transition-colors"
+                                    class="w-full flex items-center gap-4 p-6 text-left font-bold text-secondary hover:text-primary transition-colors"
                                     :class="active === {{ $index + 1 }} ? 'text-primary' : ''">
                                     <div class="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-300"
                                         :class="active === {{ $index + 1 }} ? 'bg-primary text-white' : 'bg-primary/10 text-primary'">
@@ -55,7 +55,7 @@
                                 <div class="grid transition-all duration-500 ease-in-out"
                                     :class="active === {{ $index + 1 }} ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden min-h-0">
-                                        <div class="px-5 pb-5 pl-20 text-gray-500 text-sm leading-relaxed">
+                                        <div class="px-6 pb-6 pl-20 text-gray-500 text-sm leading-relaxed">
                                             {{ $item['text'] }}
                                         </div>
                                     </div>

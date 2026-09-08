@@ -12,17 +12,50 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    name: Deploy Laravel Application
+  build:
+    name: Build Frontend Assets
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
 
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Assets
+        run: npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: public/build/
+          retention-days: 1
+
+  deploy:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-build
+          path: public/build/
+
+      - name: Deploy Code via SSH
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
@@ -67,4 +100,28 @@ jobs:
             php artisan optimize || echo "⚠️ Optimize skipped (proc_open unavailable)"
 
             echo ""
+            echo "✅ Code deployment complete, uploading frontend assets..."
+
+      - name: Upload Frontend Assets
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: public/build/
+          target: /home/u862475871/domains/techno-innovation.com/laravel
+          overwrite: true
+
+      - name: Finalize
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+
+          script: |
             echo "🎉 Deployment Finished Successfully!"
+            echo "📁 Frontend assets uploaded to public/build/"
+            echo "🌐 Site: https://techno-innovation.com"
