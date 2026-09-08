@@ -50,7 +50,7 @@
                             <tr class="hover:bg-gray-50/60 transition-colors {{ $contact->status === \App\Enums\ContactStatus::Unread ? 'bg-primary/[0.03]' : '' }}">
                                 <td class="py-3 px-4">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-xs font-bold shrink-0">
+                                        <div class="w-8 h-8 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white text-xs font-bold shrink-0">
                                             {{ strtoupper(substr($contact->name, 0, 1)) }}
                                         </div>
                                         <div>

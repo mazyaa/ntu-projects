@@ -433,6 +433,8 @@ return [
         'all_categories' => 'All',
         'read_more' => 'Read More',
         'minutes' => 'min read',
+        'empty_title' => 'No Articles Yet',
+        'empty_subtitle' => 'Articles are being prepared. Please check back later.',
     ],
 
     'article_page' => [

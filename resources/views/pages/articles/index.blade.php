@@ -35,14 +35,14 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach($articles as $index => $article)
+                @forelse($articles as $index => $article)
                 <article class="glass-card rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 group"
                     x-show="cat === '{{ $allCat }}' || cat === '{{ $article->category?->localized('name') }}'"
                     data-aos="fade-up" data-aos-delay="{{ (($index % 3) + 1) * 100 }}">
                     <a href="{{ lroute('articles.show', ['slug' => $article->routeSlug()]) }}" class="block">
                         <div class="relative h-52 overflow-hidden">
                             <img src="{{ $article->thumbnail }}" alt="{{ $article->localized('title') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-secondary/60 to-transparent"></div>
                             <div class="absolute top-4 left-4">
                                 <span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-xs font-bold rounded-full">{{ $article->category?->localized('name') }}</span>
                             </div>
@@ -60,7 +60,15 @@
                         </div>
                     </a>
                 </article>
-                @endforeach
+                @empty
+                <div class="col-span-full text-center py-20" data-aos="fade-up">
+                    <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-6">
+                        <i data-lucide="file-text" class="w-10 h-10 text-primary/40"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-secondary mb-2">{{ __('ui.articles_page.empty_title') }}</h3>
+                    <p class="text-gray-500">{{ __('ui.articles_page.empty_subtitle') }}</p>
+                </div>
+                @endforelse
             </div>
 
             <div class="mt-16">

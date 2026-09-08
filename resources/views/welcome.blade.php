@@ -7,6 +7,7 @@
     <x-landing.about />
     <x-landing.why-choose-us />
     <x-landing.workflow />
+    <x-landing.riksa-uji-services />
     <x-landing.industries />
     <x-landing.cta />
 @endsection

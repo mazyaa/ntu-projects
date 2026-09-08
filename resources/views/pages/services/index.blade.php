@@ -38,9 +38,9 @@
 
             <!-- Tab Content: Riksa Uji -->
             <div x-show="activeTab === 'riksa_uji'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($riksaUji as $index => $service)
-                    <div class="bg-slate-50 rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
+                    <div class="bg-slate-50 rounded-3xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
                         <!-- 16:9 Image -->
                         <div class="relative h-48 overflow-hidden">
                             @if($service->image)
@@ -51,7 +51,7 @@
                                     <i data-lucide="shield-check" class="w-12 h-12 text-primary/30"></i>
                                 </div>
                             @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
                             <div class="absolute top-4 left-4 w-11 h-11 rounded-xl shadow-lg flex items-center justify-center text-white bg-primary/90 border border-white/30">
                                 <i data-lucide="shield-check" class="w-5 h-5"></i>
                             </div>
@@ -73,9 +73,9 @@
 
             <!-- Tab Content: Konsultasi -->
             <div x-show="activeTab === 'konsultasi'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($konsultasi as $index => $service)
-                    <div class="bg-slate-50 rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
+                    <div class="bg-slate-50 rounded-3xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
                         <!-- 16:9 Image -->
                         <div class="relative h-48 overflow-hidden">
                             @if($service->image)
@@ -86,7 +86,7 @@
                                     <i data-lucide="message-square" class="w-12 h-12 text-accent/30"></i>
                                 </div>
                             @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
                             <div class="absolute top-4 left-4 w-11 h-11 rounded-xl shadow-lg flex items-center justify-center text-white bg-accent/90 border border-white/30">
                                 <i data-lucide="message-square" class="w-5 h-5"></i>
                             </div>
@@ -108,9 +108,9 @@
 
             <!-- Tab Content: Perizinan -->
             <div x-show="activeTab === 'perizinan'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($perizinan as $index => $service)
-                    <div class="bg-slate-50 rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
+                    <div class="bg-slate-50 rounded-3xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
                         <!-- 16:9 Image -->
                         <div class="relative h-48 overflow-hidden">
                             @if($service->image)
@@ -121,7 +121,7 @@
                                     <i data-lucide="file-check" class="w-12 h-12 text-success/30"></i>
                                 </div>
                             @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
                             <div class="absolute top-4 left-4 w-11 h-11 rounded-xl shadow-lg flex items-center justify-center text-white bg-success/90 border border-white/30">
                                 <i data-lucide="file-check" class="w-5 h-5"></i>
                             </div>

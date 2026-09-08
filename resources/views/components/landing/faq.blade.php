@@ -12,7 +12,7 @@
 
         <div class="space-y-4" x-data="{ active: null }">
             @foreach(company(null, 'company-faq') as $index => $faq)
-            <div class="glass-card rounded-2xl overflow-hidden" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+            <div class="glass-card rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                 <button @click="active = active === {{ $index + 1 }} ? null : {{ $index + 1 }}" class="w-full flex items-center justify-between p-6 text-left font-bold text-secondary hover:text-primary transition-colors" :class="active === {{ $index + 1 }} ? 'text-primary' : ''">
                     <span class="pr-4">{{ $faq['question'] }}</span>
                     <i data-lucide="chevron-down" class="w-5 h-5 shrink-0 transition-transform duration-300" :class="active === {{ $index + 1 }} ? 'rotate-180' : ''"></i>

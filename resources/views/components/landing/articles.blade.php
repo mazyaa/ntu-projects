@@ -18,7 +18,7 @@
             <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
                 <div class="relative h-52 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Inspeksi Alat Berat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-secondary/60 to-transparent"></div>
                     <div class="absolute top-4 left-4">
                         <span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-xs font-bold rounded-full">Inspeksi</span>
                     </div>
@@ -39,7 +39,7 @@
             <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
                 <div class="relative h-52 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Keselamatan Kerja" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-secondary/60 to-transparent"></div>
                     <div class="absolute top-4 left-4">
                         <span class="px-3 py-1 bg-accent/90 backdrop-blur-md text-white text-xs font-bold rounded-full">K3</span>
                     </div>
@@ -60,7 +60,7 @@
             <article class="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
                 <div class="relative h-52 overflow-hidden">
                     <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sertifikasi Teknik" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-secondary/60 to-transparent"></div>
                     <div class="absolute top-4 left-4">
                         <span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-xs font-bold rounded-full">Sertifikasi</span>
                     </div>

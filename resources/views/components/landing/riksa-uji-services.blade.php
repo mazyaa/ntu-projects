@@ -21,7 +21,7 @@
             @php
                 $categories = __('ui.pesawat_angkat.categories');
                 $delays = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
-                $icons = ['cable', 'crane', 'rotate-3d', 'user', 'tractor', 'train-front', 'circle-user-round', 'truck', 'bot', 'link'];
+                $icons = ['cable', 'construction', 'rotate-3d', 'user', 'tractor', 'train-front', 'circle-user-round', 'truck', 'bot', 'link'];
             @endphp
             @foreach($categories as $name => $description)
             <div class="bg-white p-6 rounded-3xl border border-gray-100 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ $delays[$loop->index] }}">

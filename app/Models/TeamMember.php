@@ -57,6 +57,15 @@ class TeamMember extends Model
     }
 
     /**
+     * Get the person's photo/image path.
+     * Aliases 'photo' column as 'image' for consistency with views.
+     */
+    public function getImageAttribute(): ?string
+    {
+        return $this->photo;
+    }
+
+    /**
      * Get the localized position based on current locale.
      */
     public function localizedPosition(): string

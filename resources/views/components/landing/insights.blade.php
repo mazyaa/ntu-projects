@@ -21,7 +21,7 @@
             <article class="glass-card rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                 <div class="relative h-52 overflow-hidden">
                     <img src="{{ $article->thumbnail }}" alt="{{ $article->localized('title') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-secondary/60 to-transparent"></div>
+                    <div class="absolute inset-0 bg-linear-to-t from-secondary/60 to-transparent"></div>
                     <div class="absolute top-4 left-4">
                         <span class="px-3 py-1 bg-primary/90 backdrop-blur-md text-white text-xs font-bold rounded-full">{{ $article->category?->localized('name') }}</span>
                     </div>

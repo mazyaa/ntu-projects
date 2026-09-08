@@ -15,7 +15,7 @@ class RiksaUjiCategorySeeder extends Seeder
                 'name' => 'Pesawat Angkat & Angkut',
                 'slug' => 'pesawat-angkat-angkut',
                 'description' => 'Pemeriksaan dan pengujian berbagai jenis pesawat angkat dan pesawat angkut untuk memastikan keselamatan operasional.',
-                'icon' => 'crane',
+                'icon' => 'construction',
                 'name_en' => 'Lifting & Transporting Equipment',
                 'description_en' => 'Inspection and testing of various types of lifting and transporting equipment to ensure operational safety.',
                 'is_active' => true,

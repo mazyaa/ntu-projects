@@ -49,7 +49,7 @@
                             <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
                             <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6">
                                 <div class="shrink-0">
-                                    <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-primary/20 overflow-hidden">
+                                    <div class="w-20 h-20 rounded-2xl bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white text-2xl font-bold shadow-lg shadow-primary/20 overflow-hidden">
                                         @if($article->author->avatar)
                                             <img src="{{ $article->author->avatar }}" alt="{{ $article->author->name }}" class="w-full h-full object-cover">
                                         @else
@@ -101,7 +101,7 @@
                                         @if($rel->thumbnail)
                                         <img src="{{ $rel->thumbnail }}" alt="{{ $rel->localized('title') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
                                         @else
-                                        <div class="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                                        <div class="w-full h-full bg-linear-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                                             <i data-lucide="image" class="w-6 h-6 text-primary/40"></i>
                                         </div>
                                         @endif
