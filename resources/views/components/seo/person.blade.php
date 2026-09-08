@@ -2,12 +2,12 @@
 
 @php
     $personJsonLd = [
-        '@context' => 'https://schema.org',
-        '@type' => 'Person',
+        '@@context' => 'https://schema.org',
+        '@@type' => 'Person',
         'name' => $person->name,
         'jobTitle' => $person->position,
         'worksFor' => [
-            '@type' => 'Organization',
+            '@@type' => 'Organization',
             'name' => company('name'),
         ],
     ];
