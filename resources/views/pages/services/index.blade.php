@@ -14,7 +14,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
             <!-- Tabs -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up">
+            <div class="flex flex-wrap justify-center gap-3 mb-16" data-aos="fade-up">
                 <button @click="activeTab = 'riksa_uji'" :class="activeTab === 'riksa_uji' ? 'bg-primary text-white shadow-lg shadow-primary/30' : 'bg-slate-100 text-gray-600 hover:bg-slate-200'" class="px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300">
                     <span class="flex items-center gap-2">
                         <i data-lucide="shield-check" class="w-4 h-4"></i>
@@ -38,9 +38,9 @@
 
             <!-- Tab Content: Riksa Uji -->
             <div x-show="activeTab === 'riksa_uji'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($riksaUji as $index => $service)
-                    <div class="bg-slate-50 rounded-3xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
+                    <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
                         <!-- 16:9 Image -->
                         <div class="relative h-48 overflow-hidden">
                             @if($service->image)
@@ -60,10 +60,8 @@
                         <div class="p-6">
                             <h3 class="text-base font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $service->title }}</h3>
                             <p class="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-2">{{ $service->short_description ?? $service->description }}</p>
-                            <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-md shadow-primary/20 group/btn">
-                                <i data-lucide="clipboard-list" class="w-4 h-4 mr-2"></i>
-                                {{ __('ui.services_page.btn_daftar') }}
-                                <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform"></i>
+                            <a href="{{ lroute('contact') }}" class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors">
+                                {{ __('ui.services_page.btn_daftar') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
@@ -73,9 +71,9 @@
 
             <!-- Tab Content: Konsultasi -->
             <div x-show="activeTab === 'konsultasi'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($konsultasi as $index => $service)
-                    <div class="bg-slate-50 rounded-3xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
+                    <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
                         <!-- 16:9 Image -->
                         <div class="relative h-48 overflow-hidden">
                             @if($service->image)
@@ -95,10 +93,8 @@
                         <div class="p-6">
                             <h3 class="text-base font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $service->title }}</h3>
                             <p class="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-2">{{ $service->short_description ?? $service->description }}</p>
-                            <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-accent rounded-xl hover:bg-accent/90 transition-all duration-300 shadow-md shadow-accent/20 group/btn">
-                                <i data-lucide="message-square" class="w-4 h-4 mr-2"></i>
-                                {{ __('ui.services_page.btn_konsultasi') }}
-                                <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform"></i>
+                            <a href="{{ lroute('contact') }}" class="inline-flex items-center gap-1 text-sm font-bold text-accent hover:text-accent/80 transition-colors">
+                                {{ __('ui.services_page.btn_konsultasi') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>
@@ -108,9 +104,9 @@
 
             <!-- Tab Content: Perizinan -->
             <div x-show="activeTab === 'perizinan'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4" x-transition:enter-end="opacity-100 translate-y-0">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($perizinan as $index => $service)
-                    <div class="bg-slate-50 rounded-3xl border border-gray-100 overflow-hidden hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
+                    <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300 group" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 50 }}">
                         <!-- 16:9 Image -->
                         <div class="relative h-48 overflow-hidden">
                             @if($service->image)
@@ -130,10 +126,8 @@
                         <div class="p-6">
                             <h3 class="text-base font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $service->title }}</h3>
                             <p class="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-2">{{ $service->short_description ?? $service->description }}</p>
-                            <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-success rounded-xl hover:bg-success/90 transition-all duration-300 shadow-md shadow-success/20 group/btn">
-                                <i data-lucide="message-square" class="w-4 h-4 mr-2"></i>
-                                {{ __('ui.services_page.btn_konsultasi') }}
-                                <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform"></i>
+                            <a href="{{ lroute('contact') }}" class="inline-flex items-center gap-1 text-sm font-bold text-success hover:text-success/80 transition-colors">
+                                {{ __('ui.services_page.btn_perizinan') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>

@@ -4,7 +4,7 @@
     $serviceJsonLd = [
         '@context' => 'https://schema.org',
         '@type' => 'Service',
-        'name' => $service->name,
+        'name' => $service->localized('title'),
         'description' => $service->short_description ?? $service->description,
         'provider' => [
             '@type' => 'ProfessionalService',
