@@ -54,7 +54,21 @@ jobs:
           name: frontend-build
           path: public/build/
 
-      - name: Deploy Code via SSH
+      - name: Create Build Archive
+        run: tar -czf frontend-build.tar.gz -C public/build .
+
+      - name: Upload Build Archive to Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.PORT }}
+          source: frontend-build.tar.gz
+          target: /home/u862475871/domains/techno-innovation.com/laravel
+          overwrite: true
+
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.HOST }}
@@ -69,7 +83,9 @@ jobs:
             echo "🚀 NTU Production Deployment Started"
             echo "======================================"
 
-            cd /home/u862475871/domains/techno-innovation.com/laravel
+            REMOTE_PATH="/home/u862475871/domains/techno-innovation.com/laravel"
+
+            cd "$REMOTE_PATH"
 
             echo ""
             echo "📥 Updating Repository..."
@@ -93,35 +109,22 @@ jobs:
 
             echo ""
             echo "🗄 Running Database Migration..."
-            php artisan migrate --force || echo "⚠️ Migration skipped (proc_open unavailable)"
+            php artisan migrate --force || echo "⚠️ Migration skipped"
 
             echo ""
             echo "⚡ Optimizing Laravel..."
-            php artisan optimize || echo "⚠️ Optimize skipped (proc_open unavailable)"
+            php artisan optimize || echo "⚠️ Optimize skipped"
 
             echo ""
-            echo "✅ Code deployment complete, uploading frontend assets..."
+            echo "🎨 Extracting Frontend Assets..."
+            rm -rf public/build
+            mkdir -p public/build
+            tar -xzf frontend-build.tar.gz -C public/build
+            rm -f frontend-build.tar.gz
+            ls -la public/build/
+            ls -la public/build/assets/
 
-      - name: Upload Frontend Assets
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
-          source: public/build/
-          target: /home/u862475871/domains/techno-innovation.com/laravel/public/build
-          overwrite: true
-
-      - name: Finalize
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.PORT }}
-
-          script: |
+            echo ""
             echo "🎉 Deployment Finished Successfully!"
-            echo "📁 Frontend assets uploaded to public/build/"
+            echo "📁 Frontend assets: public/build/"
             echo "🌐 Site: https://techno-innovation.com"
