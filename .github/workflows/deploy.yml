@@ -110,7 +110,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           source: public/build/
-          target: /home/u862475871/domains/techno-innovation.com/laravel
+          target: /home/u862475871/domains/techno-innovation.com/laravel/public/build
           overwrite: true
 
       - name: Finalize
