@@ -46,7 +46,7 @@
                                     :class="active === {{ $index + 1 }} ? 'text-primary' : ''">
                                     <div class="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center transition-colors duration-300"
                                         :class="active === {{ $index + 1 }} ? 'bg-primary text-white' : 'bg-primary/10 text-primary'">
-                                        <i data-lucide="{{ $item['icon'] }}" class="w-5 h-5"></i>
+                                        <i data-lucide="{{ $item['icon'] === 'crane' ? 'construction' : $item['icon'] }}" class="w-5 h-5"></i>
                                     </div>
                                     <span class="flex-1 text-sm lg:text-base">{{ $item['title'] }}</span>
                                     <i data-lucide="chevron-down" class="w-5 h-5 shrink-0 transition-transform duration-300"
@@ -55,7 +55,7 @@
                                 <div class="grid transition-all duration-500 ease-in-out"
                                     :class="active === {{ $index + 1 }} ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'">
                                     <div class="overflow-hidden min-h-0">
-                                        <div class="px-5 pb-5 pl-19 text-gray-500 text-sm leading-relaxed">
+                                        <div class="px-5 pb-5 pl-20 text-gray-500 text-sm leading-relaxed">
                                             {{ $item['text'] }}
                                         </div>
                                     </div>
@@ -75,7 +75,7 @@
 
             <div class="text-center mb-16" data-aos="fade-up">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
-                    <i data-lucide="crane" class="w-4 h-4"></i> {{ __('ui.pesawat_angkat.badge') }}
+                    <i data-lucide="construction" class="w-4 h-4"></i> {{ __('ui.pesawat_angkat.badge') }}
                 </div>
                 <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">{{ __('ui.pesawat_angkat.h2') }}</h2>
                 <p class="text-gray-500 max-w-2xl mx-auto">{{ __('ui.pesawat_angkat.subtitle') }}</p>
@@ -85,7 +85,7 @@
                 $categories = __('ui.pesawat_angkat.categories');
                 $icons = [
                     'arrow-down-circle',
-                    'crane',
+                    'construction',
                     'rotate-3d',
                     'users',
                     'tractor',
@@ -117,7 +117,7 @@
                         <div class="relative h-48 overflow-hidden">
                             <img src="{{ $images[$loop->index] }}" alt="{{ $name }}" width="800" height="450" loading="lazy" decoding="async"
                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
-                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
                             <div class="absolute top-4 left-4 w-11 h-11 rounded-xl shadow-lg flex items-center justify-center text-white bg-primary/90 border border-white/30">
                                 <i data-lucide="{{ $icons[$loop->index] ?? 'wrench' }}" class="w-5 h-5"></i>
                             </div>
@@ -164,7 +164,7 @@
                                     <i data-lucide="wrench" class="w-10 h-10 text-primary/30"></i>
                                 </div>
                             @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
+                            <div class="absolute inset-0 bg-linear-to-t from-secondary/80 via-secondary/15 to-transparent"></div>
                             <div class="absolute top-3 left-3 w-10 h-10 rounded-xl shadow-lg flex items-center justify-center text-white bg-primary/90 border border-white/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                                 <i data-lucide="wrench" class="w-5 h-5"></i>
                             </div>

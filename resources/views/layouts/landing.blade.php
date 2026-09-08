@@ -30,6 +30,8 @@
 
     <!-- Scripts and Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    {{-- Tailwind Safelist: bg-primary/10 text-primary bg-secondary/10 text-secondary bg-accent/10 text-accent bg-success/10 text-success bg-warning/10 text-warning bg-danger/10 text-danger --}}
 </head>
 <body class="font-sans text-secondary bg-background selection:bg-primary selection:text-white">
 

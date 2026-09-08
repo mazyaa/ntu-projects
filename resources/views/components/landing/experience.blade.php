@@ -12,8 +12,8 @@
 
         <div class="space-y-6 max-w-4xl mx-auto">
             @foreach(company('projects', 'company-experience') as $index => $project)
-            <div class="group relative flex items-start gap-6 p-6 glass-card rounded-2xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
-                <div class="shrink-0 w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+            <div class="group relative flex items-start gap-6 p-6 glass-card rounded-3xl hover:shadow-xl hover:shadow-primary/5 transition-all duration-300" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
+                <div class="shrink-0 w-14 h-14 bg-primary/10 rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                     <i data-lucide="{{ $project['icon'] }}" class="w-6 h-6"></i>
                 </div>
                 <div class="flex-1">

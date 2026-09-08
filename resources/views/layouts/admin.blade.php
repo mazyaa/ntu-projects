@@ -17,6 +17,8 @@
     <!-- Scripts and Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    {{-- Tailwind Safelist: bg-primary/10 text-primary bg-secondary/10 text-secondary bg-accent/10 text-accent bg-success/10 text-success bg-warning/10 text-warning bg-danger/10 text-danger --}}
+
     @stack('styles')
 </head>
 <body data-admin="true" class="bg-slate-100/70 text-secondary font-sans overflow-hidden" x-data="{ sidebarOpen: false }">

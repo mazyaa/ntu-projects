@@ -433,6 +433,8 @@ return [
         'all_categories' => 'Semua',
         'read_more' => 'Baca Selengkapnya',
         'minutes' => 'menit',
+        'empty_title' => 'Belum Ada Artikel',
+        'empty_subtitle' => 'Artikel sedang dalam persiapan. Silakan kunjungi kembali nanti.',
     ],
 
     'article_page' => [

@@ -5,7 +5,7 @@
 
         <div class="text-center mb-16" data-aos="fade-up">
             <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-6">
-                <i data-lucide="crane" class="w-4 h-4"></i> {{ __('ui.pesawat_angkat.badge') }}
+                <i data-lucide="construction" class="w-4 h-4"></i> {{ __('ui.pesawat_angkat.badge') }}
             </div>
             <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">{{ __('ui.pesawat_angkat.h2') }}</h2>
             <p class="text-gray-500 max-w-2xl mx-auto">{{ __('ui.pesawat_angkat.subtitle') }}</p>

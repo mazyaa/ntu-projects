@@ -15,7 +15,7 @@
                 <x-card>
                     <div class="p-6 flex flex-col items-center text-center">
                         <div class="relative">
-                            <div class="w-32 h-32 rounded-full overflow-hidden bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-4xl font-bold border-4 border-white shadow-lg shadow-primary/20">
+                            <div class="w-32 h-32 rounded-full overflow-hidden bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white text-4xl font-bold border-4 border-white shadow-lg shadow-primary/20">
                                 @if($user->avatar)
                                     <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="w-full h-full object-cover">
                                 @else

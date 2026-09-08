@@ -1,4 +1,4 @@
-<aside class="fixed inset-y-0 left-0 z-30 w-64 bg-gradient-to-b from-secondary via-secondary to-primary text-white shadow-xl lg:static lg:inset-0 transition-transform duration-300 ease-in-out transform flex flex-col"
+<aside class="fixed inset-y-0 left-0 z-30 w-64 bg-linear-to-b from-secondary via-secondary to-primary text-white shadow-xl lg:static lg:inset-0 transition-transform duration-300 ease-in-out transform flex flex-col"
        :class="{'translate-x-0': sidebarOpen, '-translate-x-full': !sidebarOpen, 'lg:translate-x-0': true}">
 
     <!-- Logo Area -->
@@ -132,7 +132,7 @@
             <li>
                 <a href="{{ panel_route('equipment.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.equipment*', 'editor.equipment*') ? 'bg-white/10 text-white border-white' : '' }}">
                     <span class="inline-flex justify-center items-center ml-4">
-                        <i data-lucide="crane" class="w-5 h-5"></i>
+                        <i data-lucide="construction" class="w-5 h-5"></i>
                     </span>
                     <span class="ml-2 text-sm font-medium tracking-wide truncate">Equipment</span>
                 </a>

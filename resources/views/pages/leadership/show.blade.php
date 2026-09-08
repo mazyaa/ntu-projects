@@ -23,7 +23,7 @@
                         <div class="glass-card rounded-3xl overflow-hidden text-center">
                             <div class="relative h-64 overflow-hidden">
                                 <img src="{{ asset($person->image) }}" alt="{{ $person->name }}" loading="lazy" class="w-full h-full object-cover object-top">
-                                <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+                                <div class="absolute inset-0 bg-linear-to-t from-white via-white/20 to-transparent"></div>
                             </div>
                             <div class="p-6">
                                 <div class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full mb-3">

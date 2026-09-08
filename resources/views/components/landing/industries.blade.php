@@ -28,7 +28,7 @@
             @foreach(__('ui.industries.list') as $index => $industry)
             <div class="group relative rounded-3xl overflow-hidden aspect-4/3" data-aos="fade-up" data-aos-delay="{{ ($index + 1) * 100 }}">
                 <img src="{{ $industryImages[$index] }}" alt="{{ $industry['name'] }}" width="600" height="400" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
-                <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent"></div>
+                <div class="absolute inset-0 bg-linear-to-t from-secondary/90 via-secondary/40 to-transparent"></div>
                 <div class="absolute inset-0 flex flex-col items-center justify-end p-6 text-center">
                     <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white mb-3 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="{{ $industry['icon'] }}" class="w-6 h-6"></i>
