@@ -3,30 +3,30 @@
 @php
     $author = $article->author;
     $articleJsonLd = [
-        '@context' => 'https://schema.org',
-        '@type' => 'Article',
+        '@@context' => 'https://schema.org',
+        '@@type' => 'Article',
         'headline' => $article->title,
         'description' => $article->excerpt ?? strip_tags(\Illuminate\Support\Str::limit($article->content, 200)),
         'datePublished' => $article->published_at?->toIso8601String(),
         'dateModified' => $article->updated_at?->toIso8601String(),
         'author' => $author ? [
-            '@type' => 'Person',
+            '@@type' => 'Person',
             'name' => $author->name,
         ] : [
-            '@type' => 'Organization',
+            '@@type' => 'Organization',
             'name' => company('name'),
         ],
         'publisher' => [
-            '@type' => 'Organization',
+            '@@type' => 'Organization',
             'name' => company('name'),
             'logo' => [
-                '@type' => 'ImageObject',
+                '@@type' => 'ImageObject',
                 'url' => asset('images/logo/navbar-logo.png'),
             ],
         ],
         'mainEntityOfPage' => [
-            '@type' => 'WebPage',
-            '@id' => url()->current(),
+            '@@type' => 'WebPage',
+            '@@id' => url()->current(),
         ],
     ];
 

@@ -2,12 +2,12 @@
 
 @php
     $serviceJsonLd = [
-        '@context' => 'https://schema.org',
-        '@type' => 'Service',
+        '@@context' => 'https://schema.org',
+        '@@type' => 'Service',
         'name' => $service->localized('title'),
         'description' => $service->short_description ?? $service->description,
         'provider' => [
-            '@type' => 'ProfessionalService',
+            '@@type' => 'ProfessionalService',
             'name' => company('name'),
             'url' => url('/'),
         ],

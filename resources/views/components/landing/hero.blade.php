@@ -12,7 +12,7 @@
     <div class="absolute top-16 right-10 w-72 h-72 rounded-full bg-accent/15 blur-3xl pointer-events-none z-2"></div>
 
     <!-- Trust items as flying chips — visible on xl+ only -->
-    <div class="hero-icons absolute inset-0 z-2 pointer-events-none will-change-transform">
+    <div class="hero-icons absolute inset-0 z-2 pointer-events-none will-change-transform hidden xl:block">
         @php
             $chips = [
                 ['icon' => 'award', 'label' => __('ui.trust_strip.items.0.title'), 'pos' => 'left-[6%] top-[24%]', 'dur' => 4.5, 'delay' => 0, 'dist' => 12],
@@ -35,11 +35,11 @@
     <!-- Text -->
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
         <div class="hero-content text-center max-w-3xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-[10px] font-semibold backdrop-blur-sm border border-white/20 mb-6">
-                <span class="relative h-2.5 w-2.5">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-[12px] font-semibold backdrop-blur-sm border border-white/20 mb-6">
+                {{-- <span class="relative h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
-                </span>
+                </span> --}}
                 {{ __('ui.hero.badge') }}
             </div>
 
