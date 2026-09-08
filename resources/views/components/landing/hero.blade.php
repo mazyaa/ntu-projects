@@ -12,7 +12,7 @@
     <div class="absolute top-16 right-10 w-72 h-72 rounded-full bg-accent/15 blur-3xl pointer-events-none z-2"></div>
 
     <!-- Trust items as flying chips — visible on xl+ only -->
-    <div class="hero-icons absolute inset-0 z-2 pointer-events-none will-change-transform">
+    <div class="hero-icons absolute inset-0 z-2 pointer-events-none will-change-transform hidden xl:block">
         @php
             $chips = [
                 ['icon' => 'award', 'label' => __('ui.trust_strip.items.0.title'), 'pos' => 'left-[6%] top-[24%]', 'dur' => 4.5, 'delay' => 0, 'dist' => 12],
