@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\EquipmentController;
+use App\Http\Controllers\Admin\InspectionRequestController;
 use App\Http\Controllers\Admin\MediaLibraryController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\ProjectController;
@@ -105,6 +106,12 @@ $panelRoutes = function (): void {
     Route::put('equipment/{equipment}', [EquipmentController::class, 'update'])->middleware('permission:equipment.edit')->name('equipment.update');
     Route::delete('equipment/{equipment}', [EquipmentController::class, 'destroy'])->middleware('permission:equipment.delete')->name('equipment.destroy');
     Route::post('equipment/upload-image', [EquipmentController::class, 'uploadImage'])->middleware('permission:equipment.edit')->name('equipment.upload-image');
+
+    // Inspection Requests (Permohonan)
+    Route::get('inspection-requests', [InspectionRequestController::class, 'index'])->middleware('permission:riksa_uji.view')->name('inspection-requests.index');
+    Route::get('inspection-requests/{inspectionRequest}', [InspectionRequestController::class, 'show'])->middleware('permission:riksa_uji.view')->name('inspection-requests.show');
+    Route::patch('inspection-requests/{inspectionRequest}/status', [InspectionRequestController::class, 'updateStatus'])->middleware('permission:riksa_uji.edit')->name('inspection-requests.status');
+    Route::post('inspection-requests/{inspectionRequest}/notes', [InspectionRequestController::class, 'storeNote'])->middleware('permission:riksa_uji.edit')->name('inspection-requests.notes');
 
     // Projects
     Route::get('projects', [ProjectController::class, 'index'])->middleware('permission:projects.view')->name('projects.index');

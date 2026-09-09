@@ -10,7 +10,7 @@ if (! function_exists('panel_route')) {
      */
     function panel_route(string $name, $params = [], bool $absolute = true): string
     {
-        $prefix = Auth::user()?->hasRole('Editor') ? 'editor' : 'admin';
+        $prefix = Auth::user()?->hasRole('editor') ? 'editor' : 'admin';
 
         return route($prefix.'.'.$name, $params, $absolute);
     }

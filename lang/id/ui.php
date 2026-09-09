@@ -34,6 +34,8 @@ return [
         'articles' => 'Artikel',
         'contact' => 'Hubungi Kami',
         'consult' => 'Konsultasi Riksa Uji',
+        'login' => 'Masuk',
+        'register' => 'Daftar',
         'open_menu' => 'Buka menu',
     ],
 

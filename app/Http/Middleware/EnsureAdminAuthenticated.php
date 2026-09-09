@@ -11,7 +11,7 @@ class EnsureAdminAuthenticated
 {
     /**
      * Restrict admin routes to authenticated users with an admin role.
-     * Non-administrative users are logged out and redirected home.
+     * Customers are logged out and redirected with a forbidden toast.
      */
     public function handle(Request $request, Closure $next): Response
     {
@@ -19,10 +19,19 @@ class EnsureAdminAuthenticated
             return redirect()->guest(route('login'));
         }
 
-        if (! Auth::user()->hasAnyRole(['Super Admin', 'Admin', 'Editor'])) {
+        if (! Auth::user()->hasAnyRole(['super_admin', 'admin', 'editor'])) {
             Auth::logout();
 
-            return redirect()->route('home');
+            $message = app()->getLocale() === 'en'
+                ? 'You do not have access to this page.'
+                : 'Anda tidak memiliki akses ke halaman ini.';
+
+            session()->flash('toast', [
+                'type' => 'error',
+                'message' => $message,
+            ]);
+
+            return redirect()->route('login');
         }
 
         return $next($request);

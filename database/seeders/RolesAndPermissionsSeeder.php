@@ -36,11 +36,11 @@ class RolesAndPermissionsSeeder extends Seeder
 
     /**
      * Role => permission mapping using {group}.{action} strings.
-     * "Super Admin" receives every permission (via hasPermissionTo wildcard handling).
+     * "super_admin" receives every permission (via hasPermissionTo wildcard handling).
      */
     private const ROLE_PERMISSIONS = [
-        'Super Admin' => '*',
-        'Admin' => [
+        'super_admin' => '*',
+        'admin' => [
             'dashboard.view',
             'articles.view', 'articles.create', 'articles.edit', 'articles.delete', 'articles.publish', 'articles.archive',
             'services.view', 'services.create', 'services.edit', 'services.delete',
@@ -57,7 +57,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'analytics.view',
             'activity_logs.view',
         ],
-        'Editor' => [
+        'editor' => [
             'dashboard.view',
             'articles.view', 'articles.create', 'articles.edit',
             'media.view', 'media.upload',

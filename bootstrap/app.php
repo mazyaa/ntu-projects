@@ -2,6 +2,8 @@
 
 use App\Http\Middleware\CheckMaintenance;
 use App\Http\Middleware\EnsureAdminAuthenticated;
+use App\Http\Middleware\EnsureCustomerAuthenticated;
+use App\Http\Middleware\EnsureEmailVerified;
 use App\Http\Middleware\RedirectPanelByRole;
 use App\Http\Middleware\SecurityHeaders;
 use App\Http\Middleware\SetLocale;
@@ -23,6 +25,12 @@ return Application::configure(basePath: dirname(__DIR__))
         then: function (): void {
             Route::middleware('web')
                 ->group(__DIR__.'/../routes/admin.php');
+
+            Route::middleware('web')
+                ->group(__DIR__.'/../routes/customer.php');
+
+            Route::middleware('web')
+                ->group(__DIR__.'/../routes/customer-auth.php');
         },
     )
     ->withMiddleware(function (Middleware $middleware): void {
@@ -39,6 +47,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'permission' => PermissionMiddleware::class,
             'role' => RoleMiddleware::class,
             'locale' => SetLocale::class,
+            'customer.auth' => EnsureCustomerAuthenticated::class,
+            'customer.verified' => EnsureEmailVerified::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

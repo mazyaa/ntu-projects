@@ -57,7 +57,7 @@ class ContentSeeder extends Seeder
     private function seedArticles(): void
     {
         $articles = config('company-insights.articles', []);
-        $author = User::role('Super Admin')->first() ?? User::first();
+        $author = User::role('super_admin')->first() ?? User::first();
 
         if (! $author) {
             return;

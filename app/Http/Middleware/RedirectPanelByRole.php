@@ -25,7 +25,7 @@ class RedirectPanelByRole
             ? 'editor'
             : 'admin';
 
-        $targetPrefix = Auth::user()->hasRole('Editor') ? 'editor' : 'admin';
+        $targetPrefix = Auth::user()->hasRole('editor') ? 'editor' : 'admin';
 
         if ($currentPrefix !== $targetPrefix) {
             $newPath = preg_replace(

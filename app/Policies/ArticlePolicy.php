@@ -30,7 +30,7 @@ class ArticlePolicy
         }
 
         // Editors may only edit their own articles.
-        if ($user->hasRole('Editor')) {
+        if ($user->hasRole('editor')) {
             return $article->author_id === $user->getKey();
         }
 
@@ -44,7 +44,7 @@ class ArticlePolicy
         }
 
         // Editors may only delete their own articles.
-        if ($user->hasRole('Editor')) {
+        if ($user->hasRole('editor')) {
             return $article->author_id === $user->getKey();
         }
 

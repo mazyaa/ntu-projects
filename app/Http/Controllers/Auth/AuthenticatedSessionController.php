@@ -26,6 +26,16 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        $user = Auth::user();
+
+        if (! $user->hasAnyRole(['super_admin', 'admin', 'editor'])) {
+            Auth::logout();
+
+            return back()->withErrors([
+                'email' => __('Akun ini tidak memiliki akses panel admin.'),
+            ])->onlyInput('email');
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(panel_route('dashboard', absolute: false));

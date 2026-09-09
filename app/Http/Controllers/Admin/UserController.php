@@ -101,7 +101,7 @@ class UserController extends Controller
         $currentRole = $user->roles()->value('name');
 
         abort_if(
-            $currentRole === 'Super Admin' && request()->input('role') !== 'Super Admin',
+            $currentRole === 'super_admin' && request()->input('role') !== 'super_admin',
             422,
             'Anda tidak dapat mengubah role akun Super Admin Anda sendiri.',
         );
