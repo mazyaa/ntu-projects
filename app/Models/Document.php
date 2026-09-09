@@ -34,6 +34,6 @@ class Document extends Model
      */
     public function url(): ?string
     {
-        return $this->file_path ? asset('storage/'.ltrim($this->file_path, '/')) : null;
+        return $this->file_path ? storage_file_url($this->file_path) : null;
     }
 }

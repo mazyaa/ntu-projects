@@ -31,7 +31,7 @@
     ];
 
     if ($article->thumbnail) {
-        $articleJsonLd['image'] = asset('storage/' . $article->thumbnail);
+        $articleJsonLd['image'] = storage_file_url($article->thumbnail);
     }
 @endphp
 

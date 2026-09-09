@@ -169,7 +169,7 @@ class SiteController extends Controller
         $seo = [
             'title' => $article->title,
             'description' => $article->excerpt ?? strip_tags(Str::limit($article->content, 160)),
-            'image' => $article->thumbnail ? asset('storage/'.$article->thumbnail) : null,
+            'image' => $article->thumbnail ? storage_file_url($article->thumbnail) : null,
             'type' => 'article',
             'author' => $article->author?->name,
             'published_time' => $article->published_at?->toIso8601String(),

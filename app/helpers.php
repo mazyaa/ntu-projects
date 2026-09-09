@@ -42,3 +42,23 @@ if (! function_exists('company')) {
         return Lang::get($path);
     }
 }
+
+if (! function_exists('storage_file_url')) {
+    /**
+     * Generate a public URL for a file stored on the public disk.
+     *
+     * Uses the STORAGE_URL env variable in production (Hostinger).
+     * Falls back to Laravel's asset() helper for local development.
+     */
+    function storage_file_url(?string $path): ?string
+    {
+        if ($path === null || $path === '') {
+            return null;
+        }
+
+        $path = ltrim($path, '/');
+        $base = rtrim(env('STORAGE_URL', asset('storage')), '/');
+
+        return $base.'/'.$path;
+    }
+}

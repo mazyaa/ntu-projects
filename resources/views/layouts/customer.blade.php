@@ -45,7 +45,7 @@
                 <div x-data="{ open: false }" class="relative">
                     <button @click="open = !open" class="flex items-center gap-2 p-2 rounded-xl hover:bg-gray-50 transition-colors">
                         @if(Auth::user()->avatar)
-                            <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Avatar" class="w-9 h-9 rounded-full object-cover border-2 border-primary/20">
+                            <img src="{{ storage_file_url(Auth::user()->avatar) }}" alt="Avatar" class="w-9 h-9 rounded-full object-cover border-2 border-primary/20">
                         @else
                             <span class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-sm font-bold text-primary">
                                 {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
