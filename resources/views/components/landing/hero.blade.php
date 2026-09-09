@@ -22,7 +22,6 @@
             ];
         @endphp
 
-        <!-- Flying chips: only on xl+ (>=1280px) -->
         @foreach($chips as $chip)
             <div class="fly-chip hidden xl:flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-white text-sm font-medium shadow-lg shadow-black/10 absolute {{ $chip['pos'] }}"
                  data-float-dur="{{ $chip['dur'] }}" data-float-delay="{{ $chip['delay'] }}" data-float-dist="{{ $chip['dist'] }}">
@@ -35,7 +34,7 @@
     <!-- Text -->
     <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40">
         <div class="hero-content text-center max-w-3xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-[12px] font-semibold backdrop-blur-sm border border-white/20 mb-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-[11px] sm:text-[12px] font-semibold backdrop-blur-sm border border-white/20 mb-6 max-w-full">
                 {{-- <span class="relative h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-accent"></span>
@@ -43,7 +42,7 @@
                 {{ __('ui.hero.badge') }}
             </div>
 
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-tight mb-6">
                 {{ __('ui.hero.h1_part1') }} <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-300 via-white to-green-300">{{ __('ui.hero.h1_highlight') }}</span> {{ __('ui.hero.h1_part2') }} <span class="relative inline-block whitespace-nowrap">{{ __('ui.hero.h1_underline') }}
                     <svg class="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 220 16" preserveAspectRatio="none" aria-hidden="true">
                         <path d="M2,11 C30,2 60,14 90,8 C120,3 150,12 180,7 C196,4 210,8 218,6" fill="none" stroke="#22C55E" stroke-width="5" stroke-linecap="round"></path>
@@ -63,16 +62,6 @@
                 <a href="#riksa-uji" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-white/10 border border-white/30 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
                     {{ __('ui.hero.cta_secondary') }}
                 </a>
-            </div>
-
-            <!-- Trust items below CTA — visible on <xl -->
-            <div class="mt-12 flex flex-wrap justify-center gap-6 xl:hidden">
-                @foreach($chips as $chip)
-                <div class="flex items-center gap-2 text-white/70 text-sm">
-                    <i data-lucide="{{ $chip['icon'] }}" class="w-4 h-4 text-accent"></i>
-                    <span>{{ $chip['label'] }}</span>
-                </div>
-                @endforeach
             </div>
         </div>
     </div>
@@ -95,7 +84,6 @@
             }
 
             const chips = gsap.utils.toArray('.fly-chip');
-
             if (prefersReduced || !chips.length) return;
 
             chips.forEach((el) => {
