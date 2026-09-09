@@ -90,6 +90,37 @@ class RiksaUjiRequestController extends Controller
         $draft = array_merge($draft, $validated);
         $draft['current_step'] = $step + 1;
 
+        if ($step === 3 && ! empty($draft['objects'])) {
+            $draft['objects'] = collect($draft['objects'])->map(function ($obj) {
+                if (! empty($obj['category_id'])) {
+                    $obj['types'] = RiksaUjiType::where('category_id', $obj['category_id'])
+                        ->where('is_active', true)
+                        ->orderBy('sort_order')
+                        ->get(['id', 'name'])
+                        ->toArray();
+                } else {
+                    $obj['types'] = [];
+                }
+
+                return $obj;
+            })->toArray();
+        }
+
+        if ($step === 5) {
+            $mapping = [
+                'company_address' => 'inspection_address',
+                'company_province' => 'inspection_province',
+                'company_city' => 'inspection_city',
+                'company_district' => 'inspection_district',
+                'company_postal_code' => 'inspection_postal_code',
+            ];
+            foreach ($mapping as $companyField => $inspectionField) {
+                if (empty($draft[$inspectionField]) && ! empty($draft[$companyField])) {
+                    $draft[$inspectionField] = $draft[$companyField];
+                }
+            }
+        }
+
         if ($step === 6) {
             $draft = $this->storeStep6Files($request, $draft);
         }
@@ -305,13 +336,12 @@ class RiksaUjiRequestController extends Controller
                 'previous_certificate_file' => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:10240'],
             ]),
             5 => $request->validate([
-                'inspection_address' => ['nullable', 'string'],
-                'inspection_province' => ['nullable', 'string', 'max:255'],
-                'inspection_city' => ['nullable', 'string', 'max:255'],
-                'inspection_district' => ['nullable', 'string', 'max:255'],
-                'inspection_postal_code' => ['nullable', 'string', 'max:10'],
+                'location_address' => ['nullable', 'string'],
+                'location_province' => ['nullable', 'string', 'max:255'],
+                'location_city' => ['nullable', 'string', 'max:255'],
+                'location_district' => ['nullable', 'string', 'max:255'],
+                'location_postal_code' => ['nullable', 'string', 'max:10'],
                 'location_notes' => ['nullable', 'string'],
-                'same_as_company' => ['nullable', 'boolean'],
             ]),
             6 => [
                 'photo_object' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:10240'],

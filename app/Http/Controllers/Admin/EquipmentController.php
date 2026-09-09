@@ -124,7 +124,7 @@ class EquipmentController extends Controller
             $path = $optimized['path'];
         }
 
-        return response()->json(['url' => asset('storage/'.$path), 'path' => $path]);
+        return response()->json(['url' => storage_file_url($path), 'path' => $path]);
     }
 
     private function validateEquipment(Request $request): array

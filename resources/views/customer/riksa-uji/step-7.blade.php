@@ -58,7 +58,7 @@
                     <p class="text-xs font-bold text-[#0736AA] mb-3 uppercase">Objek {{ $idx + 1 }}</p>
                     <div class="grid grid-cols-2 gap-2 text-sm">
                         <div><span class="text-gray-500">Jenis:</span> <span class="font-medium text-gray-800">{{ $categories->where('id', $obj['category_id'])->first()->name ?? '-' }}</span></div>
-                        <div><span class="text-gray-500">Spesifik:</span> <span class="font-medium text-gray-800">{{ $obj['type_id'] ?? '-' }}</span></div>
+                        <div><span class="text-gray-500">Spesifik:</span> <span class="font-medium text-gray-800">{{ collect($obj['types'] ?? [])->where('id', $obj['type_id'])->first()->name ?? '-' }}</span></div>
                         <div class="col-span-2"><span class="text-gray-500">Nama:</span> <span class="font-medium text-gray-800">{{ $obj['object_name'] ?? '-' }}</span></div>
                         <div><span class="text-gray-500">Merek:</span> <span class="font-medium text-gray-800">{{ $obj['brand'] ?? '-' }}</span></div>
                         <div><span class="text-gray-500">Tipe:</span> <span class="font-medium text-gray-800">{{ $obj['model'] ?? '-' }}</span></div>
@@ -107,18 +107,14 @@
             </a>
         </div>
         <div class="p-5 text-sm">
-            @if(($draft['same_as_company'] ?? 'true') === 'true')
-                <span class="text-gray-800">Sesuai dengan alamat perusahaan</span>
-            @else
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="col-span-2"><span class="text-gray-500">Alamat:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_address'] ?? '-' }}</span></div>
-                    <div><span class="text-gray-500">Provinsi:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_province'] ?? '-' }}</span></div>
-                    <div><span class="text-gray-500">Kota:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_city'] ?? '-' }}</span></div>
-                    <div><span class="text-gray-500">Kecamatan:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_district'] ?? '-' }}</span></div>
-                    <div><span class="text-gray-500">Kode Pos:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_postal_code'] ?? '-' }}</span></div>
-                    <div class="col-span-2"><span class="text-gray-500">Catatan:</span> <span class="font-medium text-gray-800">{{ $draft['location_notes'] ?? '-' }}</span></div>
-                </div>
-            @endif
+            <div class="grid grid-cols-2 gap-3">
+                <div class="col-span-2"><span class="text-gray-500">Alamat:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_address'] ?? $draft['company_address'] ?? '-' }}</span></div>
+                <div><span class="text-gray-500">Provinsi:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_province'] ?? $draft['company_province'] ?? '-' }}</span></div>
+                <div><span class="text-gray-500">Kota:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_city'] ?? $draft['company_city'] ?? '-' }}</span></div>
+                <div><span class="text-gray-500">Kecamatan:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_district'] ?? $draft['company_district'] ?? '-' }}</span></div>
+                <div><span class="text-gray-500">Kode Pos:</span> <span class="font-medium text-gray-800">{{ $draft['inspection_postal_code'] ?? $draft['company_postal_code'] ?? '-' }}</span></div>
+                <div class="col-span-2"><span class="text-gray-500">Catatan:</span> <span class="font-medium text-gray-800">{{ $draft['location_notes'] ?? '-' }}</span></div>
+            </div>
         </div>
     </div>
 

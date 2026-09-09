@@ -8,7 +8,7 @@
 
 @php
     $inputId = 'media-picker-' . Str::random(8);
-    $initialPreview = $value ? (str_starts_with($value, 'http') ? $value : asset('storage/' . ltrim($value, '/'))) : null;
+    $initialPreview = $value ? (str_starts_with($value, 'http') ? $value : storage_file_url($value)) : null;
 @endphp
 
 <div x-data="mediaPicker('{{ $inputId }}', '{{ $initialPreview ?? '' }}')" class="space-y-2">

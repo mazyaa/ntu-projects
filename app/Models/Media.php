@@ -46,7 +46,7 @@ class Media extends Model
 
     public function url(): string
     {
-        return asset('storage/'.ltrim($this->path, '/'));
+        return storage_file_url($this->path);
     }
 
     public function isImage(): bool

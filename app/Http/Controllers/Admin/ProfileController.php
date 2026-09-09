@@ -49,10 +49,10 @@ class ProfileController extends Controller
             $path = $file->store('avatars', 'public');
 
             if ($user->avatar) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $user->avatar));
+                Storage::disk('public')->delete($user->avatar);
             }
 
-            $data['avatar'] = asset('storage/'.$path);
+            $data['avatar'] = $path;
         }
 
         $user->update($data);

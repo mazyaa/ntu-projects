@@ -8,7 +8,7 @@
     <div class="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-2xl p-6 border border-primary/10">
         <div class="flex items-center gap-4">
             @if(Auth::user()->avatar)
-                <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-primary/30 shadow-sm">
+                <img src="{{ storage_file_url(Auth::user()->avatar) }}" alt="Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-primary/30 shadow-sm">
             @else
                 <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center text-xl font-bold text-primary shadow-sm">
                     {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}

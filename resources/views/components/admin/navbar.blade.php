@@ -19,7 +19,7 @@
             <button @click="open = !open" class="flex items-center gap-3 focus:outline-none group">
                 <div class="w-9 h-9 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center text-white font-bold border-2 border-white shadow-md shadow-primary/20 group-hover:shadow-primary/40 transition-shadow overflow-hidden">
                     @if(Auth::user()->avatar)
-                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="w-full h-full object-cover">
+                        <img src="{{ storage_file_url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="w-full h-full object-cover">
                     @else
                         {{ strtoupper(substr(Auth::user()->name ?? 'A', 0, 1)) }}
                     @endif
