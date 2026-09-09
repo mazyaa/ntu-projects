@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lucide Icons
     createIcons({ icons });
 
-    // Skip public-site smooth scrolling on the admin shell
-    const isAdmin = document.body.dataset.admin === 'true';
+    // Skip public-site smooth scrolling on dashboard shells
+    const isDashboard = document.body.dataset.admin === 'true' || document.body.dataset.dashboard === 'true';
 
-    if (isAdmin) {
+    if (isDashboard) {
         return;
     }
 

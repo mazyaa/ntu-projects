@@ -8,7 +8,7 @@
         <div class="hidden lg:flex items-center gap-2 text-sm text-gray-400">
             <a href="{{ panel_route('dashboard') }}" class="hover:text-primary transition-colors flex items-center gap-1.5">
                 <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
-                <span>{{ Auth::user()->getRoleNames()->first() ?? 'Admin' }}</span>
+                <span>{{ Auth::user()->getRoleNames()->first() ?? 'admin' }}</span>
             </a>
         </div>
     </div>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="hidden md:flex flex-col text-left">
                     <span class="text-sm font-semibold text-secondary leading-tight">{{ Auth::user()->name ?? 'Admin' }}</span>
-                    <span class="text-xs text-gray-400">{{ Auth::user()->getRoleNames()->first() ?? 'Super Admin' }}</span>
+                    <span class="text-xs text-gray-400">{{ Auth::user()->getRoleNames()->first() ?? 'super_admin' }}</span>
                 </div>
                 <i data-lucide="chevron-down" class="w-4 h-4 text-gray-400 hidden md:block transition-transform" :class="open ? 'rotate-180' : ''"></i>
             </button>

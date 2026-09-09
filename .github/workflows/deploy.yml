@@ -84,6 +84,7 @@ jobs:
             echo "======================================"
 
             REMOTE_PATH="/home/u862475871/domains/techno-innovation.com/laravel"
+            PUBLIC_PATH="/home/u862475871/domains/techno-innovation.com/public_html"
 
             cd "$REMOTE_PATH"
 
@@ -117,14 +118,59 @@ jobs:
 
             echo ""
             echo "🎨 Extracting Frontend Assets..."
+
             rm -rf public/build
             mkdir -p public/build
+
             tar -xzf frontend-build.tar.gz -C public/build
+
             rm -f frontend-build.tar.gz
+
+            echo ""
+            echo "📂 Laravel Frontend Assets:"
             ls -la public/build/
             ls -la public/build/assets/
 
             echo ""
+            echo "🔄 Syncing Frontend Assets to public_html..."
+
+            rm -rf "$PUBLIC_PATH/build"
+            mkdir -p "$PUBLIC_PATH/build"
+
+            cp -r public/build/. "$PUBLIC_PATH/build/"
+
+            echo ""
+            echo "📂 Public HTML Frontend Assets:"
+            ls -la "$PUBLIC_PATH/build/"
+            ls -la "$PUBLIC_PATH/build/assets/"
+
+            echo ""
+            echo "🔐 Setting Permissions..."
+
+            find public/build -type d -exec chmod 755 {} \;
+            find public/build -type f -exec chmod 644 {} \;
+
+            find "$PUBLIC_PATH/build" -type d -exec chmod 755 {} \;
+            find "$PUBLIC_PATH/build" -type f -exec chmod 644 {} \;
+
+            echo ""
+            echo "🧹 Clearing Laravel Cache Again..."
+
+            php artisan optimize:clear
+
+            echo ""
+            echo "======================================"
             echo "🎉 Deployment Finished Successfully!"
-            echo "📁 Frontend assets: public/build/"
-            echo "🌐 Site: https://techno-innovation.com"
+            echo "======================================"
+
+            echo ""
+            echo "📁 Laravel assets:"
+            echo "$REMOTE_PATH/public/build/"
+
+            echo ""
+            echo "📁 Public assets:"
+            echo "$PUBLIC_PATH/build/"
+
+            echo ""
+            echo "🌐 Site:"
+            echo "https://techno-innovation.com"

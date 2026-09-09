@@ -57,7 +57,7 @@
                                 <td class="py-3 px-4 text-sm text-gray-600">{{ $user->email }}</td>
                                 <td class="py-3 px-4">
                                     @foreach ($user->roles as $role)
-                                        <span class="inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium {{ $role->name === 'Super Admin' ? 'bg-primary/10 text-primary' : ($role->name === 'Admin' ? 'bg-warning/10 text-warning' : 'bg-gray-100 text-gray-600') }}">
+                                        <span class="inline-flex px-2.5 py-0.5 rounded-full text-xs font-medium {{ $role->name === 'super_admin' ? 'bg-primary/10 text-primary' : ($role->name === 'admin' ? 'bg-warning/10 text-warning' : 'bg-gray-100 text-gray-600') }}">
                                             {{ $role->name }}
                                         </span>
                                     @endforeach

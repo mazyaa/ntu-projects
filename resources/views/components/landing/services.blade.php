@@ -33,7 +33,7 @@
                 </div>
                 <div class="p-6 flex-1 flex flex-col">
                     <h3 class="text-lg font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $service->localized('title') }}</h3>
-                    <p class="text-gray-500 text-sm mb-6 flex-1 leading-relaxed">{{ $service->localized('tagline') }}</p> 
+                    <p class="text-gray-500 text-sm mb-6 flex-1 leading-relaxed">{{ $service->localized('tagline') }}</p>
                     <a href="{{ lroute('services.show', ['slug' => $service->routeSlug()]) }}" class="text-sm font-bold text-secondary flex items-center gap-1 group-hover:text-primary transition-colors">
                         {{ __('ui.services.learn_more') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>

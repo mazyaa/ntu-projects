@@ -34,6 +34,8 @@ return [
         'articles' => 'Articles',
         'contact' => 'Contact Us',
         'consult' => 'Riksa Uji Consultation',
+        'login' => 'Sign In',
+        'register' => 'Register',
         'open_menu' => 'Open menu',
     ],
 

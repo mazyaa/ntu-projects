@@ -60,7 +60,7 @@
                         <div class="p-6">
                             <h3 class="text-base font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $service->title }}</h3>
                             <p class="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-2">{{ $service->short_description ?? $service->description }}</p>
-                            <a href="{{ lroute('contact') }}" class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors">
+                            <a href="{{ auth()->guard('web')->check() ? route('customer.requests.create') : route('customer.login', ['redirect' => '/riksa-uji/permohonan']) }}" class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors">
                                 {{ __('ui.services_page.btn_daftar') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
@@ -127,7 +127,7 @@
                             <h3 class="text-base font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $service->title }}</h3>
                             <p class="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-2">{{ $service->short_description ?? $service->description }}</p>
                             <a href="{{ lroute('contact') }}" class="inline-flex items-center gap-1 text-sm font-bold text-success hover:text-success/80 transition-colors">
-                                {{ __('ui.services_page.btn_perizinan') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                                {{ __('ui.services_page.tabs.konsultasi') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>
                     </div>

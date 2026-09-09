@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class RiksaUjiObject extends Model
 {
@@ -38,5 +39,10 @@ class RiksaUjiObject extends Model
     public function type(): BelongsTo
     {
         return $this->belongsTo(RiksaUjiType::class, 'type_id');
+    }
+
+    public function inspectionRequestObjects(): HasMany
+    {
+        return $this->hasMany(InspectionRequestObject::class);
     }
 }

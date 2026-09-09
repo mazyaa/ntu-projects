@@ -8,8 +8,8 @@
                  class="w-9 h-9 object-contain rounded-lg bg-white p-0.5 shadow-md group-hover:scale-105 transition-transform"
                  onerror="this.src='https://ui-avatars.com/api/?name=NTU&background=0736AA&color=fff&rounded=true&size=128'">
             <div class="flex flex-col leading-tight">
-                <span class="text-base font-bold text-white tracking-tight">NTU {{ Auth::user()->getRoleNames()->first() ?? 'Admin' }}</span>
-                <span class="text-[10px] text-white/50 font-medium uppercase tracking-widest">{{ Auth::user()->hasRole('Editor') ? 'Panel Editor' : 'Panel Manajemen' }}</span>
+                <span class="text-base font-bold text-white tracking-tight">NTU {{ Auth::user()->getRoleNames()->first() ?? 'admin' }}</span>
+                <span class="text-[10px] text-white/50 font-medium uppercase tracking-widest">{{ Auth::user()->hasRole('editor') ? 'Panel Editor' : 'Panel Manajemen' }}</span>
             </div>
         </a>
     </div>
@@ -135,6 +135,14 @@
                         <i data-lucide="construction" class="w-5 h-5"></i>
                     </span>
                     <span class="ml-2 text-sm font-medium tracking-wide truncate">Equipment</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ panel_route('inspection-requests.index') }}" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-white/10 text-white/70 hover:text-white border-l-4 border-transparent hover:border-white rounded-r-lg pr-6 transition-colors duration-200 {{ request()->routeIs('admin.inspection-requests*', 'editor.inspection-requests*') ? 'bg-white/10 text-white border-white' : '' }}">
+                    <span class="inline-flex justify-center items-center ml-4">
+                        <i data-lucide="clipboard-list" class="w-5 h-5"></i>
+                    </span>
+                    <span class="ml-2 text-sm font-medium tracking-wide truncate">Permohonan</span>
                 </a>
             </li>
             @endcan

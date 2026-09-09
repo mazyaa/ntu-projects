@@ -1,7 +1,12 @@
 <x-auth-split>
     <!-- Logo (mobile) -->
     <div class="flex justify-center lg:hidden mb-8">
-        <img src="{{ asset('images/logo/navbar-logo.png') }}" alt="{{ config('company.short_name') }} Logo" class="h-14 w-auto" onerror="this.src='https://ui-avatars.com/api/?name=NTU&background=0736AA&color=fff&rounded=true'">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center">
+                <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="text-xl font-bold text-secondary">NTU Admin</span>
+        </div>
     </div>
 
     <a href="{{ route('home') }}" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-primary transition-colors group mb-6">
@@ -11,8 +16,20 @@
 
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <h2 class="text-2xl font-bold text-secondary mb-1">Selamat Datang</h2>
-    <p class="text-sm text-gray-500 mb-8">Masuk ke akun NTU Anda untuk melanjutkan.</p>
+    @if(session('toast'))
+        <div class="mb-4 p-3 rounded-xl text-sm font-medium
+            {{ session('toast.type') === 'error' ? 'bg-red-50 text-red-700 border border-red-200' : 'bg-blue-50 text-blue-700 border border-blue-200' }}">
+            {{ session('toast.message') }}
+        </div>
+    @endif
+
+    <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-5 h-5 text-primary"></i>
+        </div>
+        <h2 class="text-2xl font-bold text-secondary">Panel Admin</h2>
+    </div>
+    <p class="text-sm text-gray-500 mb-8">Masuk ke panel administrasi NTU.</p>
 
     <form method="POST" action="{{ route('login') }}" class="space-y-5">
         @csrf
@@ -22,7 +39,7 @@
             <label for="email" class="block text-sm font-semibold text-secondary mb-1.5">Email</label>
             <div class="relative">
                 <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"></i>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="nama@perusahaan.com"
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" placeholder="admin@nusantara.co.id"
                     class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-300 bg-gray-50/60 focus:bg-white focus:ring-4 focus:ring-primary/15 focus:border-primary outline-none transition-all text-sm" />
             </div>
             @error('email')
@@ -60,8 +77,14 @@
 
         <!-- Submit -->
         <button type="submit" class="w-full py-3.5 rounded-xl bg-primary text-white font-bold text-sm hover:bg-primary/90 shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 flex items-center justify-center gap-2">
-            Masuk
+            Masuk ke Panel Admin
             <i data-lucide="log-in" class="w-4 h-4"></i>
         </button>
     </form>
+
+    <!-- Customer login link -->
+    <p class="text-center text-sm text-gray-500 mt-6">
+        Login sebagai customer?
+        <a href="{{ route('customer.login') }}" class="font-semibold text-primary hover:text-primary/80 transition-colors">Klik di sini</a>
+    </p>
 </x-auth-split>

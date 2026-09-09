@@ -126,7 +126,7 @@
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-secondary mb-2 group-hover:text-primary transition-colors leading-snug">{{ $name }}</h3>
                             <p class="text-gray-500 text-sm mb-4 leading-relaxed line-clamp-2">{{ $description }}</p>
-                            <a href="{{ lroute('contact') }}" class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors">
+                            <a href="{{ auth()->guard('web')->check() ? route('customer.requests.create') : route('customer.login', ['redirect' => '/riksa-uji/permohonan']) }}" class="inline-flex items-center gap-1 text-sm font-bold text-primary hover:text-primary/80 transition-colors">
                                 {{ __('ui.riksa_uji_page.btn_daftar') }} <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                         </div>

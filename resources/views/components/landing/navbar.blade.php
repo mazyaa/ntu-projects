@@ -41,9 +41,34 @@
 
                 <div class="flex items-center gap-3">
                     <x-landing.language-switcher />
-                    <a href="{{ lroute('contact') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5">
-                        {{ __('ui.nav.consult') }}
-                    </a>
+                    @if(auth()->guard('web')->check())
+                        @if(auth()->guard('web')->user()->hasAnyRole(['super_admin', 'admin', 'editor']))
+                            <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5">
+                                Panel Admin
+                            </a>
+                        @else
+                            <a href="{{ route('customer.dashboard') }}" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300"
+                               :class="scrolled ? 'text-primary bg-primary/10 hover:bg-primary/20' : 'text-white bg-white/10 hover:bg-white/20'">
+                                @if(auth()->guard('web')->user()->avatar)
+                                    <img src="{{ asset('storage/' . auth()->guard('web')->user()->avatar) }}" alt="Avatar" class="w-8 h-8 rounded-full object-cover border-2" :class="scrolled ? 'border-primary/30' : 'border-white/30'">
+                                @else
+                                    <span class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" :class="scrolled ? 'bg-primary/20 text-primary' : 'bg-white/20 text-white'">
+                                        {{ strtoupper(substr(auth()->guard('web')->user()->name, 0, 1)) }}
+                                    </span>
+                                @endif
+                                Dashboard
+                            </a>
+                        @endif
+                    @else
+                        <a href="{{ route('customer.login') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300"
+                           :class="scrolled ? 'text-primary border-2 border-primary/20 hover:bg-primary/5' : 'text-white border-2 border-white/40 hover:bg-white/10'">
+                            {{ __('ui.nav.login') ?? 'Masuk' }}
+                        </a>
+                        <a href="{{ route('customer.register') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300"
+                           :class="scrolled ? 'text-white bg-primary hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/30 transform hover:-translate-y-0.5' : 'text-primary bg-white hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transform hover:-translate-y-0.5'">
+                            {{ __('ui.nav.register') ?? 'Daftar' }}
+                        </a>
+                    @endif
                 </div>
             </div>
 
@@ -78,9 +103,31 @@
                 </a>
             @endforeach
             <hr class="border-gray-100">
-            <a href="{{ lroute('contact') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
-                {{ __('ui.nav.consult') }}
-            </a>
+            @if(auth()->guard('web')->check())
+                @if(auth()->guard('web')->user()->hasAnyRole(['super_admin', 'admin', 'editor']))
+                    <a href="{{ route('admin.dashboard') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
+                        Panel Admin
+                    </a>
+                @else
+                    <a href="{{ route('customer.dashboard') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center gap-2 w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
+                        @if(auth()->guard('web')->user()->avatar)
+                            <img src="{{ asset('storage/' . auth()->guard('web')->user()->avatar) }}" alt="Avatar" class="w-8 h-8 rounded-full object-cover border-2 border-white/30">
+                        @else
+                            <span class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold bg-white/20 text-white">
+                                {{ strtoupper(substr(auth()->guard('web')->user()->name, 0, 1)) }}
+                            </span>
+                        @endif
+                        Dashboard
+                    </a>
+                @endif
+            @else
+                <a href="{{ route('customer.login') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-primary border-2 border-primary/20 rounded-xl hover:bg-primary/5 transition-all">
+                    {{ __('ui.nav.login') ?? 'Masuk' }}
+                </a>
+                <a href="{{ route('customer.register') }}" @click="mobileMenuOpen = false" class="inline-flex items-center justify-center w-full px-5 py-3 text-base font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-all">
+                    {{ __('ui.nav.register') ?? 'Daftar' }}
+                </a>
+            @endif
         </div>
     </div>
 </header>

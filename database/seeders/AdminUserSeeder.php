@@ -28,8 +28,8 @@ class AdminUserSeeder extends Seeder
             ]
         );
 
-        if (! $user->hasRole('Super Admin')) {
-            $user->assignRole(Role::where('name', 'Super Admin')->firstOrFail());
+        if (! $user->hasRole('super_admin')) {
+            $user->assignRole(Role::where('name', 'super_admin')->firstOrFail());
         }
     }
 }
