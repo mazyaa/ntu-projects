@@ -56,10 +56,6 @@
                         <i data-lucide="mail" class="w-5 h-5 text-primary shrink-0"></i>
                         <a href="mailto:{{ company('contact.email') }}" class="hover:text-primary transition-colors">{{ company('contact.email') }}</a>
                     </li>
-                    <li class="flex items-center gap-3 text-gray-400 text-sm">
-                        <i data-lucide="message-circle" class="w-5 h-5 text-accent shrink-0"></i>
-                        <a href="{{ lroute('contact') }}" class="hover:text-accent transition-colors">Kontak Kami</a>
-                    </li>
                 </ul>
             </div>
         </div>
